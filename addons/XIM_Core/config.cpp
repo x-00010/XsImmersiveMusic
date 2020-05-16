@@ -24,7 +24,6 @@ class Extended_PreInit_EventHandlers
     };
 };
 
-
 class CfgMusic
 {
     class LeadTrack01_F
@@ -187,5 +186,3 @@ class CfgMusic
     };
 
 };
-
-
