@@ -5,9 +5,14 @@ class CfgPatches
 		name = "X's Immersive Music";
 		author = "x00010";
 		requiredVersion = 1.98;
-		requiredAddons[] = {  
+
+		requiredAddons[] = 
+		{  
 			"cba_settings"
 		};
+
+		units[] = {};
+		weapons[] = {};
 	};
 };
 
