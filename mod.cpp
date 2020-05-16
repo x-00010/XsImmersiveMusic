@@ -1,0 +1,12 @@
+name = "XIM - X's Immersive Music";
+picture = "XIMCore.paa";
+actionName = "Steam";
+action = "https://www.steamcommunity.com";
+description = "A mod which aims to add dynamic music to Arma 3!";
+logo = "XIMCore.paa";
+logoOver = "XIMCore.paa";
+tooltip = "XIM - X's Immersive Music";
+tooltipOwned = "";
+overview = "A mod which aims to add dynamic music to Arma 3!";
+author = "x00010";
+overviewPicture = "XIMCore.paa";
