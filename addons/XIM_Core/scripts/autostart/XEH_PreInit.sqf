@@ -1,1 +1,1 @@
-execVM = "\XIM_Core\scripts\main.sqf" // executes main.sqf
+execVM "\XIM_Core\scripts\main.sqf" // executes main.sqf
