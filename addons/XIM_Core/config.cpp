@@ -280,7 +280,7 @@ class CfgMusic
         {
             "dark"
         };
-    	//Stage B: Lead Track 03 (Beyond Recognition - Alternative 1)
+    	//Stage B: Lead Track 03 (Beyond Recognition)
     };
 
     class LeadTrack03a_F_EPB
@@ -291,5 +291,476 @@ class CfgMusic
         };
     	//Stage B: Lead Track 03 (Beyond Recognition - Alternative 1)
     };
+
+
+    class LeadTrack04_F_EPB
+    {
+        moods[] = 
+        {
+            "dark"
+        };
+        //Stage B: Lead Track 04 (Canton Protocol)
+
+    };
+
+    class AmbientTrack01_F_EPB
+    {
+        moods[] = 
+        {
+            "dark","calm"
+        };
+        //Stage B: Ambient Track 01 (Signal Lost)
+    };
+    class BackgroundTrack01_F_EPB
+    {
+        moods[] = 
+        {
+            "dark"
+        };
+        //Stage B: Background Track 01 (The Hunt)
+    };
+    class LeadTrack01_F_EPC
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Stage C: Lead Track 01 (Back on Stratis)
+
+    };
+    class LeadTrack02_F_EPC
+    {
+        moods[] = 
+        {
+            "intense"
+        };
+        //Stage C: Lead Track 02 (LZ hot)
+    };
+
+    class LeadTrack03_F_EPC
+    {
+        moods[] = 
+        {
+            "calm","dark"
+        };
+        //Stage C: Lead Track 03 (The Trap)
+    };
+
+    class LeadTrack04_F_EPC
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Stage C: Lead Track 04 (In the Open)
+    };
+
+    class LeadTrack05_F_EPC
+    {
+        moods[] = 
+        {
+            "intense"
+        };
+        //Stage C: Lead Track 05 (Revenge)
+    };
+
+    class LeadTrack06_F_EPC
+    {
+        moods[] = 
+        {
+            "intense"
+        };
+        //Stage C: Lead Track 06 (Win)
+    };
+
+    class LeadTrack06b_F_EPC
+    {
+        moods[] = 
+        {
+            "calm","dark"
+        };
+        //Stage C: Lead Track 06 (Win - Alternative 1)
+    };
+
+    class EventTrack03_F_EPC
+    {
+        moods[] = 
+        {
+            "calm","dark"
+        };
+        //Stage C: Event Track 03 (Unforeseen Perdition)
+    };
+
+    class BackgroundTrack01_F_EPC
+    {
+        moods[] = 
+        {
+            "intense"
+        };
+        //Stage C: Background Track 01 (Alone)
+    };
+
+    class BackgroundTrack02_F_EPC
+    {
+        moods[] = 
+        {
+            "calm","dark"
+        };
+        //Stage C: Background Track 02 (Just Another Day)
+    };
+
+    class BackgroundTrack03_F_EPC
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Stage C: Background Track 03 (Altis Requiem)
+    };
+
+    class BackgroundTrack04_F_EPC
+    {
+        moods[] = 
+        {
+            "calm","dark"
+        };
+        //Stage C: Background Track 04 (Assembly)
+    };
+
+    class Fallout
+    {
+        moods[] = 
+        {
+            "calm","dark"
+        };
+        //Fallout
+    };
+
+    class Defcon
+    {
+        moods[] = 
+        {
+            "dark"
+        };
+        //Defcon
+    };
+
+    class Wasteland
+    {
+        moods[] = 
+        {
+            "dark"
+        };
+        //Wasteland
+    };
+
+    class SkyNet
+    {
+        moods[] = 
+        {
+            "dark","calm"
+        };
+        //SkyNet
+    };
+
+    class MAD
+    {
+        moods[] = 
+        {
+            "dark","calm"
+        };
+        //Wasteland
+    };
+
+    class LeadTrack01_F_Curator
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Zeus Theme
+    };
+
+    class LeadTrack01_F_Bootcamp
+    {
+        moods[] = 
+        {
+            "intense"
+        };
+        //This is War (VR Remix)
+    };
+
+    class LeadTrack02_F_Bootcamp
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Evolution
+    };
+
+    class LeadTrack03_F_Bootcamp
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Epic Split
+    };
+
+    class LeadTrack01_F_Heli
+    {
+        moods[] = 
+        {
+            "intense"
+        };
+        //This is War (Heli Remix)
+    };
+
+    class LeadTrack01_F_Mark
+    {
+        moods[] = 
+        {
+            "intense"
+        };
+        //This is War (Marksmen Remix)
+    };
+
+    class LeadTrack02_F_Mark
+    {
+        moods[] = 
+        {
+            "intense"
+        };
+        //Marksmen DLC: Lead Track 02 (Into the Sun)
+    };
+
+    class LeadTrack03_F_Mark
+    {
+        moods[] = 
+        {
+            "calm","dark"
+        };
+        //Marksmen DLC: Lead Track 03 (Marksmen)
+    };
+
+    class LeadTrack01_F_EXP
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //This Is War (Apex Remix)
+    };
+
+    class LeadTrack02_F_EXP
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //An Unknown Enemy
+    };
+
+    class LeadTrack03_F_EXP
+    {
+        moods[] = 
+        {
+            "intense"
+        };
+        //No Time For Questions
+    };
+
+    class LeadTrack04_F_EXP
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //This Is War (Apex Remix - Alternative 1)
+    };
+
+    class AmbientTrack01_F_EXP
+    {
+        moods[] = 
+        {
+            "calm","dark"
+        };
+        //Through The Jungle
+    };
+
+    class AmbientTrack02_F_EXP
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Welcome To Tanoa
+    };
+
+
+
+    class LeadTrack01_F_Jets
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Fighter Jets
+    };
+
+    class LeadTrack02_F_Jets
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Air Power
+    };
+
+    class LeadTrack01_F_Malden
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Flashpoint
+    };
+
+    class LeadTrack02_F_Malden
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Malden
+    };
+
+    class LeadTrack01_F_Orange
+    {
+        moods[] = 
+        {
+            "intense"
+        };
+        //This Is War (Laws of War Remix)
+    };
+
+    class AmbientTrack02_F_Orange
+    {
+        moods[] = 
+        {
+            "dark"
+        };
+        //Laws of War DLC: Remnants of War
+    };
+
+    class AmbientTrack01_F_Orange
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Laws of War DLC: Ambient
+    };
+
+
+    class LeadTrack01_F_Tacops
+    {
+        moods[] = 
+        {
+            "intense"
+        };
+        //Tac-Ops DLC: Opening 1
+    };
+
+
+    class LeadTrack02_F_Tacops
+    {
+        moods[] = 
+        {
+            "intense"
+        };
+        //Tac-Ops DLC: Opening 2
+    };
+
+
+    class LeadTrack03_F_Tacops
+    {
+        moods[] = 
+        {
+            "intense"
+        };
+        //Tac-Ops DLC: Opening 3
+    };
+
+
+    class AmbientTrack01a_F_Tacops
+    {
+        moods[] = 
+        {
+            "dark"
+        };
+        //Tac-Ops DLC: Ambient 1a
+    };
+
+
+    class AmbientTrack01b_F_Tacops
+    {
+        moods[] = 
+        {
+            "dark"
+        };
+        //Tac-Ops DLC: Ambient 1b
+    };
+
+
+    class AmbientTrack02a_F_Tacops
+    {
+        moods[] = 
+        {
+            "dark","calm"
+        };
+        //Tac-Ops DLC: Ambient 2a
+    };
+
+    class AmbientTrack03a_F_Tacops
+    {
+        moods[] = 
+        {
+            "dark","calm"
+        };
+        //Tac-Ops DLC: Ambient 3a
+    };
+
+    class AmbientTrack03b_F_Tacops
+    {
+        moods[] = 
+        {
+            "dark","calm"
+        };
+        //Tac-Ops DLC: Ambient 3b
+    };
+
+    class AmbientTrack04a_F_Tacops
+    {
+        moods[] = 
+        {
+            "dark"
+        };
+        //Tac-Ops DLC: Ambient 4a
+    };
+
+    class AmbientTrack04b_F_Tacops
+    {
+        moods[] = 
+        {
+            "dark"
+        };
+        //Tac-Ops DLC: Ambient 4b
+    };
+
+
+
+
 
 };
