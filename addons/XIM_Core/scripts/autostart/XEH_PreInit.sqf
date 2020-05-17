@@ -1,4 +1,4 @@
-if (isServer) then // if the client is a player host or a dedicated server (multi and singleplayer) 
+if (hasInterface) then// runs on all player clients, including host (if there is one)
 {
-	execVM "\XIM_Core\scripts\main.sqf" // executes main.sqf
+	execVM "\XIM_Core\scripts\main.sqf"; // executes main.sqf
 };
