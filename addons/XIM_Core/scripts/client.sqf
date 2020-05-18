@@ -37,5 +37,4 @@ _self addEventHandler
 		sleep 0.5; // wait half a second before executing once more
 	};
 };
-
 hint "Warning! Entering combat!";
