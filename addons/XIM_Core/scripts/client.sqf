@@ -17,9 +17,9 @@ _self addEventHandler
 	}
 ];
 
-while {_combat == false} do
+while {_combat} do
 {
-	if ((_selfFiredNear == true) or (_selfHit == true)) then // if someone fires near the player, they themselves fire or are shot
+	if ((_selfFiredNear) or (_selfHit)) then // if someone fires near the player, they themselves fire or are shot
 	{
 		_enemy = _self findNearestEnemy _self;
 		_enemyKnowledge = _enemy knowsAbout _self;

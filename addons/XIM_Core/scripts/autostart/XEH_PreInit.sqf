@@ -1,8 +1,19 @@
 // put cba debug setting stuff here
 
-if (hasInterface) then // runs on all player clients, including host (if there is one)
+if (isMultiplayer) then
 {
-	execVM "\XIM_Core\scripts\main.sqf"; // executes main.sqf
+	if (hasInterface) then // runs on all player clients, including host (if there is one)
+	{
+		execVM "\XIM_Core\scripts\client.sqf"; // executes main.sqf
+	};
+
+	if (isServer) then // runs on the dedicated server, or player host, either way it runs on machine id 2
+	{
+		execVM "\XIM_Core\scripts\server.sqf"; // executes server.sqf
+	};
 };
 
-//if (isServer)
+else
+{
+	hint "singleplayer not done yet"
+};
