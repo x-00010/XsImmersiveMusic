@@ -1,27 +1,28 @@
 private _combat = false; // declares _combat
-private playerFiredNear = false; // declares playerFiredNear, for later use in an event handler
-private playerHit = false; // declares playerHit, for later use in an event handler
+private _self = player; // declares _self, which is the player
+private _selfFiredNear = false; // declares _selfFiredNear, for later use in an event handler
+private _selfHit = false; // declares _selfHit, for later use in an event handler
 
-player addEventHandler 
+_self addEventHandler 
 ["FiredNear", // creates firednear event handler
 	{
-		playerFiredNear = true;
+		_selfFiredNear = true;
 	}
 ];
 
-player addEventHandler 
+_self addEventHandler 
 ["Hit", // creates hit event handler
 	{
-		playerHit = true
+		_selfHit = true
 	}
 ];
 
 while {combat = false} do
 {
-	if (playerFiredNear = true or playerHit = true) then // if someone fires near the player, they themselves fire or are shot
+	if (_selfFiredNear = true or _selfHit = true) then // if someone fires near the player, they themselves fire or are shot
 	{
-		_enemy = player findNearestEnemy player;
-		_enemyKnowledge = _enemy knowsAbout player;
+		_enemy = _self findNearestEnemy _self;
+		_enemyKnowledge = _enemy knowsAbout _self;
 		if (_enemyKnowledge > 0) then // and the closest enemy is alerted to their presence
 		{
 			_combat = true;
