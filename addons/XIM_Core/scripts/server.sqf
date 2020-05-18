@@ -1,1 +1,1 @@
-hint "server"
+//hint "server"
