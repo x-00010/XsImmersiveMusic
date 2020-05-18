@@ -32,10 +32,10 @@ _self addEventHandler
 			if (_enemyKnowledge > 0) then // and the closest enemy is alerted to their presence
 			{
 				_combat = true;
-				hint "Warning! Entering combat!"
 			};
 		};
 		sleep 0.5; // wait half a second before executing once more
 	};
 };
 
+hint "Warning! Entering combat!";
