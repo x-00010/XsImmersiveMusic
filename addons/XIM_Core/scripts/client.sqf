@@ -1,42 +1,40 @@
-private _self = player; // declares _self, which is the player
-private _combat = false; // declare _combat, which is a bool for combat state
-private _selfFiredNear = false; // declares _selfFiredNear, for later use in an event handler
-private _selfHit = false; // declares _selfHit, for later use in an event handler
+private bCombat = false; // declares bCombat, which is the player's combat state
+private uSelf = player; // declares uSelf, which is the player
 
-_self addEventHandler 
-["FiredNear", // creates firednear event handler
-	{
-		_selfFiredNear = true;
-	}
-];
-
-_self addEventHandler 
-["Hit", // creates hit event handler
-	{
-		_selfHit = true;
-	}
-];
-
-[_combat, _self, _selfFiredNear, _selfHit] spawn // add following code to scheduler
+fncEvaluateCombat = // defines subEvaluateCombat, which evaluates if the player is in combat or not
 {
-	_combat = _this select 0; // _combat is first argument
-	_self = _this select 1; // _self is second argument
-	_selfFiredNear = _this select 2; // _selfFiredNear is third argument
-	_selfHit = _this select 3; // _selfHit is fourth argument
-	while {!_combat} do // while not in combat
+	private bCombat = _this select 0; 
+	private uSelf = _this select 1;
+
+	while {!bCombat} do
 	{
-		hint "while loop started";
-		if ((_selfFiredNear) or (_selfHit)) then // if someone fires near the player or they themselves fire or they are shot
+		private uEnemy = uSelf findNearestEnemy uSelf; // declares bCombat, which is the player's combat state and the first argument
+		private iEnemyKnowledge = uEnemy knowsAbout uSelf; // declares uSelf, which is the player and the second argument
+		if (iEnemyKnowledge > 0) then // if the closest enemy is alerted to the player's presence
 		{
-			hint "first if statement satisfied";
-			_enemy = _self findNearestEnemy _self;
-			_enemyKnowledge = _enemy knowsAbout _self;
-			if (_enemyKnowledge > 0) then // and the closest enemy is alerted to their presence
-			{
-				hint "Warning! Entering combat!";
-				_combat = true;
-			};
+			hint "Warning! Entering combat!";
+			combat = true;
 		};
-		sleep 0.5; // wait half a second before executing once more
 	};
 };
+
+uSelf addEventHandler 
+["FiredNear", // creates firednear event handler
+	{
+		[bCombat, uSelf] spawn
+		{
+			[_this select 0, _this select 1] call fncEvaluateCombat; // call fncEvaluateCombat with bCombat and uSelf
+		};
+	} 
+];
+
+uSelf addEventHandler 
+["Hit", // creates hit event handler
+	{
+		[bCombat, uSelf] spawn
+		{
+			[_this select 0, _this select 1] call fncEvaluateCombat; // call fncEvaluateCombat with bCombat and uSelf
+		};
+		
+	}
+];
