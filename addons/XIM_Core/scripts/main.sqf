@@ -20,7 +20,7 @@ if (_combat = false) then
 		};
 	];
 
-	if (_selfFiredNear = true) or (_selfHit = true) then
+	if (_selfFiredNear = true or _selfHit = true) then
 	{
 		_enemy = _self findNearestEnemy _self;
 		_enemyKnowledge = _enemy knowsAbout _self;
