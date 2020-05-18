@@ -21,7 +21,7 @@ uSelf addEventHandler
 		{
 			[bCombat, uSelf] spawn
 			{
-				[_this select 0, _this select 1] call fncEvaluateCombat; // call fncEvaluateCombat with _bCombat and _uSelf within the scheduler
+				bCombat = [_this select 0, _this select 1] call fncEvaluateCombat; // call fncEvaluateCombat with _bCombat and _uSelf within the scheduler
 			};
 		};
 	}
@@ -34,7 +34,7 @@ uSelf addEventHandler
 		{
 			[bCombat, uSelf] spawn
 			{
-				[_this select 0, _this select 1] call fncEvaluateCombat; // call fncEvaluateCombat with _bCombat and _uSelf within the scheduler
+				bCombat = [_this select 0, _this select 1] call fncEvaluateCombat; // call fncEvaluateCombat with _bCombat and _uSelf within the scheduler
 			};
 		};	
 	}
