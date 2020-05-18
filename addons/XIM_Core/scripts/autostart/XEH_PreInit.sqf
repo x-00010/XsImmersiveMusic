@@ -1,6 +1,6 @@
 // put cba debug setting stuff here
 
-if (isMultiplayer) then
+if (isMultiplayer) then // if client is in multiplayer
 {
 	if (hasInterface) then // runs on all player clients, including host (if there is one)
 	{
@@ -12,7 +12,7 @@ if (isMultiplayer) then
 		execVM "\XIM_Core\scripts\server.sqf"; // executes server.sqf
 	};
 } 
-else
+else // if client is in singleplayer
 {
 	hint "singleplayer not ready yet";
 };

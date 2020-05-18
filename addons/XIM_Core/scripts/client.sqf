@@ -1,5 +1,5 @@
-private _combat = false; // declares _combat
 private _self = player; // declares _self, which is the player
+private _combat = false; // declare _combat, which is a bool for combat state
 private _selfFiredNear = false; // declares _selfFiredNear, for later use in an event handler
 private _selfHit = false; // declares _selfHit, for later use in an event handler
 
@@ -13,21 +13,29 @@ _self addEventHandler
 _self addEventHandler 
 ["Hit", // creates hit event handler
 	{
-		_selfHit = true
+		_selfHit = true;
 	}
 ];
 
-while {!_combat} do
+[_combat, _self, _selfFiredNear, _selfHit] spawn // add following code to scheduler
 {
-	if ((_selfFiredNear) or (_selfHit)) then // if someone fires near the player, they themselves fire or are shot
+	_combat = _this select 0; // _combat is first argument
+	_self = _this select 1; // _self is second argument
+	_selfFiredNear = _this select 2; // _selfFiredNear is third argument
+	_selfHit = _this select 3; // _selfHit is fourth argument
+	while {!_combat} do // while not in combat
 	{
-		_enemy = _self findNearestEnemy _self;
-		_enemyKnowledge = _enemy knowsAbout _self;
-		if (_enemyKnowledge > 0) then // and the closest enemy is alerted to their presence
+		if ((_selfFiredNear) or (_selfHit)) then // if someone fires near the player or they themselves fire or they are shot
 		{
-			_combat = true;
-			hint "Warning! Entering combat!"
+			_enemy = _self findNearestEnemy _self;
+			_enemyKnowledge = _enemy knowsAbout _self;
+			if (_enemyKnowledge > 0) then // and the closest enemy is alerted to their presence
+			{
+				_combat = true;
+				hint "Warning! Entering combat!"
+			};
 		};
+		sleep 0.5; // wait half a second before executing once more
 	};
-	sleep 0.5; // wait half a second before executing once more
 };
+
