@@ -17,7 +17,7 @@ fncEvaluateCombat = // defines subEvaluateCombat, which evaluates if the player 
 uSelf addEventHandler 
 ["FiredNear", // creates firednear event handler
 	{
-		while {!bCombat} do // while not in combaAt
+		while {!bCombat} do // while not in combat
 		{
 			[bCombat, uSelf] spawn
 			{
