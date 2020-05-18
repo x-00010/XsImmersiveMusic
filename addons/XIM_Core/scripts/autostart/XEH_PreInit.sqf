@@ -5,4 +5,4 @@ if (hasInterface) then // runs on all player clients, including host (if there i
 	execVM "\XIM_Core\scripts\main.sqf"; // executes main.sqf
 };
 
-if (isServer)
+//if (isServer)
