@@ -3,24 +3,20 @@ private _self = name player; // declares _self, which is the player
 private _selfFiredNear = false; // declares _selfFiredNear, for later use in an event handler
 private _selfHit = false; // declares _selfHit, for later use in an event handler
 
+_self addEventHandler ["FiredNear", // creates firednear event handler
+	{
+		_selfFiredNear = true;
+	}
+];
 
-if (_combat = false) then
+_self addEventHandler ["Hit", // creates hit event handler
+	{
+		_selfHit = true
+	}
+];
+
+while {combat = false} do
 {
-	_self addEventHandler // create firednear event handler
-	[
-		"FiredNear"
-		{
-			_selfFiredNear = true;
-		};
-	];
-	_selfHit = _self addEventHandler // create hit event handler
-	[
-		"Hit"
-		{
-			_selfHit = true;
-		};
-	];
-
 	if (_selfFiredNear = true or _selfHit = true) then // if someone fires near the player, they themselves fire or are shot
 	{
 		_enemy = _self findNearestEnemy _self;
@@ -31,4 +27,5 @@ if (_combat = false) then
 			hint "Warning! Entering combat!"
 		};
 	};
+	sleep 0.5; // wait half a second before executing once more
 };
