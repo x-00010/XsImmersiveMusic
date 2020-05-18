@@ -759,6 +759,249 @@ class CfgMusic
         //Tac-Ops DLC: Ambient 4b
     };
 
+    class MainTheme_F_Tank
+    {
+        moods[] = 
+        {
+            "intense"
+        };
+        //Tanks DLC: This is War (Tanks DLC version)
+    };
+
+    class LeadTrack01_F_Tank
+    {
+        moods[] = 
+        {
+            "intense"
+        };
+        //Tanks DLC: Fight for the City
+    };
+
+    class LeadTrack02_F_Tank
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Tanks DLC: Last Stand
+    };
+
+    class LeadTrack03_F_Tank
+    {
+        moods[] = 
+        {
+            "dark","calm"
+        };
+        //Tanks DLC: Way Back
+    };
+
+    class LeadTrack05_F_Tank
+    {
+        moods[] = 
+        {
+            "intense"
+        };
+        //Tanks DLC: Wrath of the Giants
+    };
+
+    class LeadTrack05_F_Tank
+    {
+        moods[] = 
+        {
+            "intense"
+        };
+        //Tanks DLC: Wrath of the Giants
+    };
+
+    class LeadTrack06_F_Tank
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Tanks DLC: Iron Gods
+    };
+
+    class AmbientTrack01_F_Tank
+    {
+        moods[] = 
+        {
+            "calm","dark"
+        };
+        //Tanks DLC: Hidden Enemy
+    };
+
+    class Music_Theme_Contact
+    {
+        moods[] = 
+        {
+            "dark"
+        };
+        //Contact: Transilience (Main Theme)
+    };
+
+    class Music_Credits_Contact
+    {
+        moods[] = 
+        {
+            "dark"
+        };
+        //Contact: Transilience (Credits)
+    };
+
+    class Music_Arrival
+    {
+        moods[] = 
+        {
+            "dark"
+        };
+        //Contact: Wavering Base
+    };
+
+    class Music_Roaming_Night
+    {
+        moods[] = 
+        {
+            "dark"
+        };
+        //Contact: Night Eyes Zero-One
+    };
+
+    class Music_Roaming_Night_02
+    {
+        moods[] = 
+        {
+            "dark"
+        };
+        //Contact: Night Eyes Zero-Two
+    };
+
+    class Music_Roaming_Day
+    {
+        moods[] = 
+        {
+            "dark"
+        };
+        //Contact: Sunrise Zero-One
+    };
+
+    class Music_Roaming_Day_02
+    {
+        moods[] = 
+        {
+            "dark"
+        };
+        //Contact: Sunrise Zero-One
+    };
+
+    class Music_Hostile_Drone_Close_01
+    {
+        moods[] = 
+        {
+            "dark"
+        };
+        //Contact: Hostile
+    };
+
+    class Music_Battle_Alien
+    {
+        moods[] = 
+        {
+            "intense"
+        };
+        //Contact: Contact
+    };
+
+    class Music_Battle_Human
+    {
+        moods[] = 
+        {
+            "intense"
+        };
+        //Contact: Infighting
+    };
+
+    class Music_Russian_Theme
+    {
+        moods[] = 
+        {
+            "intense"
+        };
+        //Contact: Sharper Claws
+    };
+
+    class Music_Suspended_Loop_01
+    {
+        moods[] = 
+        {
+            "dark"
+        };
+        //Contact: Suspense
+    };
+
+    class Music_Tension_Loop_01
+    {
+        moods[] = 
+        {
+            "dark"
+        };
+        //Contact: Tension
+    };
+
+    class Music_Roaming_Day_02
+    {
+        moods[] = 
+        {
+            "dark"
+        };
+        //Contact: Sunrise Zero-One
+    };
+
+    class Music_Roaming_Day_02
+    {
+        moods[] = 
+        {
+            "dark"
+        };
+        //Contact: Sunrise Zero-One
+    };
+
+    class Music_Roaming_Day_02
+    {
+        moods[] = 
+        {
+            "dark"
+        };
+        //Contact: Sunrise Zero-One
+    };
+
+    class Music_Roaming_Day_02
+    {
+        moods[] = 
+        {
+            "dark"
+        };
+        //Contact: Sunrise Zero-One
+    };
+
+    class Music_Roaming_Day_02
+    {
+        moods[] = 
+        {
+            "dark"
+        };
+        //Contact: Sunrise Zero-One
+    };
+
+    class Music_Roaming_Day_02
+    {
+        moods[] = 
+        {
+            "dark"
+        };
+        //Contact: Sunrise Zero-One
+    };
+
 
 
 
