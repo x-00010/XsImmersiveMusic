@@ -25,17 +25,18 @@ _self addEventHandler
 	_selfHit = _this select 3; // _selfHit is fourth argument
 	while {!_combat} do // while not in combat
 	{
+		hint "while loop started";
 		if ((_selfFiredNear) or (_selfHit)) then // if someone fires near the player or they themselves fire or they are shot
 		{
+			hint "first if statement satisfied";
 			_enemy = _self findNearestEnemy _self;
 			_enemyKnowledge = _enemy knowsAbout _self;
 			if (_enemyKnowledge > 0) then // and the closest enemy is alerted to their presence
 			{
+				hint "Warning! Entering combat!";
 				_combat = true;
 			};
 		};
 		sleep 0.5; // wait half a second before executing once more
 	};
 };
-
-hint "Warning! Entering combat!";
