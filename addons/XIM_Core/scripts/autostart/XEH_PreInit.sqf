@@ -11,9 +11,8 @@ if (isMultiplayer) then
 	{
 		execVM "\XIM_Core\scripts\server.sqf"; // executes server.sqf
 	};
-};
-
+} 
 else
 {
-	hint "singleplayer not done yet"
+	hint "singleplayer not ready yet";
 };
