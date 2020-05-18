@@ -891,7 +891,7 @@ class CfgMusic
         {
             "dark"
         };
-        //Contact: Sunrise Zero-One
+        //Contact: Sunrise Zero-Two
     };
 
     class Music_Hostile_Drone_Close_01
@@ -943,63 +943,668 @@ class CfgMusic
     {
         moods[] = 
         {
-            "dark"
+            "dark","intense"
         };
         //Contact: Tension
     };
 
-    class Music_Roaming_Day_02
+
+
+    class Track_C_01
     {
         moods[] = 
         {
-            "dark"
+            "calm"
         };
-        //Contact: Sunrise Zero-One
+        //Old Man 01
     };
 
-    class Music_Roaming_Day_02
+    class Track_C_02
     {
         moods[] = 
         {
-            "dark"
+            "dark","calm"
         };
-        //Contact: Sunrise Zero-One
+        //Old Man 02
     };
 
-    class Music_Roaming_Day_02
+    class Track_C_03
     {
         moods[] = 
         {
-            "dark"
+            "calm"
         };
-        //Contact: Sunrise Zero-One
+        //Old Man 03
     };
 
-    class Music_Roaming_Day_02
+    class Track_C_04
     {
         moods[] = 
         {
             "dark"
         };
-        //Contact: Sunrise Zero-One
+        //Old Man 04
     };
 
-    class Music_Roaming_Day_02
+    class Track_C_05
     {
         moods[] = 
         {
-            "dark"
+            "calm"
         };
-        //Contact: Sunrise Zero-One
+        //Old Man 05
     };
 
-    class Music_Roaming_Day_02
+    class Track_C_06
     {
         moods[] = 
         {
             "dark"
         };
-        //Contact: Sunrise Zero-One
+        //Old Man 06
+    };
+
+    class Track_C_07
+    {
+        moods[] = 
+        {
+            "intense"
+        };
+        //Old Man 07
+    };
+
+    class Track_C_08
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Old Man 08
+    };
+
+    class Track_C_09
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Old Man 09
+    };
+
+    class Track_C_10
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Old Man 10
+    };
+
+    class Track_C_11
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Old Man 11
+    };
+
+    class Track_C_12
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Old Man 12
+    };
+
+    class Track_C_13
+    {
+        moods[] = 
+        {
+            "dark"
+        };
+        //Old Man 13
+    };
+
+    class Track_C_14
+    {
+        moods[] = 
+        {
+            "dark"
+        };
+        //Old Man 14
+    };
+
+    class Track_C_15
+    {
+        moods[] = 
+        {
+            "dark"
+        };
+        //Old Man 15
+    };
+
+    class Track_C_16
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Old Man 16
+    };
+
+    class Track_C_17
+    {
+        moods[] = 
+        {
+            "dark"
+        };
+        //Old Man 17
+    };
+
+    class Track_C_18
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Old Man 18
+    };
+
+    class Track_C_19
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Old Man 19
+    };
+
+    class Track_C_20
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Old man 20
+    };
+
+    class Track_D_01
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Old Man: Dance 01
+    };
+
+    class Track_D_02
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Old Man : Dance 02
+    };
+
+    class Track_D_03
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Old Man : Dance 03
+    };
+
+    class Track_M_01
+    {
+        moods[] = 
+        {
+            "intense"
+        };
+        //Old Man : Metal 01
+    };
+
+    class Track_M_02
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Old Man : Metal 02
+    };
+
+    class Track_M_03
+    {
+        moods[] = 
+        {
+            "intense"
+        };
+        //Old Man : Metal 03
+    };
+
+    class Track_O_01
+    {
+        moods[] = 
+        {
+            "intense"
+        };
+        //Old Man OST 01
+    };
+
+    class Track_O_02
+    {
+        moods[] = 
+        {
+            "intense"
+        };
+        //Old Man OST 02
+    };
+
+    class Track_O_03
+    {
+        moods[] = 
+        {
+            "intense"
+        };
+        //Old Man OST 03
+    };
+
+    class Track_O_04
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Old Man OST 04
+    };
+
+    class Track_O_05
+    {
+        moods[] = 
+        {
+            "dark","calm"
+        };
+        //Old Man OST 05
+    };
+
+    class Track_O_06
+    {
+        moods[] = 
+        {
+            "intense"
+        };
+        //Old Man OST 06
+    };
+
+    class Track_O_07
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Old Man OST 07
+    };
+
+    class Track_O_08
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Old Man OST 08
+    };
+
+    class Track_O_09
+    {
+        moods[] = 
+        {
+            "intense"
+        };
+        //Old Man OST 09
+    };
+
+    class Track_O_10
+    {
+        moods[] = 
+        {
+            "intense"
+        };
+        //Old Man OST 10
+    };
+
+    class Track_O_12
+    {
+        moods[] = 
+        {
+            "intense"
+        };
+        //Old Man OST 12
+    };
+
+    class Track_O_14
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Old Man OST 14
+    };
+
+    class Track_O_15
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Old Man OST 15
+    };
+
+    class Track_O_16
+    {
+        moods[] = 
+        {
+            "intense"
+        };
+        //Old Man OST 16
+    };
+
+    class Track_P_05
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Old Man Pop 05
+    };
+
+    class Track_P_11
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Old Man Pop 11
+    };
+
+    class Track_P_12
+    {
+        moods[] = 
+        {
+            "dark","intense"
+        };
+        //Old Man Pop 12
+    };
+
+    class Track_P_13
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Old Man Pop 13
+    };
+
+    class Track_P_14
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Old Man Pop 14
+    };
+
+    class Track_P_15
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Old Man Pop 15
+    };
+
+    class Track_P_16
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Old Man Pop 16
+    };
+
+    class Track_P_17
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Old Man Pop 17
+    };
+
+    class Track_R_01
+    {
+        moods[] = 
+        {
+            "intense"
+        };
+        //Old Man Rock 01
+    };
+
+    class Track_R_02
+    {
+        moods[] = 
+        {
+            "dark","intense"
+        };
+        //Old Man Rock 02
+    };
+
+    class Track_R_03
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Old Man Rock 03
+    };
+
+    class Track_R_04
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Old Man Rock 04
+    };
+
+    class Track_R_05
+    {
+        moods[] = 
+        {
+            "intense"
+        };
+        //Old Man Rock 05
+    };
+
+    class Track_R_06
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Old Man Rock 06
+    };
+
+    class Track_R_07
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Old Man Rock 07
+    };
+
+    class Track_R_08
+    {
+        moods[] = 
+        {
+            "intense"
+        };
+        //Old Man Rock 08
+    };
+
+    class Track_R_09
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Old Man Rock 09
+    };
+
+    class Track_R_10
+    {
+        moods[] = 
+        {
+            "intense"
+        };
+        //Old Man Rock 10
+    };
+
+    class Track_R_11
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Old Man Rock 11
+    };
+
+    class Track_R_13
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Old Man Rock 13
+    };
+
+    class Track_R_14
+    {
+        moods[] = 
+        {
+            "intense"
+        };
+        //Old Man Rock 14
+    };
+
+    class Track_R_15
+    {
+        moods[] = 
+        {
+            "intense"
+        };
+        //Old Man Rock 15
+    };
+
+    class Track_R_16
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Old Man Rock 16
+    };
+
+    class Track_R_17
+    {
+        moods[] = 
+        {
+            "intense"
+        };
+        //Old Man Rock 17
+    };
+
+    class Track_R_18
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Old Man Rock 18
+    };
+
+    class Track_R_19
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Old Man Rock 19
+    };
+
+    class Track_R_20
+    {
+        moods[] = 
+        {
+            "intense"
+        };
+        //Old Man Rock 20
+    };
+
+    class Track_R_21
+    {
+        moods[] = 
+        {
+            "intense"
+        };
+        //Old Man Rock 21
+    };
+
+    class Track_R_22
+    {
+        moods[] = 
+        {
+            "intense"
+        };
+        //Old Man Rock 22
+    };
+
+    class Track_R_23
+    {
+        moods[] = 
+        {
+            "intense"
+        };
+        //Old Man Rock 23
+    };
+
+    class Track_R_24
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        //Old Man Rock 24
+    };
+
+    class OM_Music02
+    {
+        moods[] = 
+        {
+            "dark"
+        };
+        //Old Man: Ambient Music 01
+    };
+
+    class OM_Music03
+    {
+        moods[] = 
+        {
+            "dark"
+        };
+        //Old Man: Ambient Music 02
     };
 
 
