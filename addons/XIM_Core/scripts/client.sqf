@@ -17,7 +17,7 @@ _self addEventHandler
 	}
 ];
 
-while {_combat} do
+while {!_combat} do
 {
 	if ((_selfFiredNear) or (_selfHit)) then // if someone fires near the player, they themselves fire or are shot
 	{
