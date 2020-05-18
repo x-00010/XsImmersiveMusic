@@ -21,14 +21,14 @@ if (_combat = false) then
 		};
 	];
 
-	if (_selfFiredNear = true or _selfHit = true) then
+	if (_selfFiredNear = true or _selfHit = true) then // if someone fires near the player, they themselves fire or are shot
 	{
 		_enemy = _self findNearestEnemy _self;
 		_enemyKnowledge = _enemy knowsAbout _self;
-		if (_enemyKnowledge > 0) then
+		if (_enemyKnowledge > 0) then // and the closest enemy is alerted to their presence
 		{
 			_combat = true;
+			hint "Warning! Entering combat!"
 		};
 	};
-	
 };
