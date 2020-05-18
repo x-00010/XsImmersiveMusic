@@ -1,6 +1,7 @@
 private _combat = false; // declares _combat
 private _self = name player; // declares _self, which is the player
-private _selfFiredNear = false;
+private _selfFiredNear = false; // declares _selfFiredNear, for later use in an event handler
+private _selfHit = false; // declares _selfHit, for later use in an event handler
 
 
 if (_combat = false) then
