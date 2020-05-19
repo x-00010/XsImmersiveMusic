@@ -8,33 +8,22 @@ fncEvaluateCombat = // defines fncEvaluateCombat, which evaluates if the player 
 	if (!isNull _uEnemy) then // if there is an argument in position zero
 	{
 		private _uEnemy = _this select 0; // assign the first argument to _uEnemy, which is most likely the same as _uInstigator from before
-		private _iEnemyKnowledge = _uEnemy knowsAbout XIM_uSelf; // find out how much the enemy knows about the player from a scale of 0 to 4
-		private _iSelfKnowledge = XIM_uSelf knowsAbout _uEnemy; // find out how much the player knows about the enemy from a scale of 0 to 4
-		if ((_iEnemyKnowledge > 0) and (_iSelfKnowledge > 0))  then // if the closest enemy is alerted to the player's presence, and the player is alerted to theirs
-		{
-			hint "Warning! Entering combat!";
-			combat = true;
-		}
-		else
-		{
-			combat = false;
-		};
 	}
 	else // if there isn't an argument in position zero
 	{
 		private _uEnemy = XIM_uSelf findNearestEnemy XIM_uSelf; // find the closest enemy to the player and store them in uEnemy
-		private _iEnemyKnowledge = _uEnemy knowsAbout XIM_uSelf; // find out how much the enemy knows about the player from a scale of 0 to 4
-		private _iSelfKnowledge = XIM_uSelf knowsAbout _uEnemy; // find out how much the player knows about the enemy from a scale of 0 to 4
-		if ((_iEnemyKnowledge > 0) and (_iSelfKnowledge > 0))  then // if the closest enemy is alerted to the player's presence, and the player is alerted to theirs
-		{
-			hint "Warning! Entering combat!";
-			combat = true;
-		}
-		else
-		{
-			hint "not going into combat";
-			combat = false;
-		};
+	};
+	private _iEnemyKnowledge = _uEnemy knowsAbout XIM_uSelf; // find out how much the enemy knows about the player from a scale of 0 to 4
+	private _iSelfKnowledge = XIM_uSelf knowsAbout _uEnemy; // find out how much the player knows about the enemy from a scale of 0 to 4
+	if ((_iEnemyKnowledge > 0) and (_iSelfKnowledge > 0))  then // if the closest enemy is alerted to the player's presence, and the player is alerted to theirs
+	{
+		hint "Warning! Entering combat!";
+		combat = true;
+	}
+	else
+	{
+		hint "not going into combat";
+		combat = false;
 	};
 	combat;
 };
