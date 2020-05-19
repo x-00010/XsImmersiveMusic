@@ -4,7 +4,8 @@ XIM_bEvaluated = true; // declares XIM_bEvaluated, which is a flag to prevent ev
 
 fncEvaluateCombat = // defines fncEvaluateCombat, which evaluates if the player is in combat or not
 {
-	if (!(isNil "_this select 0")) then // if there is an argument in position zero
+	params [["_uEnemy", objNull]];
+	if (!isNull _uEnemy) then // if there is an argument in position zero
 	{
 		private _uEnemy = _this select 0; // assign the first argument to _uEnemy, which is most likely the same as _uInstigator from before
 		private _iEnemyKnowledge = _uEnemy knowsAbout XIM_uSelf; // find out how much the enemy knows about the player from a scale of 0 to 4
