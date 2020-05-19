@@ -1,10 +1,12 @@
-XIM_bCombat = false; // declares XIM_bCombat, which is the player's combat state
-XIM_uSelf = player; // declares XIM_uSelf, which is the player
+XIM_bCombat = false; // declares XIM_bCombat, which is the flag for the player's combat state
+XIM_uSelf = player; // declares XIM_uSelf, which is the player's unit
 XIM_bEvaluated = true; // declares XIM_bEvaluated, which is a flag to prevent event handler spam
+XIM_bInstigator = false; // declares XIM_bInstigator, which is a flag to determine if they ran fncEvaluateCombat and returned true or not
 
 fncEvaluateCombat = // defines fncEvaluateCombat, which evaluates if the player is in combat or not
 {
-	params [["_uEnemy", objNull]];
+	params [["_uEnemy", objNull]]; // defines the optional parameter, _uEnemy
+	private _bCombat = false;
 	if (!isNull _uEnemy) then // if there is an argument in position zero
 	{
 		private _uEnemy = _this select 0; // assign the first argument to _uEnemy, which is most likely the same as _uInstigator from before
@@ -18,14 +20,14 @@ fncEvaluateCombat = // defines fncEvaluateCombat, which evaluates if the player 
 	if ((_iEnemyKnowledge > 0) and (_iSelfKnowledge > 0))  then // if the closest enemy is alerted to the player's presence, and the player is alerted to theirs
 	{
 		hint "Warning! Entering combat!";
-		combat = true;
+		_bCombat = true;
+		XIM_bInstigator = true;
 	}
 	else
 	{
 		hint "not going into combat";
-		combat = false;
 	};
-	combat;
+	_bCombat;
 };
 
 XIM_uSelf addEventHandler 
@@ -67,3 +69,4 @@ XIM_uSelf addEventHandler
 		XIM_bEvaluated = scriptDone XIM_hEvaluateCombat; // if fncEvaluateCombat has been executed, set XIM_bEvaluated to true, else set it to false
 	}
 ];
+
