@@ -85,7 +85,7 @@ while {leader group XIM_uSelf == XIM_uSelf} do // while the client is the leader
 {
 	if (XIM_bCombat) then // if the client is in combat
 	{
-		private _gSelfGroup = group uSelf; // gets the client's group and assigns it to _gSelfGroup
+		private _gSelfGroup = group XIM_uSelf; // gets the client's group and assigns it to _gSelfGroup
 		private _aSelfGroupUnits = units _gSelfGroup - [player]; // gets all of the units within the _gSelfGroup group, minus the player so the others may sync
 		private _aGroupIDs = [];
 
