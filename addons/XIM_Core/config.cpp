@@ -1,25 +1,25 @@
 class CfgPatches
 {
-	class XIMCore
-	{
-		name = "X's Immersive Music";
-		author = "x00010";
-		requiredVersion = 1.98;
+    class XIMCore
+    {
+        name = "X's Immersive Music";
+        author = "x00010";
+        requiredVersion = 1.98;
 
-		requiredAddons[] = 
-		{  
-			"cba_settings"
-		};
+        requiredAddons[] = 
+        {  
+            "cba_settings"
+        };
 
-		units[] = {};
-		weapons[] = {};
-	};
+        units[] = {};
+        weapons[] = {};
+    };
 };
 
 class Extended_PreInit_EventHandlers 
 {
     class XIMCoreStart // preinit event handler
-	{
+    {
         init = "call compile preprocessFileLineNumbers '\XIM_Core\scripts\autostart\XEH_PreInit.sqf'";
     };
 };
@@ -32,6 +32,7 @@ class CfgMusic
         {
             "intense"
         };
+        sound[] = { "\A3\music_f\Music\LeadTrack01_F.ogg", db + 0, 1.0 }; 
         //This is war
     };
     class LeadTrack01a_F
@@ -40,6 +41,7 @@ class CfgMusic
         {
             "intense"
         };
+        sound[] = { "\A3\music_f\Music\LeadTrack01a_F.ogg", db + 0, 1.0 };
         //This is war a
     };
     class LeadTrack01b_F
@@ -48,6 +50,7 @@ class CfgMusic
         {
             "intense"
         };
+        sound[] = { "\A3\music_f\Music\LeadTrack01b_F.ogg", db + 0, 1.0 };
         //This is war b
     };
     class LeadTrack01c_F
@@ -56,6 +59,7 @@ class CfgMusic
         {
             "intense"
         };
+        sound[] = { "\A3\music_f\Music\LeadTrack01c_F.ogg", db + 0, 1.0 };
         //Main menu
     };
     class LeadTrack02_F
@@ -65,6 +69,7 @@ class CfgMusic
             "dark",
             "intense"
         };
+        sound[] = { "\A3\music_f\Music\LeadTrack02_F.ogg", db + 0, 1.0 };
         //Proteus
     };
     class LeadTrack03_F
@@ -73,6 +78,7 @@ class CfgMusic
         {
             "intense"
         };
+        sound[] = { "\A3\music_f\Music\LeadTrack03_F.ogg", db + 0, 1.0 };
         //Combined Arms
     };
     class LeadTrack04_F
@@ -82,6 +88,7 @@ class CfgMusic
             "intense",
             "dark"
         };
+        sound[] = { "\A3\music_f\Music\LeadTrack04_F.ogg", db + 0, 1.0 };
         //Action Dark 2
     };
     class LeadTrack04a_F
@@ -91,6 +98,7 @@ class CfgMusic
             "intense",
             "dark"
         };
+        sound[] = { "\A3\music_f\Music\LeadTrack04a_F.ogg", db + 0, 1.0 };
         //Action Dark
     };
     class LeadTrack05_F
@@ -99,6 +107,7 @@ class CfgMusic
         {
             "intense"
         };
+        sound[] = { "\A3\music_f\Music\LeadTrack05_F.ogg", db + 0, 1.0 };
         //Taking Kavala
     };
     class LeadTrack06_F
@@ -108,6 +117,7 @@ class CfgMusic
             "intense",
             "dark"
         };
+        sound[] = { "\A3\music_f\Music\LeadTrack06_F.ogg", db + 0, 1.0 };
         //Down at the Garina bay
     };
     class AmbientTrack01_F
@@ -117,6 +127,7 @@ class CfgMusic
             "calm",
             "dark"
         };
+        sound[] = { "\A3\music_f\Music\AmbientTrack01_F.ogg", db + 0, 1.0 };
         //East Wind Alternative 1
     };
     class AmbientTrack01a_F
@@ -126,6 +137,7 @@ class CfgMusic
             "calm",
             "dark"
         };
+        sound[] = { "\A3\music_f\Music\AmbientTrack01a_F.ogg", db + 0, 1.0 };
         //East Wind
     };
     class AmbientTrack01b_F
@@ -135,6 +147,7 @@ class CfgMusic
             "calm",
             "dark"
         };
+        sound[] = { "\A3\music_f\Music\AmbientTrack01b_F.ogg", db + 0, 1.0 };
         //East Wind Alternative 2
     };
     class AmbientTrack03_F
@@ -143,6 +156,7 @@ class CfgMusic
         {
             "calm"
         };
+        sound[] = { "\A3\music_f\Music\AmbientTrack03_F.ogg", db + 0, 1.0 };
         //Solar Power
     };
      class AmbientTrack04a_F
@@ -151,6 +165,7 @@ class CfgMusic
         {
             "dark"
         };
+        sound[] = { "\A3\music_f\Music\AmbientTrack04a_F.ogg", db + 0, 1.0 };
         //Night percussions
     };
     class AmbientTrack04_F
@@ -159,137 +174,152 @@ class CfgMusic
         {
             "dark"
         };
+        sound[] = { "\A3\music_f\Music\AmbientTrack04_F.ogg", db + 0, 1.0 };
         //Night ambient
     };
     class BackgroundTrack01_F
     {
-    	moods[] = 
+        moods[] = 
         {
             "calm"
         };
-    	//Underwater 2
+        sound[] = { "\A3\music_f\Music\BackgroundTrack01_F.ogg", db + 0, 1.0 };
+        //Underwater 2
     };
     class BackgroundTrack01a_F
     {
-    	moods[] = 
+        moods[] = 
         {
             "calm"
         };
-    	//Underwater
+        sound[] = { "\A3\music_f\Music\BackgroundTrack01a_F.ogg", db + 0, 1.0 };
+        //Underwater
     };
     class BackgroundTrack02_F
     {
-    	moods[] = 
-        {
-            "calm",
-            "dark"
-        };
-    	//On the road
-    };
-    class LeadTrack01_F_EPA
-    {
-    	moods[] = 
+        moods[] = 
         {
             "calm"
         };
-    	//Stage A: Lead Track 01 (Conquistador)
+        sound[] = { "\A3\music_f\Music\BackgroundTrack02_F.ogg", db + 0, 1.0 };
+        //On the road
+    };
+    class LeadTrack01_F_EPA
+    {
+        moods[] = 
+        {
+            "calm"
+        };
+        sound[] = { "\A3\music_f_epa\Music\LeadTrack01_F_EPA.ogg", db + 0, 1.0 };
+        //Stage A: Lead Track 01 (Conquistador)
     };
     class LeadTrack02_F_EPA
     {
-    	moods[] = 
+        moods[] = 
         {
             "calm",
             "dark"
         };
-    	//Stage A: Lead Track 02 (Aegis Blues)
+        sound[] = { "\A3\music_f_epa\Music\LeadTrack02_F_EPA.ogg", db + 0, 1.0 };
+        //Stage A: Lead Track 02 (Aegis Blues)
     };
     class LeadTrack02a_F_EPA
     {
-    	moods[] = 
+        moods[] = 
         {
             "calm",
             "dark"
         };
-    	//Stage A: Lead Track 02 (Aegis Blues - Alternative 1)
+        sound[] = { "\A3\music_f_epa\Music\LeadTrack02a_F_EPA.ogg", db + 0, 1.0 };
+        //Stage A: Lead Track 02 (Aegis Blues - Alternative 1)
     };
     class LeadTrack02b_F_EPA
     {
-    	moods[] = 
+        moods[] = 
         {
             "calm",
             "dark"
         };
-    	//Stage A: Lead Track 02 (Aegis Blues - Alternative 2)
+        sound[] = { "\A3\music_f_epa\Music\LeadTrack02b_F_EPA.ogg", db + 0, 1.0 };
+        //Stage A: Lead Track 02 (Aegis Blues - Alternative 2)
     };
     class LeadTrack03_F_EPA
     {
-    	moods[] = 
+        moods[] = 
         {
             "dark",
             "intense"
         };
-    	//Stage A: Lead Track 03 (Survive the Hard Part)
+        sound[] = { "\A3\music_f_epa\Music\LeadTrack03_F_EPA.ogg", db + 0, 1.0 };
+        //Stage A: Lead Track 03 (Survive the Hard Part)
     };
 
     class LeadTrack01_F_EPB
     {
-    	moods[] = 
+        moods[] = 
         {
             "calm"
         };
-    	//Stage B: Lead Track 01 (Adapt)
+        sound[] = { "\A3\music_f_epb\Music\LeadTrack01_F_EPB.ogg", db + 0, 1.0 };
+        //Stage B: Lead Track 01 (Adapt)
     };
 
     class LeadTrack01a_F_EPB
     {
-    	moods[] = 
+        moods[] = 
         {
             "calm"
         };
-    	//Stage B: Lead Track 01 (Adapt - Alternative)
+        sound[] = { "\A3\music_f_epb\Music\LeadTrack01a_F_EPB.ogg", db + 0, 1.0 };
+        //Stage B: Lead Track 01 (Adapt - Alternative)
     };
     class LeadTrack02_F_EPB
     {
-    	moods[] = 
+        moods[] = 
         {
             "dark",
             "intense"
         };
-    	//Stage B: Lead Track 02 (Exit Strategy)
+        sound[] = { "\A3\music_f_epb\Music\LeadTrack02_F_EPB.ogg", db + 0, 1.0 };
+        //Stage B: Lead Track 02 (Exit Strategy)
     };
     class LeadTrack02a_F_EPB
     {
-    	moods[] = 
+        moods[] = 
         {
             "dark"
         };
-    	//Stage B: Lead Track 02 (Exit Strategy - Alternative 1)
+        sound[] = { "\A3\music_f_epb\Music\LeadTrack02a_F_EPB.ogg", db + 0, 1.0 };
+        //Stage B: Lead Track 02 (Exit Strategy - Alternative 1)
     };
     class LeadTrack02b_F_EPB
     {
-    	moods[] = 
+        moods[] = 
         {
             "dark",
             "intense"
         };
-    	//Stage B: Lead Track 02 (Exit Strategy - Alternative 2)
+        sound[] = { "\A3\music_f_epb\Music\LeadTrack02b_F_EPB.ogg", db + 0, 1.0 };
+        //Stage B: Lead Track 02 (Exit Strategy - Alternative 2)
     };
     class LeadTrack03_F_EPB
     {
-    	moods[] = 
+        moods[] = 
         {
             "dark"
         };
-    	//Stage B: Lead Track 03 (Beyond Recognition)
+        sound[] = { "\A3\music_f_epb\Music\LeadTrack03_F_EPB.ogg", db + 0, 1.0 };
+        //Stage B: Lead Track 03 (Beyond Recognition)
     };
 
     class LeadTrack03a_F_EPB
     {
-    	moods[] = 
+        moods[] = 
         {
             "dark"
         };
-    	//Stage B: Lead Track 03 (Beyond Recognition - Alternative 1)
+        sound[] = { "\A3\music_f_epb\Music\LeadTrack03a_F_EPB.ogg", db + 0, 1.0 };
+        //Stage B: Lead Track 03 (Beyond Recognition - Alternative 1)
     };
 
 
@@ -299,6 +329,7 @@ class CfgMusic
         {
             "dark"
         };
+        sound[] = { "\A3\music_f_epb\Music\LeadTrack04_F_EPB.ogg", db + 0, 1.0 };
         //Stage B: Lead Track 04 (Canton Protocol)
 
     };
@@ -309,6 +340,7 @@ class CfgMusic
         {
             "dark","calm"
         };
+        sound[] = { "\A3\music_f_epb\Music\AmbientTrack01_F_EPB.ogg", db + 0, 1.0 };
         //Stage B: Ambient Track 01 (Signal Lost)
     };
     class BackgroundTrack01_F_EPB
@@ -317,6 +349,7 @@ class CfgMusic
         {
             "dark"
         };
+        sound[] = { "\A3\music_f_epb\Music\BackgroundTrack01_F_EPB.ogg", db + 0, 1.0 };
         //Stage B: Background Track 01 (The Hunt)
     };
     class LeadTrack01_F_EPC
@@ -325,6 +358,7 @@ class CfgMusic
         {
             "calm"
         };
+        sound[] = { "\A3\music_f_EPC\Music\LeadTrack01_F_EPC.ogg", db + 0, 1.0 };
         //Stage C: Lead Track 01 (Back on Stratis)
 
     };
@@ -334,6 +368,7 @@ class CfgMusic
         {
             "intense"
         };
+        sound[] = { "\A3\music_f_EPC\Music\LeadTrack02_F_EPC.ogg", db + 0, 1.0 };
         //Stage C: Lead Track 02 (LZ hot)
     };
 
@@ -343,6 +378,7 @@ class CfgMusic
         {
             "calm","dark"
         };
+        sound[] = { "\A3\music_f_EPC\Music\LeadTrack03_F_EPC.ogg", db + 0, 1.0 };
         //Stage C: Lead Track 03 (The Trap)
     };
 
@@ -352,6 +388,7 @@ class CfgMusic
         {
             "calm"
         };
+        sound[] = { "\A3\music_f_EPC\Music\LeadTrack04_F_EPC.ogg", db + 0, 1.0 };
         //Stage C: Lead Track 04 (In the Open)
     };
 
@@ -361,6 +398,7 @@ class CfgMusic
         {
             "intense"
         };
+        sound[] = { "\A3\music_f_EPC\Music\LeadTrack05_F_EPC.ogg", db + 0, 1.0 };
         //Stage C: Lead Track 05 (Revenge)
     };
 
@@ -370,6 +408,7 @@ class CfgMusic
         {
             "intense"
         };
+        sound[] = { "\A3\music_f_EPC\Music\LeadTrack06_F_EPC.ogg", db + 0, 1.0 };
         //Stage C: Lead Track 06 (Win)
     };
 
@@ -377,8 +416,9 @@ class CfgMusic
     {
         moods[] = 
         {
-            "calm","dark"
+            "calm"
         };
+        sound[] = { "\A3\music_f_EPC\Music\LeadTrack06b_F_EPC.ogg", db + 0, 1.0 };
         //Stage C: Lead Track 06 (Win - Alternative 1)
     };
 
@@ -386,8 +426,9 @@ class CfgMusic
     {
         moods[] = 
         {
-            "calm","dark"
+            "dark"
         };
+        sound[] = { "\A3\music_f_EPC\Music\EventTrack03_F_EPC.ogg", db + 0, 1.0 };
         //Stage C: Event Track 03 (Unforeseen Perdition)
     };
 
@@ -397,6 +438,7 @@ class CfgMusic
         {
             "intense"
         };
+        sound[] = { "\A3\music_f_EPC\Music\BackgroundTrack01_F_EPC.ogg", db + 0, 1.0 };
         //Stage C: Background Track 01 (Alone)
     };
 
@@ -404,8 +446,9 @@ class CfgMusic
     {
         moods[] = 
         {
-            "calm","dark"
+            "calm"
         };
+        sound[] = { "\A3\music_f_EPC\Music\BackgroundTrack02_F_EPC.ogg", db + 0, 1.0 };
         //Stage C: Background Track 02 (Just Another Day)
     };
 
@@ -415,6 +458,7 @@ class CfgMusic
         {
             "calm"
         };
+        sound[] = { "\A3\music_f_EPC\Music\BackgroundTrack03_F_EPC.ogg", db + 0, 1.0 };
         //Stage C: Background Track 03 (Altis Requiem)
     };
 
@@ -424,6 +468,7 @@ class CfgMusic
         {
             "calm","dark"
         };
+        sound[] = { "\A3\music_f_EPC\Music\BackgroundTrack04_F_EPC.ogg", db + 0, 1.0 };
         //Stage C: Background Track 04 (Assembly)
     };
 
@@ -433,6 +478,7 @@ class CfgMusic
         {
             "calm","dark"
         };
+        sound[] = { "A3\Missions_F_EPA\data\music\fallout.ogg", db + 0, 1.0 };
         //Fallout
     };
 
@@ -442,6 +488,7 @@ class CfgMusic
         {
             "dark"
         };
+        sound[] = { "A3\Missions_F_EPA\data\music\defcon.ogg", db + 0, 1.0 };
         //Defcon
     };
 
@@ -451,6 +498,7 @@ class CfgMusic
         {
             "dark"
         };
+        sound[] = { "A3\Missions_F_EPA\data\music\wasteland.ogg", db + 0, 1.0 };
         //Wasteland
     };
 
@@ -460,6 +508,7 @@ class CfgMusic
         {
             "dark","calm"
         };
+        sound[] = { "A3\Missions_F_EPA\data\music\skynet.ogg", db + 0, 1.0 };
         //SkyNet
     };
 
@@ -469,6 +518,7 @@ class CfgMusic
         {
             "dark","calm"
         };
+        sound[] = { "A3\Missions_F_EPA\data\music\mad.ogg", db + 0, 1.0 };
         //Wasteland
     };
 
@@ -478,6 +528,7 @@ class CfgMusic
         {
             "calm"
         };
+        sound[] = { "\A3\Data_F_Curator\Music\LeadTrack01_F_Curator.ogg", db + 0, 1.0 };
         //Zeus Theme
     };
 
@@ -487,6 +538,7 @@ class CfgMusic
         {
             "intense"
         };
+        sound[] = { "\A3\music_f_Bootcamp\Music\LeadTrack01_F_Bootcamp.ogg", db + 0, 1.0 };
         //This is War (VR Remix)
     };
 
@@ -496,6 +548,7 @@ class CfgMusic
         {
             "calm"
         };
+        sound[] = { "\A3\music_f_Bootcamp\Music\LeadTrack02_F_Bootcamp.ogg", db + 0, 1.0 };
         //Evolution
     };
 
@@ -505,6 +558,7 @@ class CfgMusic
         {
             "calm"
         };
+        sound[] = { "\A3\music_f_Bootcamp\Music\LeadTrack03_F_Bootcamp.ogg", db + 0, 1.0 };
         //Epic Split
     };
 
@@ -514,6 +568,7 @@ class CfgMusic
         {
             "intense"
         };
+        sound[] = { "\A3\music_f_Heli\Music\LeadTrack01_F_Heli.ogg", db + 0, 1.0 };
         //This is War (Heli Remix)
     };
 
@@ -523,6 +578,7 @@ class CfgMusic
         {
             "intense"
         };
+        sound[] = { "\A3\Music_f_Mark\Music\LeadTrack01_F_Mark.ogg", db + 0, 1.0 };
         //This is War (Marksmen Remix)
     };
 
@@ -532,6 +588,7 @@ class CfgMusic
         {
             "intense"
         };
+        sound[] = { "\A3\Music_f_Mark\Music\LeadTrack02_F_Mark.ogg", db + 0, 1.0 };
         //Marksmen DLC: Lead Track 02 (Into the Sun)
     };
 
@@ -541,6 +598,7 @@ class CfgMusic
         {
             "calm","dark"
         };
+        sound[] = { "\A3\Music_f_Mark\Music\LeadTrack03_F_Mark.ogg", db + 0, 1.0 };
         //Marksmen DLC: Lead Track 03 (Marksmen)
     };
 
@@ -550,6 +608,7 @@ class CfgMusic
         {
             "calm"
         };
+        sound[] = { "\A3\music_f_exp\Music\LeadTrack01_F_EXP.ogg", db + 0, 1.0 };
         //This Is War (Apex Remix)
     };
 
@@ -557,8 +616,9 @@ class CfgMusic
     {
         moods[] = 
         {
-            "calm"
+            "intense"
         };
+        sound[] = { "\A3\music_f_exp\Music\LeadTrack02_F_EXP.ogg", db + 0, 1.0 };
         //An Unknown Enemy
     };
 
@@ -568,6 +628,7 @@ class CfgMusic
         {
             "intense"
         };
+        sound[] = { "\A3\music_f_exp\Music\LeadTrack03_F_EXP.ogg", db + 0, 1.0 };
         //No Time For Questions
     };
 
@@ -577,6 +638,7 @@ class CfgMusic
         {
             "calm"
         };
+        sound[] = { "\A3\music_f_exp\Music\LeadTrack04_F_EXP.ogg", db + 0, 1.0 };
         //This Is War (Apex Remix - Alternative 1)
     };
 
@@ -586,6 +648,7 @@ class CfgMusic
         {
             "calm","dark"
         };
+        sound[] = { "\A3\music_f_exp\Music\AmbientTrack01_F_EXP.ogg", db + 0, 1.0 };
         //Through The Jungle
     };
 
@@ -595,6 +658,7 @@ class CfgMusic
         {
             "calm"
         };
+        sound[] = { "\A3\music_f_exp\Music\AmbientTrack02_F_EXP.ogg", db + 0, 1.0 };
         //Welcome To Tanoa
     };
 
@@ -606,6 +670,7 @@ class CfgMusic
         {
             "calm"
         };
+        sound[] = { "\A3\Music_F_Jets\Music\LeadTrack01_F_Jets.ogg", db + 0, 1.0 };
         //Fighter Jets
     };
 
@@ -615,6 +680,7 @@ class CfgMusic
         {
             "calm"
         };
+        sound[] = { "\A3\Music_F_Jets\Music\LeadTrack02_F_Jets.ogg", db + 0, 1.0 };
         //Air Power
     };
 
@@ -624,6 +690,7 @@ class CfgMusic
         {
             "calm"
         };
+        sound[] = { "\A3\Music_F_Argo\Music\LeadTrack01_F_Malden.ogg", db + 0, 1.0 };
         //Flashpoint
     };
 
@@ -633,6 +700,7 @@ class CfgMusic
         {
             "calm"
         };
+        sound[] = { "\A3\Music_F_Argo\Music\LeadTrack02_F_Malden.ogg", db + 0, 1.0 };
         //Malden
     };
 
@@ -640,8 +708,9 @@ class CfgMusic
     {
         moods[] = 
         {
-            "intense"
+            "calm"
         };
+        sound[] = { "\A3\Music_F_Orange\Music\LeadTrack01_F_Orange.ogg", db + 0, 1.0 };
         //This Is War (Laws of War Remix)
     };
 
@@ -651,6 +720,7 @@ class CfgMusic
         {
             "dark"
         };
+        sound[] = { "\A3\Music_F_Orange\Music\AmbientTrack02_F_Orange.ogg", db + 0, 1.0 };
         //Laws of War DLC: Remnants of War
     };
 
@@ -660,6 +730,7 @@ class CfgMusic
         {
             "calm"
         };
+        sound[] = { "\A3\Music_F_Orange\Music\AmbientTrack01_F_Orange.ogg", db + 0, 1.0 };
         //Laws of War DLC: Ambient
     };
 
@@ -670,6 +741,7 @@ class CfgMusic
         {
             "intense"
         };
+        sound[] = { "\A3\Music_F_Tacops\Music\LeadTrack01_F_Tacops.ogg", db + 0, 1.0 };
         //Tac-Ops DLC: Opening 1
     };
 
@@ -680,6 +752,7 @@ class CfgMusic
         {
             "intense"
         };
+        sound[] = { "\A3\Music_F_Tacops\Music\LeadTrack02_F_Tacops.ogg", db + 0, 1.0 };
         //Tac-Ops DLC: Opening 2
     };
 
@@ -690,6 +763,7 @@ class CfgMusic
         {
             "intense"
         };
+        sound[] = { "\A3\Music_F_Tacops\Music\LeadTrack03_F_Tacops.ogg", db + 0, 1.0 };
         //Tac-Ops DLC: Opening 3
     };
 
@@ -700,6 +774,7 @@ class CfgMusic
         {
             "dark"
         };
+        sound[] = { "\A3\Music_F_Tacops\Music\AmbientTrack01a_F_Tacops.ogg", db + 0, 1.0 };
         //Tac-Ops DLC: Ambient 1a
     };
 
@@ -710,6 +785,7 @@ class CfgMusic
         {
             "dark"
         };
+        sound[] = { "\A3\Music_F_Tacops\Music\AmbientTrack01b_F_Tacops.ogg", db + 0, 1.0 };
         //Tac-Ops DLC: Ambient 1b
     };
 
@@ -720,15 +796,27 @@ class CfgMusic
         {
             "dark","calm"
         };
+        sound[] = { "\A3\Music_F_Tacops\Music\AmbientTrack02a_F_Tacops.ogg", db + 0, 1.0 };
         //Tac-Ops DLC: Ambient 2a
+    };
+
+    class AmbientTrack02b_F_Tacops
+    {
+        moods[] = 
+        {
+            "dark","calm"
+        };
+        sound[] = { "\A3\Music_F_Tacops\Music\AmbientTrack02b_F_Tacops.ogg", db + 0, 1.0 };
+        //Tac-Ops DLC: Ambient 2b
     };
 
     class AmbientTrack03a_F_Tacops
     {
         moods[] = 
         {
-            "dark","calm"
+            "dark"
         };
+        sound[] = { "\A3\Music_F_Tacops\Music\AmbientTrack03a_F_Tacops.ogg", db + 0, 1.0 };
         //Tac-Ops DLC: Ambient 3a
     };
 
@@ -736,8 +824,9 @@ class CfgMusic
     {
         moods[] = 
         {
-            "dark","calm"
+            "dark"
         };
+        sound[] = { "\A3\Music_F_Tacops\Music\AmbientTrack03b_F_Tacops.ogg", db + 0, 1.0 };
         //Tac-Ops DLC: Ambient 3b
     };
 
@@ -747,6 +836,7 @@ class CfgMusic
         {
             "dark"
         };
+        sound[] = { "\A3\Music_F_Tacops\Music\AmbientTrack04a_F_Tacops.ogg", db + 0, 1.0 };
         //Tac-Ops DLC: Ambient 4a
     };
 
@@ -756,6 +846,7 @@ class CfgMusic
         {
             "dark"
         };
+        sound[] = { "\A3\Music_F_Tacops\Music\AmbientTrack04b_F_Tacops.ogg", db + 0, 1.0 };
         //Tac-Ops DLC: Ambient 4b
     };
 
@@ -765,6 +856,7 @@ class CfgMusic
         {
             "intense"
         };
+        sound[] = { "\A3\Music_F_Tank\MainTheme_F_Tank.ogg", db + 0, 1.0 };
         //Tanks DLC: This is War (Tanks DLC version)
     };
 
@@ -774,6 +866,7 @@ class CfgMusic
         {
             "intense"
         };
+        sound[] = { "\A3\Music_F_Tank\LeadTrack01_F_Tank.ogg", db + 0, 1.0 };
         //Tanks DLC: Fight for the City
     };
 
@@ -783,6 +876,7 @@ class CfgMusic
         {
             "calm"
         };
+        sound[] = { "\A3\Music_F_Tank\LeadTrack02_F_Tank.ogg", db + 0, 1.0 };
         //Tanks DLC: Last Stand
     };
 
@@ -792,6 +886,7 @@ class CfgMusic
         {
             "dark","calm"
         };
+        sound[] = { "\A3\Music_F_Tank\LeadTrack03_F_Tank.ogg", db + 0, 1.0 };
         //Tanks DLC: Way Back
     };
 
@@ -801,15 +896,7 @@ class CfgMusic
         {
             "intense"
         };
-        //Tanks DLC: Wrath of the Giants
-    };
-
-    class LeadTrack05_F_Tank
-    {
-        moods[] = 
-        {
-            "intense"
-        };
+        sound[] = { "\A3\Music_F_Tank\LeadTrack05_F_Tank.ogg", db + 0, 1.0 };
         //Tanks DLC: Wrath of the Giants
     };
 
@@ -819,6 +906,7 @@ class CfgMusic
         {
             "calm"
         };
+        sound[] = { "\A3\Music_F_Tank\LeadTrack06_F_Tank.ogg", db + 0, 1.0 };
         //Tanks DLC: Iron Gods
     };
 
@@ -828,8 +916,13 @@ class CfgMusic
         {
             "calm","dark"
         };
+        sound[] = { "\A3\Music_F_Tank\AmbientTrack01_F_Tank.ogg", db + 0, 1.0 };
         //Tanks DLC: Hidden Enemy
     };
+
+    // FIREDNEAR HAS A MAX RANGE OF ~69M WTF ILLUMINATI CONFIRMED
+    // lmaoxd
+
 
     class Music_Theme_Contact
     {
