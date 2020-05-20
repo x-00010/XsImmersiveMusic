@@ -1,32 +1,25 @@
 // This script is executed on either the player host (non-dedicated) or a dedicated server
-private _moodarray = ["intense","calm","dark"];
 
-aCombatMusicClassnames = "'intense' in getArray (_x >> 'moods') " configClasses (configFile >> "CfgMusic") apply {configName _x};
-aDarkMusicClassnames = "'dark' in getArray (_x >> 'moods') " configClasses (configFile >> "CfgMusic") apply {configName _x};
-aCalmMusicClassnames = "'calm' in getArray (_x >> 'moods') " configClasses (configFile >> "CfgMusic") apply {configName _x};
+["ace_hearing_disableVolumeUpdate",true] remoteExec ["setVariable",-2,true]; //Disable ace interference
+
+// Below is the creation of arrays, that contain classnames of music tracks defined in config.cpp, randomized to make it fresh each time;
+aCombatMusicClassnames = "'intense' in getArray (_x >> 'moods') " configClasses (configFile >> "CfgMusic") apply {configName _x} call BIS_fnc_arrayShuffle;
+aDarkMusicClassnames = "'dark' in getArray (_x >> 'moods') " configClasses (configFile >> "CfgMusic") apply {configName _x} call BIS_fnc_arrayShuffle;
+aCalmMusicClassnames = "'calm' in getArray (_x >> 'moods') " configClasses (configFile >> "CfgMusic") apply {configName _x} call BIS_fnc_arrayShuffle;
+
+["initialize",[aDarkMusicClassnames,aCombatMusicClassnames,aCalmMusicClassnames]] remoteExecCall ["BIS_fnc_jukebox",-2,true]; //Init jukebox on clients + JIP
 
 
 fncXIM_MusicRemote = {
 	params ["_ximgroup", "_ximcombat"]; //Defining params
 
 	if (_ximcombat) then {
-		_randomTrack = selectRandom aCombatMusicClassnames; //Select random track
-		["ace_hearing_disableVolumeUpdate",true] remoteExec {"setVariable",[_ximgroup,2]}; //Disable ace interference
-		[20,0] remoteExec ["fadeMusic", [_ximgroup,2]]; //Start fade to 0 of currently playing music
-
-		/*waitUntil {
-		  musicVolume == 0;
-		};*/
-
-		15 fadeMusic 1;
-		playMusic "LeadTrack04_F_EPB";};
-
-
-
-		playMusic _randomTrack;
-
-
-		["someTrack"] remoteExec [];
+		
+	["forceBehaviour",["combat"]] remoteExecCall ["BIS_fnc_jukebox",_ximgroup]; //Change music type to combat
+			
+	}
+	else {
+		
 	};	
 };
 
