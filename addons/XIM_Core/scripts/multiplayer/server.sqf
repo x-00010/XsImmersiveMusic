@@ -48,11 +48,6 @@ fncXIM_MusicRemote = {
 	};	
 };
 
-
-
-
-
-
   "XIM_aStateChange" addPublicVariableEventHandler {
   		private _aXIMstatechange = _this select 1; //Store array in variable
   		private _ximgroup = _aXIMstatechange select 0; //Retrieve group object
