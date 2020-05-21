@@ -10,16 +10,25 @@ aCalmMusicClassnames = "'calm' in getArray (_x >> 'moods') " configClasses (conf
 
 
 
+
+
+fncXIM_MusicHandler = {
+	params ["_groupOwnerIDs","_ximgroup","_musictype"];
+
+	missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",true,_groupOwnerIDs]; //Disable ACE interference
+	["forceBehaviour",[_musictype]] remoteExecCall ["BIS_fnc_jukebox",_ximgroup]; //Changes music type based on passed parameter
+	[{missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",false,_groupOwnerIDs];},[], 5] call CBA_fnc_waitAndExecute; //Re-enable ACE function after 5 sec
+};
+
+
 fncXIM_MusicRemote = {
 	params ["_ximgroup", "_ximcombat"]; //Defining params
 	private _groupOwnerIDs = [];
 	(units _ximgroup) apply {_groupOwnerIDs pushBackUnique (owner _x)}; //Retrieving ID's for players in group
 
 	if (_ximcombat) then {
-		
-		missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",true,_groupOwnerIDs];
-		["forceBehaviour",["combat"]] remoteExecCall ["BIS_fnc_jukebox",_ximgroup]; //Change music type to intense ("combat")
-		[{missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",false,_groupOwnerIDs];},[], 5] call CBA_fnc_waitAndExecute;
+
+		[_groupOwnerIDs,_ximgroup,"combat"] call fncXIM_MusicHandler; //Set music to type combat
 			
 	} else {
 		private _sunrisesunset = date call BIS_fnc_sunriseSunsetTime;
@@ -28,15 +37,11 @@ fncXIM_MusicRemote = {
 
 		if ((rain > 0.2) or (fog > 0.2) or ((daytime > _sunset) and (daytime < _sunrise))) then {
 
-  			missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",true,_groupOwnerIDs];
-			["forceBehaviour",["stealth"]] remoteExecCall ["BIS_fnc_jukebox",_ximgroup]; //Change music type to dark ("stealth")
-			[{missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",false,_groupOwnerIDs];},[], 5] call CBA_fnc_waitAndExecute;
-
+			[_groupOwnerIDs,_ximgroup,"stealth"] call fncXIM_MusicHandler; //Set music to type stealth (dark)
+  			
 		} else {
 
-  			missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",true,_groupOwnerIDs];
-			["forceBehaviour",["safe"]] remoteExecCall ["BIS_fnc_jukebox",_ximgroup]; //Change music type to calm ("safe")
-			[{missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",false,_groupOwnerIDs];},[], 5] call CBA_fnc_waitAndExecute;
+  			[_groupOwnerIDs,_ximgroup,"safe"] call fncXIM_MusicHandler; //Set music to type safe
 
 		};
 
