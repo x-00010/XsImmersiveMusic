@@ -2,28 +2,11 @@
 
 XIM_bCombat = false; // declares XIM_bCombat, which is the flag for the player's combat state
 XIM_uSelf = player; // declares XIM_uSelf, which is the player's unit
-XIM_bEvaluated = true; // declares XIM_bEvaluated, which is a flag to prevent event handler spam
-XIM_bToggled = true; // declares XIM_bToggled, which is a flag to prevent event handler spam
-XIM_bOngoingEvent = false; // declares XIM_bOngoingEvent, which is a flag to prevent event handler spam
 XIM_hEvaluateCombat = [] spawn {}; // sets the waituntil for XIM_fncEvaluateCombat to be true the first time it is run
 XIM_hToggleCombat = [] spawn {}; // sets the waituntil for XIM_fncToggleCombat to be true the first time it is run
+XIM_bEventHandlerRemoved = false; // declares XIM_bEventHandlerRemoved, which is a flag to easily determine if the event handlers have already been removed
 
 // ======================================== FUNCTIONS ========================================
-
-XIM_fncToggleCombat = // defines fncToggleCombat, which inverts the current value of XIM_bCombat
-{
-	XIM_bCombat = !XIM_bCombat; // invert the current value of XIM_bCombat
-	//hint str XIM_bOngoingEvent;
-
-	if (XIM_bCombat) then // if the client is in combat
-	{
-		hint "Warning! Entering combat!";
-	}
-	else // if the client is not in combat
-	{
-		hint "Warning! Exiting combat!";
-	};
-};
 
 XIM_fncEvaluateCombat = // defines XIM_fncEvaluateCombat, which evaluates if the player is in combat or not
 {
@@ -39,19 +22,13 @@ XIM_fncEvaluateCombat = // defines XIM_fncEvaluateCombat, which evaluates if the
 
 	if (!isNull _uEnemy) then // if there is an enemy that has been detected
 	{
-		waitUntil {scriptDone XIM_hToggleCombat}; // wait until the combat state has finished being toggled
-		XIM_hToggleCombat = [] spawn
-		{
-			call XIM_fncToggleCombat; // call XIM_fncToggleCombat within the scheduler
-		};
+		XIM_bCombat = true;
+		hint "Entering combat!";
 	}
 	else // if no enemy has been detected
 	{
-		waitUntil {scriptDone XIM_hToggleCombat}; // wait until the combat state has finished being toggled
-		XIM_hToggleCombat = [] spawn
-		{
-			call XIM_fncToggleCombat; // call XIM_fncToggleCombat within the scheduler
-		};
+		XIM_bCombat = false;
+		hint "Exiting combat!";
 	};
 };
 
@@ -64,7 +41,7 @@ while {leader group XIM_uSelf == XIM_uSelf} do // while the client is the leader
 	waitUntil {sleep 0.5; scriptDone XIM_hToggleCombat}; // wait until the combat state has finished being toggled
 	if (!XIM_bCombat) then // if the client is not in combat
 	{
-		XIM_uSelf addEventHandler 
+		XIM_iFiredNearEHIndex = XIM_uSelf addEventHandler 
 		["FiredNear", // creates firednear event handler
 			{
 				XIM_hEvaluateCombat = [] spawn // once fncEvaluateCombat has run, set XIM_bEvaluated to true
@@ -74,7 +51,7 @@ while {leader group XIM_uSelf == XIM_uSelf} do // while the client is the leader
 			}
 		];
 
-		XIM_uSelf addEventHandler  
+		XIM_iHitEHIndex = XIM_uSelf addEventHandler  
 		["Hit", // creates hit event handler
 			{
 				private _uInstigator = _this select 3; // assign the unit who shot the player to _uInstigator
@@ -93,22 +70,31 @@ while {leader group XIM_uSelf == XIM_uSelf} do // while the client is the leader
 	// ======================================== EVALUATE IF STILL IN COMBAT ========================================
 	else // if the client is in combat
 	{
-		private _gSelfGroup = group XIM_uSelf; // gets the client's group and assigns it to _gSelfGroup
-		private _aSelfGroupUnits = units _gSelfGroup - [player]; // gets all of the units within the _gSelfGroup group, minus the player so the others may sync
-
-		remoteExec["XIM_fncToggleCombat", _gSelfGroup]; // sets everyone in the _gSelfGroup group to be in combat
-
-		while {XIM_bCombat} do // while the client is still in combat
+		if (!XIM_bEventHandlerRemoved) then // if the event handlers have not been removed
 		{
-			waitUntil {scriptDone XIM_hEvaluateCombat}; // wait until the the combat state is no longer being evaluated
-			XIM_hEvaluateCombat = [] spawn
+			XIM_uSelf removeEventHandler ["FiredNear", XIM_iFiredNearEHIndex]; // removes the created FiredNear event handler
+			XIM_uSelf removeEventHandler ["Hit", XIM_iHitEHIndex]; // removes the created Hit event handler
+		}
+
+		else // if the event handlers have been removed
+		{
+			private _gSelfGroup = group XIM_uSelf; // gets the client's group and assigns it to _gSelfGroup
+			private _aSelfGroupUnits = units _gSelfGroup - [player]; // gets all of the units within the _gSelfGroup group, minus the player so the others may sync
+
+			remoteExec["XIM_fncToggleCombat", _gSelfGroup]; // sets everyone in the _gSelfGroup group to be in combat
+
+			while {XIM_bCombat} do // while the client is still in combat
 			{
-				call XIM_fncEvaluateCombat; // call fncEvaluateCombat with within the scheduler
+				waitUntil {sleep 0.5; scriptDone XIM_hEvaluateCombat}; // wait until the the combat state is no longer being evaluated
+				XIM_hEvaluateCombat = [] spawn
+				{
+					call XIM_fncEvaluateCombat; // call fncEvaluateCombat with within the scheduler
+				};
 			};
-		};
-		if (!XIM_bCombat) then // if the client is no longer in combat
-		{
-			remoteExec["XIM_fncToggleCombat", _gSelfGroup]; // sets everyone in the _gSelfGroup group to no longer be in combat comb
+			if (!XIM_bCombat) then // if the client is no longer in combat
+			{
+				remoteExec["XIM_fncToggleCombat", _gSelfGroup]; // sets everyone in the _gSelfGroup group to no longer be in combat comb
+			};
 		};
 	};
 };
