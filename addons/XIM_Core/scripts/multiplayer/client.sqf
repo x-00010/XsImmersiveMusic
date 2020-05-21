@@ -5,8 +5,8 @@ XIM_uSelf = player; // declares XIM_uSelf, which is the player's unit
 XIM_bEvaluated = true; // declares XIM_bEvaluated, which is a flag to prevent event handler spam
 XIM_bToggled = true; // declares XIM_bToggled, which is a flag to prevent event handler spam
 XIM_bOngoingEvent = false; // declares XIM_bOngoingEvent, which is a flag to prevent event handler spam
-XIM_hEvaluateCombat = [] spawn {}; //sets the waituntil for XIM_fncEvaluateCombat to be true the first time it is run
-XIM_hToggleCombat = [] spawn {}; //sets the waituntil for XIM_fncToggleCombat to be true the first time it is run
+XIM_hEvaluateCombat = [] spawn {}; // sets the waituntil for XIM_fncEvaluateCombat to be true the first time it is run
+XIM_hToggleCombat = [] spawn {}; // sets the waituntil for XIM_fncToggleCombat to be true the first time it is run
 
 // ======================================== FUNCTIONS ========================================
 
@@ -67,8 +67,7 @@ while {leader group XIM_uSelf == XIM_uSelf} do // while the client is the leader
 		XIM_uSelf addEventHandler 
 		["FiredNear", // creates firednear event handler
 			{
-				waitUntil {sleep 0.5; scriptDone XIM_hEvaluateCombat}; // wait until the combat state has finished being evaluated
-				XIM_hEvaluateCombat = [] spawn
+				XIM_hEvaluateCombat = [] spawn // once fncEvaluateCombat has run, set XIM_bEvaluated to true
 				{
 					call XIM_fncEvaluateCombat; // call XIM_fncEvaluateCombat with within the scheduler
 				};
@@ -82,7 +81,6 @@ while {leader group XIM_uSelf == XIM_uSelf} do // while the client is the leader
 				private _iInstigatorRelation = ((side XIM_uSelf) getFriend (side _uInstigator)); // check if the unit is friend or foe
 				if (_iInstigatorRelation < 0.6) then // if the result is less than 0.6, then they are foe
 				{
-					waitUntil {scriptDone XIM_hEvaluateCombat}; // wait until the combat state has finished being evaluated
 					XIM_hEvaluateCombat = [_uInstigator] spawn // once fncEvaluateCombat has run, set XIM_bEvaluated to true
 					{
 						[_this select 0] call XIM_fncEvaluateCombat; // call XIM_fncEvaluateCombat with _uInstigator within the scheduler
