@@ -1,80 +1,126 @@
-XIM_bCombat = false; // declares XIM_bCombat, which is the player's combat state
-XIM_uSelf = player; // declares XIM_uSelf, which is the player
-XIM_bEvaluated = true; // declares XIM_bEvaluated, which is a flag to prevent event handler spam
+// ======================================== LOCAL VARIABLES ========================================
 
-fncEvaluateCombat = // defines fncEvaluateCombat, which evaluates if the player is in combat or not
+XIM_bCombat = false; // declares XIM_bCombat, which is the flag for the player's combat state
+XIM_uSelf = player; // declares XIM_uSelf, which is the player's unit
+XIM_hEvaluateCombat = [] spawn {}; // sets the the handler for XIM_fncEvaluateCombat to return true when scriptDone is used
+XIM_bEventHandlersRemoved = true; // declares XIM_bEventHandlersRemoved, which is a flag to easily determine if the event handlers have already been removed
+
+// ======================================== FUNCTIONS ========================================
+
+XIM_fncToggleCombat =
 {
-	params [["_uEnemy", objNull]];
+	XIM_bCombat = !XIM_bCombat;
+	if (XIM_bCombat) then
+	{
+		hint "Entering combat!";
+	}
+	else
+	{
+		hint "Exiting combat!";
+	};
+};
+
+XIM_fncEvaluateCombat = // defines XIM_fncEvaluateCombat, which evaluates if the player is in combat or not
+{
+	params [["_uEnemy", objNull]]; // defines the optional parameter, _uEnemy
 	if (!isNull _uEnemy) then // if there is an argument in position zero
 	{
-		private _uEnemy = _this select 0; // assign the first argument to _uEnemy, which is most likely the same as _uInstigator from before
-		private _iEnemyKnowledge = _uEnemy knowsAbout XIM_uSelf; // find out how much the enemy knows about the player from a scale of 0 to 4
-		private _iSelfKnowledge = XIM_uSelf knowsAbout _uEnemy; // find out how much the player knows about the enemy from a scale of 0 to 4
-		if ((_iEnemyKnowledge > 0) and (_iSelfKnowledge > 0))  then // if the closest enemy is alerted to the player's presence, and the player is alerted to theirs
-		{
-			hint "Warning! Entering combat!";
-			combat = true;
-		}
-		else
-		{
-			combat = false;
-		};
+		_uEnemy = _this select 0; // assign the first argument to _uEnemy, which is most likely the same as _uInstigator from before
 	}
 	else // if there isn't an argument in position zero
 	{
-		private _uEnemy = XIM_uSelf findNearestEnemy XIM_uSelf; // find the closest enemy to the player and store them in uEnemy
-		private _iEnemyKnowledge = _uEnemy knowsAbout XIM_uSelf; // find out how much the enemy knows about the player from a scale of 0 to 4
-		private _iSelfKnowledge = XIM_uSelf knowsAbout _uEnemy; // find out how much the player knows about the enemy from a scale of 0 to 4
-		if ((_iEnemyKnowledge > 0) and (_iSelfKnowledge > 0))  then // if the closest enemy is alerted to the player's presence, and the player is alerted to theirs
-		{
-			hint "Warning! Entering combat!";
-			combat = true;
-		}
-		else
-		{
-			hint "not going into combat";
-			combat = false;
-		};
+		_uEnemy = XIM_uSelf findNearestEnemy XIM_uSelf; // find the closest enemy to the player and store them in uEnemy
 	};
-	combat;
+
+	if (!isNull _uEnemy) then // if there is an enemy that has been detected
+	{
+		XIM_bCombat = true;
+		hint "Entering combat!";
+	}
+	else // if no enemy has been detected
+	{
+		XIM_bCombat = false;
+		hint "Exiting combat!";
+	};
+	XIM_bCombat;
 };
 
-XIM_uSelf addEventHandler 
-["FiredNear", // creates firednear event handler
-	{
-		if (!XIM_bCombat) then // if not currently in combat, then
-		{
-			if (XIM_bEvaluated) then // if the combat state is not already being evaluated, then
-			{
-				XIM_hEvaluateCombat = [] spawn
-				{
-					XIM_bCombat = call fncEvaluateCombat; // call fncEvaluateCombat with within the scheduler
+// ======================================== MAIN ========================================
+waitUntil {sleep 30; leader group XIM_uSelf == XIM_uSelf} // wait until the client is the leader of their group
 
-				};
-			};
-		};
-		XIM_bEvaluated = scriptDone XIM_hEvaluateCombat; // if fncEvaluateCombat has been executed, set XIM_bEvaluated to true, else set it to false
-	}
-];
+waitUntil {sleep 0.5; scriptDone XIM_hEvaluateCombat}; // wait until the combat state has finished being evaluated
+if (!XIM_bEventHandlersRemoved) then // if the event handlers have not been removed
+{
+	// ======================================== REMOVE EVENT HANDLERS ========================================
+	XIM_uSelf removeEventHandler ["FiredNear", XIM_iFiredNearEHIndex]; // removes the created FiredNear event handler
+	XIM_uSelf removeEventHandler ["Hit", XIM_iHitEHIndex]; // removes the created Hit event handler
+	XIM_bEventHandlersRemoved = true;
+};
 
-XIM_uSelf addEventHandler 
-["Hit", // creates hit event handler
+if (XIM_bCombat) then // if the client is in combat
+{
+	// ======================================== EVALUATE IF STILL IN COMBAT ========================================
+	private _gSelfGroup = group XIM_uSelf; // gets the client's group and assigns it to _gSelfGroup
+	private _aSelfGroupUnits = units _gSelfGroup - [player]; // gets all of the units within the _gSelfGroup group and puts them in an array, minus the player so the others may sync
+
+	remoteExec["XIM_fncToggleCombat", _aSelfGroupUnits]; // sets everyone in the _gSelfGroup group to be in combat
+
+	waitUntil {scriptDone XIM_hEvaluateCombat}; // wait until XIM_fncEvaluateCombat has finished executing
+	XIM_hEvaluateCombat = [] spawn
 	{
-		if (!XIM_bCombat) then // if not currently in combat, then
+		XIM_bCalm =  call XIM_fncEvaluateCombat; // call XIM_fncEvaluateCombat with within the scheduler
+		XIM_bCalm = !XIM_bCalm; // inverts the value of XIM_bCalm as the function was designed to return true the opposite of what the variable means
+	};
+	waitUntil {scriptDone XIM_hEvaluateCombat}; // wait until XIM_fncEvaluateCombat has finished executing
+
+	waitUntil // wait until XIM_fncEvaluateCombat returns false
+	{
+		sleep 10; // wait ten seconds
+		if (!XIM_bCalm) then // if XIM_bCalm = false
 		{
-			if (XIM_bEvaluated) then // if the combat state is not already being evaluated, then
+			waitUntil {scriptDone XIM_hEvaluateCombat}; // wait until XIM_fncEvaluateCombat has finished executing
+			XIM_hEvaluateCombat = [] spawn
 			{
-				private _uInstigator = _this select 3; // assign the unit who shot the player to _uInstigator
-				private _iInstigatorRelation = ((side XIM_uSelf) getFriend (side _uInstigator)); // check if the unit is friend or foe
-				if (_iInstigatorRelation < 0.6) then // if the result is less than 0.6, then they are foe
-				{
-					XIM_hEvaluateCombat = [_uInstigator] spawn // once fncEvaluateCombat has run, set XIM_bEvaluated to true
-					{
-						XIM_bCombat = [_this select 0] call fncEvaluateCombat; // call fncEvaluateCombat with _uInstigator within the scheduler
-					};		
-				};
+				XIM_bCalm =  call XIM_fncEvaluateCombat; // call XIM_fncEvaluateCombat with within the scheduler
+				XIM_bCalm = !XIM_bCalm; // inverts the value of XIM_bCalm as the function was designed to return true the opposite of what the variable means
 			};
+			waitUntil {scriptDone XIM_hEvaluateCombat}; // wait until XIM_fncEvaluateCombat has finished executing
 		};
-		XIM_bEvaluated = scriptDone XIM_hEvaluateCombat; // if fncEvaluateCombat has been executed, set XIM_bEvaluated to true, else set it to false
-	}
-];
+		
+		if (XIM_bCalm) exitWith {true}; // if XIM_bCalm = true then exit with true
+		false;
+	};
+
+	remoteExec["XIM_fncToggleCombat", _aSelfGroupUnits]; // sets everyone in the _gSelfGroup group to no longer be in combat
+	XIM_bCombat = false; // takes the client out of combat, and thus the cycle continues...
+}
+
+else // if the client is not in combat
+{
+	// ======================================== ADD EVENT HANDLERS ========================================
+	XIM_bEventHandlersRemoved = false; // set XIM_bEventHandlersRemoved to false, as the event handlers are about to be created
+	XIM_iFiredNearEHIndex = XIM_uSelf addEventHandler 
+	["FiredNear", // creates firednear event handler
+		{
+			[] spawn
+			{
+				XIM_bCombat = call XIM_fncEvaluateCombat; // call XIM_fncEvaluateCombat with within the scheduler
+			};
+		}
+	];
+
+	XIM_iHitEHIndex = XIM_uSelf addEventHandler  
+	["Hit", // creates hit event handler
+		{
+			private _uInstigator = _this select 3; // assign the unit who shot the player to _uInstigator
+			private _iInstigatorRelation = ((side XIM_uSelf) getFriend (side _uInstigator)); // check if the unit is friend or foe
+			if (_iInstigatorRelation < 0.6) then // if the result is less than 0.6, then they are foe
+			{
+				[_uInstigator] spawn
+				{
+					XIM_bCombat = [_this select 0] call XIM_fncEvaluateCombat; // call XIM_fncEvaluateCombat with _uInstigator within the scheduler
+				};						
+			};
+		}
+	];
+};
