@@ -61,7 +61,7 @@ fncXIM_MusicRemote = {
   	};
 
 
-"XIM_Sender" addPublicVariableEventHandler {
+"XIM_oSender" addPublicVariableEventHandler {
   		private _oXIMSender = _this select 1; //Store array in variable
   		private _senderID = owner _oXIMSender;
 		ximnearestenemy = _oXIMSender findNearestEnemy _oXIMSender;
