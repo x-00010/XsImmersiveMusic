@@ -54,6 +54,7 @@ XIM_fncEvaluateCombat = // defines XIM_fncEvaluateCombat, which evaluates if the
 	else // if there isn't an argument in position zero
 	{
 		XIM_uEnemy = XIM_uSelf findNearestEnemy XIM_uSelf; // find the closest enemy to the player and store them in XIM_uEnemy
+		hint str XIM_uEnemy;
 	};
 
 	if (!isNull XIM_uEnemy) then // if there is an enemy that has been detected
