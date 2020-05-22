@@ -25,8 +25,8 @@ XIM_fncObtainGroupUnits = // defines XIM_fncObtainGroupUnits, which returns an a
 
 XIM_fncNotifyServer = // defines XIM_fncNotifyServer, which notifies the server of the group's current combat state
 {
-	private _aSelfGroupUnits = call XIM_fncObtainGroupUnits; // obtain the units in the client's group, minus themselves, and assign the value to _aSelfGroupUnits
-	XIM_aStateChange = [_aSelfGroupUnits, XIM_bCombat]; // put the units in the client's group and their current combat state into the XIM_aStateChange array
+	private _gSelfGroup = group XIM_uSelf; // obtain the group the player is in
+	XIM_aStateChange = [_gSelfGroup, XIM_bCombat]; // put the player's group in the state-change variable, along with the combat state
 	publicVariableServer "XIM_aStateChange"; // sends the XIM_aStateChange array to the server
 };
 
