@@ -1,25 +1,25 @@
 class CfgPatches
 {
-	class XIMCore
-	{
-		name = "X's Immersive Music";
-		author = "x00010";
-		requiredVersion = 1.98;
+    class XIMCore
+    {
+        name = "X's Immersive Music";
+        author = "x00010";
+        requiredVersion = 1.98;
 
-		requiredAddons[] = 
-		{  
-			"cba_settings"
-		};
+        requiredAddons[] = 
+        {  
+            "cba_settings"
+        };
 
-		units[] = {};
-		weapons[] = {};
-	};
+        units[] = {};
+        weapons[] = {};
+    };
 };
 
 class Extended_PreInit_EventHandlers 
 {
     class XIMCoreStart // preinit event handler
-	{
+    {
         init = "call compile preprocessFileLineNumbers '\XIM_Core\scripts\autostart\XEH_PreInit.sqf'";
     };
 };
@@ -179,147 +179,147 @@ class CfgMusic
     };
     class BackgroundTrack01_F
     {
-    	moods[] = 
+        moods[] = 
         {
             "calm"
         };
         sound[] = { "\A3\music_f\Music\BackgroundTrack01_F.ogg", db + 0, 1.0 };
-    	//Underwater 2
+        //Underwater 2
     };
     class BackgroundTrack01a_F
     {
-    	moods[] = 
+        moods[] = 
         {
             "calm"
         };
         sound[] = { "\A3\music_f\Music\BackgroundTrack01a_F.ogg", db + 0, 1.0 };
-    	//Underwater
+    	  //Underwater
     };
     class BackgroundTrack02_F
     {
-    	moods[] = 
+        moods[] = 
         {
             "calm"
         };
         sound[] = { "\A3\music_f\Music\BackgroundTrack02_F.ogg", db + 0, 1.0 };
-    	//On the road
+        //On the road
     };
     class LeadTrack01_F_EPA
     {
-    	moods[] = 
+        moods[] = 
         {
             "calm"
         };
         sound[] = { "\A3\music_f_epa\Music\LeadTrack01_F_EPA.ogg", db + 0, 1.0 };
-    	//Stage A: Lead Track 01 (Conquistador)
+        //Stage A: Lead Track 01 (Conquistador)
     };
     class LeadTrack02_F_EPA
     {
-    	moods[] = 
+        moods[] = 
         {
             "calm",
             "dark"
         };
         sound[] = { "\A3\music_f_epa\Music\LeadTrack02_F_EPA.ogg", db + 0, 1.0 };
-    	//Stage A: Lead Track 02 (Aegis Blues)
+        //Stage A: Lead Track 02 (Aegis Blues)
     };
     class LeadTrack02a_F_EPA
     {
-    	moods[] = 
+        moods[] = 
         {
             "calm",
             "dark"
         };
         sound[] = { "\A3\music_f_epa\Music\LeadTrack02a_F_EPA.ogg", db + 0, 1.0 };
-    	//Stage A: Lead Track 02 (Aegis Blues - Alternative 1)
+        //Stage A: Lead Track 02 (Aegis Blues - Alternative 1)
     };
     class LeadTrack02b_F_EPA
     {
-    	moods[] = 
+        moods[] = 
         {
             "calm",
             "dark"
         };
         sound[] = { "\A3\music_f_epa\Music\LeadTrack02b_F_EPA.ogg", db + 0, 1.0 };
-    	//Stage A: Lead Track 02 (Aegis Blues - Alternative 2)
+        //Stage A: Lead Track 02 (Aegis Blues - Alternative 2)
     };
     class LeadTrack03_F_EPA
     {
-    	moods[] = 
+        moods[] = 
         {
             "dark",
             "intense"
         };
         sound[] = { "\A3\music_f_epa\Music\LeadTrack03_F_EPA.ogg", db + 0, 1.0 };
-    	//Stage A: Lead Track 03 (Survive the Hard Part)
+        //Stage A: Lead Track 03 (Survive the Hard Part)
     };
 
     class LeadTrack01_F_EPB
     {
-    	moods[] = 
+        moods[] = 
         {
             "calm"
         };
         sound[] = { "\A3\music_f_epb\Music\LeadTrack01_F_EPB.ogg", db + 0, 1.0 };
-    	//Stage B: Lead Track 01 (Adapt)
+        //Stage B: Lead Track 01 (Adapt)
     };
 
     class LeadTrack01a_F_EPB
     {
-    	moods[] = 
+        moods[] = 
         {
             "calm"
         };
         sound[] = { "\A3\music_f_epb\Music\LeadTrack01a_F_EPB.ogg", db + 0, 1.0 };
-    	//Stage B: Lead Track 01 (Adapt - Alternative)
+        //Stage B: Lead Track 01 (Adapt - Alternative)
     };
     class LeadTrack02_F_EPB
     {
-    	moods[] = 
+        moods[] = 
         {
             "dark",
             "intense"
         };
         sound[] = { "\A3\music_f_epb\Music\LeadTrack02_F_EPB.ogg", db + 0, 1.0 };
-    	//Stage B: Lead Track 02 (Exit Strategy)
+        //Stage B: Lead Track 02 (Exit Strategy)
     };
     class LeadTrack02a_F_EPB
     {
-    	moods[] = 
+        moods[] = 
         {
             "dark"
         };
         sound[] = { "\A3\music_f_epb\Music\LeadTrack02a_F_EPB.ogg", db + 0, 1.0 };
-    	//Stage B: Lead Track 02 (Exit Strategy - Alternative 1)
+        //Stage B: Lead Track 02 (Exit Strategy - Alternative 1)
     };
     class LeadTrack02b_F_EPB
     {
-    	moods[] = 
+        moods[] = 
         {
             "dark",
             "intense"
         };
         sound[] = { "\A3\music_f_epb\Music\LeadTrack02b_F_EPB.ogg", db + 0, 1.0 };
-    	//Stage B: Lead Track 02 (Exit Strategy - Alternative 2)
+        //Stage B: Lead Track 02 (Exit Strategy - Alternative 2)
     };
     class LeadTrack03_F_EPB
     {
-    	moods[] = 
+        moods[] = 
         {
             "dark"
         };
         sound[] = { "\A3\music_f_epb\Music\LeadTrack03_F_EPB.ogg", db + 0, 1.0 };
-    	//Stage B: Lead Track 03 (Beyond Recognition)
+        //Stage B: Lead Track 03 (Beyond Recognition)
     };
 
     class LeadTrack03a_F_EPB
     {
-    	moods[] = 
+        moods[] = 
         {
             "dark"
         };
         sound[] = { "\A3\music_f_epb\Music\LeadTrack03a_F_EPB.ogg", db + 0, 1.0 };
-    	//Stage B: Lead Track 03 (Beyond Recognition - Alternative 1)
+        //Stage B: Lead Track 03 (Beyond Recognition - Alternative 1)
     };
 
 
