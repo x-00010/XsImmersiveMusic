@@ -60,3 +60,18 @@ fncXIM_MusicRemote = {
 
   	};
 
+
+"XIM_Sender" addPublicVariableEventHandler {
+  		private _oXIMSender = _this select 1; //Store array in variable
+  		private _senderID = owner _oXIMSender;
+		ximnearestenemy = _oXIMSender findNearestEnemy _oXIMSender;
+
+		if (ximnearestenemy != objNull) then {
+			XIM_oEnemy = ximnearestenemy; //Assign to missionNamespace var
+			_senderID publicVariableClient "XIM_oEnemy"
+		};
+
+
+
+  		
+  	};
