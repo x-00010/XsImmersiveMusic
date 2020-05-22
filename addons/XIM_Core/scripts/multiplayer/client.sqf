@@ -55,6 +55,8 @@ XIM_fncEvaluateCombat = // defines XIM_fncEvaluateCombat, which evaluates if the
 	else // if there isn't an argument in position zero
 	{
 		XIM_oSender = XIM_oSelf;
+		XIM_oEnemy = objNull;
+		owner XIM_oSelf publicVariableClient "XIM_oEnemy";
 		publicVariableServer "XIM_oSender"; // send a variable called XIM_oSender to server which contains the name of the object currently being controlled
 		waitUntil{sleep 0.4; !isNull(missionNamespace getVariable "XIM_oEnemy")}; // wait until the server sends a variable back, called XIM_oEnemy
 		XIM_oEnemy = missionNamespace getVariable "XIM_oEnemy"; // assign the recieved variable to XIM_oEnemy
