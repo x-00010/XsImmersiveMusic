@@ -36,11 +36,11 @@ XIM_fncToggleCombat = // defines XIM_fncToggleCombat, which toggles the current 
 	XIM_bCombat = !XIM_bCombat; // inverts the current value of XIM_bCombat
 	if (XIM_bCombat) then
 	{
-		hint "Entering combat!";
+		//hint "Entering combat!";
 	}
 	else
 	{
-		hint "Exiting combat!";
+		//hint "Exiting combat!";
 	};
 };
 
@@ -60,12 +60,12 @@ XIM_fncEvaluateCombat = // defines XIM_fncEvaluateCombat, which evaluates if the
 	if (!isNull XIM_uEnemy) then // if there is an enemy that has been detected
 	{
 		XIM_bCombat = true; // set XIM_bCombat to true
-		hint "Entering combat!";
+		//hint "Entering combat!";
 	}
 	else // if no enemy has been detected
 	{
 		XIM_bCombat = false; // set XIM_bCombat to false
-		hint "Exiting combat!";
+		//hint "Exiting combat!";
 	};
 	XIM_bCombat; // return the current value of XIM_bCombat
 };
@@ -89,7 +89,7 @@ while {leader group XIM_uSelf == XIM_uSelf} do  // while the client is the leade
 		private _aSelfGroupUnits = call XIM_fncObtainGroupUnits; // obtain the units in the client's group without the client themselves by calling XIM_fncObtainGroupUnits and assigning the returned value to _aSelfGroupUnits
 		remoteExec["XIM_fncToggleCombat", _aSelfGroupUnits]; // sets everyone in the _aSelfGroupUnits group to be in combat
 
-		XIM_hCallCalmCombat = [] spawn 
+		[] spawn 
 		{
 			call XIM_fncNotifyServer; // call XIM_fncNotifyServer, which notifies the server that the group's combat state has changed
 		};
@@ -115,6 +115,10 @@ while {leader group XIM_uSelf == XIM_uSelf} do  // while the client is the leade
 			false; // else return false
 		};
 		remoteExec["XIM_fncToggleCombat", _aSelfGroupUnits]; // sets everyone in the _gSelfGroup group to no longer be in combat
+		private _gSelfGroup = group XIM_uSelf; // obtain the group the player is in
+		XIM_bCalm = !XIM_bCalm;
+		XIM_aStateChange = [_gSelfGroup, XIM_bCalm]; // put the player's group in the state-change variable, along with the combat state
+		publicVariableServer "XIM_aStateChange"; // sends the XIM_aStateChange array to the server
 		XIM_bCombat = false; // takes the client out of combat, and thus the cycle continues...
 	}
 
