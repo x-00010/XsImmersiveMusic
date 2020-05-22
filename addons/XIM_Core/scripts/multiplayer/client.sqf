@@ -4,6 +4,7 @@ XIM_bCombat = false; // declares XIM_bCombat, which is the flag for the player's
 XIM_oSelf = player; // declares XIM_oSelf, which is the player's unit
 XIM_hEvaluateCombat = [] spawn {}; // sets the the handler for XIM_fncEvaluateCombat to return true when scriptDone is used before the script is run for the first time
 XIM_bEventHandlersRemoved = true; // declares XIM_bEventHandlersRemoved, which is a flag to easily determine if the event handlers have already been removed
+XIM_bCalm = false;
 
 // ======================================== FUNCTIONS ========================================
 
