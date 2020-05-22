@@ -923,7 +923,7 @@ class CfgMusic
     // FIREDNEAR HAS A MAX RANGE OF ~69M WTF ILLUMINATI CONFIRMED
     // lmaoxd
 
-
+    /*
     class Music_Theme_Contact
     {
         moods[] = 
@@ -1698,7 +1698,7 @@ class CfgMusic
             "dark"
         };
         //Old Man: Ambient Music 02
-    };
+    };*/
 
 
 
