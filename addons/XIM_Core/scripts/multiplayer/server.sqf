@@ -54,7 +54,7 @@ fncXIM_MusicRemote = {
   		private _ximcombat = _aXIMstatechange select 1; //Retrieve combat state
 
   		if (_ximcombat) then {
-  		  result = [_ximgroup,_ximcombat] call fncXIM_MusicRemote;
+  			[_ximgroup,_ximcombat] call fncXIM_MusicRemote;
 
   		};
 
@@ -68,7 +68,7 @@ fncXIM_MusicRemote = {
 
 		if (ximnearestenemy != objNull) then {
 			XIM_oEnemy = ximnearestenemy; //Assign to missionNamespace var
-			_senderID publicVariableClient "XIM_oEnemy"
+			_senderID publicVariableClient "XIM_oEnemy";
 		};
 
 
