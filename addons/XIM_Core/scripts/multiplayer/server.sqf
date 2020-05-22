@@ -17,7 +17,7 @@ fncXIM_MusicHandler = {
 
 	missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",true,_groupOwnerIDs]; //Disable ACE interference
 	["forceBehaviour",[_musictype]] remoteExecCall ["BIS_fnc_jukebox",_groupOwnerIDs]; //Changes music type based on passed parameter
-	[{missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",false,_groupOwnerIDs];},[], 5] call CBA_fnc_waitAndExecute; //Re-enable ACE function after 5 sec
+	[{missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",false,_groupOwnerIDs;},[], 5] call CBA_fnc_waitAndExecute;
 };
 
 
@@ -28,7 +28,7 @@ fncXIM_MusicRemote = {
 	format ["%1",_groupOwnerIDs] remoteExec ["hint", 0];
 	if (_ximcombat) then {
 
-		[_groupOwnerIDs,"combat"] call fncXIM_MusicHandler; //Set music to type combat
+		[_groupOwnerIDs,"combat"] spawn fncXIM_MusicHandler; //Set music to type combat
 			
 	} else {
 		private _sunrisesunset = date call BIS_fnc_sunriseSunsetTime;
@@ -37,11 +37,11 @@ fncXIM_MusicRemote = {
 
 		if ((rain > 0.2) or (fog > 0.2) or ((daytime > _sunset) and (daytime < _sunrise))) then {
 
-			[_groupOwnerIDs,"stealth"] call fncXIM_MusicHandler; //Set music to type stealth (dark)
+			[_groupOwnerIDs,"stealth"] spawn fncXIM_MusicHandler; //Set music to type stealth (dark)
   			
 		} else {
 
-  			[_groupOwnerIDs,"safe"] call fncXIM_MusicHandler; //Set music to type safe
+  			[_groupOwnerIDs,"safe"] spawn fncXIM_MusicHandler; //Set music to type safe
 
 		};
 
