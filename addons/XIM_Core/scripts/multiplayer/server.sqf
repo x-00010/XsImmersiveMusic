@@ -25,7 +25,7 @@ fncXIM_MusicRemote = {
 	params ["_ximgroup", "_ximcombat"]; //Defining params
 	private _groupOwnerIDs = [];
 	(units _ximgroup) apply {_groupOwnerIDs pushBackUnique (owner _x)}; //Retrieving ID's for players in group
-
+	format ["%1",_groupOwnerIDs] remoteExec ["hint", 0];
 	if (_ximcombat) then {
 
 		[_groupOwnerIDs,_ximgroup,"combat"] call fncXIM_MusicHandler; //Set music to type combat
