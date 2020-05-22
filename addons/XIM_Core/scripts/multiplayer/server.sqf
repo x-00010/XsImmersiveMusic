@@ -13,10 +13,10 @@ aCalmMusicClassnames = "'calm' in getArray (_x >> 'moods') " configClasses (conf
 
 
 fncXIM_MusicHandler = {
-	params ["_groupOwnerIDs","_ximgroup","_musictype"];
+	params ["_groupOwnerIDs","_musictype"];
 
 	missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",true,_groupOwnerIDs]; //Disable ACE interference
-	["forceBehaviour",[_musictype]] remoteExecCall ["BIS_fnc_jukebox",_ximgroup]; //Changes music type based on passed parameter
+	["forceBehaviour",[_musictype]] remoteExecCall ["BIS_fnc_jukebox",_groupOwnerIDs]; //Changes music type based on passed parameter
 	[{missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",false,_groupOwnerIDs];},[], 5] call CBA_fnc_waitAndExecute; //Re-enable ACE function after 5 sec
 };
 
@@ -37,11 +37,11 @@ fncXIM_MusicRemote = {
 
 		if ((rain > 0.2) or (fog > 0.2) or ((daytime > _sunset) and (daytime < _sunrise))) then {
 
-			[_groupOwnerIDs,_ximgroup,"stealth"] call fncXIM_MusicHandler; //Set music to type stealth (dark)
+			[_groupOwnerIDs,"stealth"] call fncXIM_MusicHandler; //Set music to type stealth (dark)
   			
 		} else {
 
-  			[_groupOwnerIDs,_ximgroup,"safe"] call fncXIM_MusicHandler; //Set music to type safe
+  			[_groupOwnerIDs,"safe"] call fncXIM_MusicHandler; //Set music to type safe
 
 		};
 
