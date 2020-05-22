@@ -55,7 +55,7 @@ XIM_fncEvaluateCombat = // defines XIM_fncEvaluateCombat, which evaluates if the
 	{
 		XIM_oSender = XIM_oSelf;
 		publicVariableServer "XIM_oSender"; // send a variable called XIM_oSender to server which contains the name of the object currently being controlled
-		waitUntil{sleep 0.4; missionNamespace getVariable "XIM_oEnemy"}; // wait until the server sends a variable back, called XIM_oEnemy
+		waitUntil{sleep 0.4; !isNull(missionNamespace getVariable "XIM_oEnemy")}; // wait until the server sends a variable back, called XIM_oEnemy
 		XIM_oEnemy = missionNamespace getVariable "XIM_oEnemy"; // assign the recieved variable to XIM_oEnemy
 	};
 
