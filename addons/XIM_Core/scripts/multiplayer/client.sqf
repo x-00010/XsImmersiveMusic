@@ -10,7 +10,7 @@ XIM_bCalm = false;
 
 XIM_fncCallCalmCombat =
 {
-	XIM_hEvaluateCombat = [] spawn
+	[] spawn
 	{
 		XIM_bCalm =  call XIM_fncEvaluateCombat; // call XIM_fncEvaluateCombat with within the scheduler
 		XIM_bCalm = !XIM_bCalm; // inverts the value of XIM_bCalm as the function was designed to return true the opposite of what the variable means
@@ -55,10 +55,9 @@ XIM_fncEvaluateCombat = // defines XIM_fncEvaluateCombat, which evaluates if the
 	else // if there isn't an argument in position zero
 	{
 		XIM_oSender = XIM_oSelf;
-		XIM_oEnemy = objNull;
-		owner XIM_oSelf publicVariableClient "XIM_oEnemy";
+		XIM_oSelf setVariable ["XIM_oEnemy", nil];
 		publicVariableServer "XIM_oSender"; // send a variable called XIM_oSender to server which contains the name of the object currently being controlled
-		waitUntil{sleep 0.4; !isNull(missionNamespace getVariable "XIM_oEnemy")}; // wait until the server sends a variable back, called XIM_oEnemy
+		waitUntil{sleep 0.4; !isNil(missionNamespace getVariable "XIM_oEnemy")}; // wait until the server sends a variable back, called XIM_oEnemy
 		XIM_oEnemy = missionNamespace getVariable "XIM_oEnemy"; // assign the recieved variable to XIM_oEnemy
 	};
 
