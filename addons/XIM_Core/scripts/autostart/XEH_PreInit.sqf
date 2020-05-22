@@ -7,13 +7,13 @@ if (isMultiplayer) then // if client is in multiplayer
 		execVM "\XIM_Core\scripts\multiplayer\client.sqf"; // executes client.sqf
 	}
 
-	else
+	/*else
 	{
 		if (isServer) then // runs on the dedicated server, or player host, either way it runs on machine id 2
 		{
 			execVM "\XIM_Core\scripts\multiplayer\server.sqf"; // executes server.sqf
 		};
-	};
+	};*/
 } 
 else // if client is in singleplayer
 {
