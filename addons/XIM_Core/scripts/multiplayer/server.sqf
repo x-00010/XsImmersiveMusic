@@ -58,11 +58,10 @@ fncXIM_MusicRemote = {
   		private _aXIMstatechange = _this select 1; //Store array in variable
   		private _ximgroup = _aXIMstatechange select 0; //Retrieve group object
   		private _ximcombat = _aXIMstatechange select 1; //Retrieve combat state
+   		
+   		[_ximgroup,_ximcombat] call fncXIM_MusicRemote
 
-  		if (_ximcombat) then {
-  			[_ximgroup,_ximcombat] call fncXIM_MusicRemote;
 
-  		};
 
   	};
 
