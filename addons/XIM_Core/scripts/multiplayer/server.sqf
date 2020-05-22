@@ -28,7 +28,7 @@ fncXIM_MusicRemote = {
 	format ["%1",_groupOwnerIDs] remoteExec ["hint", 0];
 	if (_ximcombat) then {
 
-		[_groupOwnerIDs,_ximgroup,"combat"] call fncXIM_MusicHandler; //Set music to type combat
+		[_groupOwnerIDs,"combat"] call fncXIM_MusicHandler; //Set music to type combat
 			
 	} else {
 		private _sunrisesunset = date call BIS_fnc_sunriseSunsetTime;
