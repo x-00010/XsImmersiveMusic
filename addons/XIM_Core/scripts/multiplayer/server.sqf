@@ -23,7 +23,8 @@ fncXIM_MusicHandler = {
 
 	missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",true,_groupOwnerIDs]; //Disable ACE interference
 	["forceBehaviour",[_musictype]] remoteExecCall ["BIS_fnc_jukebox",_groupOwnerIDs]; //Changes music type based on passed parameter
-	[{missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",false,_groupOwnerIDs;},[], 5] call CBA_fnc_waitAndExecute;
+	XIM_GroupOwnerIDs = _groupOwnerIDs;
+	[{missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",false,XIM_GroupOwnerIDs];},[], 5] call CBA_fnc_waitAndExecute;
 };
 
 
@@ -31,7 +32,6 @@ fncXIM_MusicRemote = {
 	params ["_ximgroup", "_ximcombat"]; //Defining params
 	private _groupOwnerIDs = [];
 	(units _ximgroup) apply {_groupOwnerIDs pushBackUnique (owner _x)}; //Retrieving ID's for players in group
-	format ["%1",_groupOwnerIDs] remoteExec ["hint", 0];
 	if (_ximcombat) then {
 
 		[_groupOwnerIDs,"combat"] spawn fncXIM_MusicHandler; //Set music to type combat
