@@ -36,11 +36,11 @@ XIM_fncToggleCombat = // defines XIM_fncToggleCombat, which toggles the current 
 	XIM_bCombat = !XIM_bCombat; // inverts the current value of XIM_bCombat
 	if (XIM_bCombat) then
 	{
-		//hint "Entering combat!";
+		hint "Entering combat!";
 	}
 	else
 	{
-		//hint "Exiting combat!";
+		hint "Exiting combat!";
 	};
 };
 
@@ -61,12 +61,12 @@ XIM_fncEvaluateCombat = // defines XIM_fncEvaluateCombat, which evaluates if the
 	if (!isNull XIM_oEnemy) then // if there is an enemy that has been detected
 	{
 		XIM_bCombat = true; // set XIM_bCombat to true
-		//hint "Entering combat!";
+		hint "Entering combat!";
 	}
 	else // if no enemy has been detected
 	{
 		XIM_bCombat = false; // set XIM_bCombat to false
-		//hint "Exiting combat!";
+		hint "Exiting combat!";
 	};
 	XIM_bCombat; // return the current value of XIM_bCombat
 };
