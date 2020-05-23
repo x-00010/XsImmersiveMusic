@@ -15,7 +15,7 @@ if (isDedicated) then {
 };
 
 
-
+// finch your code looks fucking gross mate ~jake
 
 
 fncXIM_MusicHandler = {
@@ -24,7 +24,7 @@ fncXIM_MusicHandler = {
 	missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",true,_groupOwnerIDs]; //Disable ACE interference
 	["forceBehaviour",[_musictype]] remoteExecCall ["BIS_fnc_jukebox",_groupOwnerIDs]; //Changes music type based on passed parameter
 	XIM_GroupOwnerIDs = _groupOwnerIDs;
-	[{missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",false,XIM_GroupOwnerIDs];},[], 10] call CBA_fnc_waitAndExecute;
+	[{missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",false,XIM_GroupOwnerIDs];},[], 15] call CBA_fnc_waitAndExecute;
 };
 
 
