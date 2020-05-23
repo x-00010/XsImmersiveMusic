@@ -28,6 +28,8 @@ class CfgMusic
 {
     class LeadTrack01_F
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense"
@@ -37,6 +39,8 @@ class CfgMusic
     };
     class LeadTrack01a_F
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense"
@@ -46,6 +50,8 @@ class CfgMusic
     };
     class LeadTrack01b_F
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense"
@@ -55,6 +61,8 @@ class CfgMusic
     };
     class LeadTrack01c_F
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense"
@@ -64,6 +72,8 @@ class CfgMusic
     };
     class LeadTrack02_F
     {
+        name = "Proteus";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "dark",
@@ -74,6 +84,8 @@ class CfgMusic
     };
     class LeadTrack03_F
     {
+        name = "Combined Arms";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense"
@@ -83,6 +95,8 @@ class CfgMusic
     };
     class LeadTrack04_F
     {
+        name = "Action Dark";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense",
@@ -93,6 +107,8 @@ class CfgMusic
     };
     class LeadTrack04a_F
     {
+        name = "Action Dark";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense",
@@ -103,6 +119,8 @@ class CfgMusic
     };
     class LeadTrack05_F
     {
+        name = "Taking Kavala";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense"
@@ -112,6 +130,8 @@ class CfgMusic
     };
     class LeadTrack06_F
     {
+        name = "Down at the Garina bay";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense",
@@ -122,6 +142,8 @@ class CfgMusic
     };
     class AmbientTrack01_F
     {
+        name = "East Wind";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm",
@@ -132,6 +154,8 @@ class CfgMusic
     };
     class AmbientTrack01a_F
     {
+        name = "East Wind";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm",
@@ -142,6 +166,8 @@ class CfgMusic
     };
     class AmbientTrack01b_F
     {
+        name = "East Wind";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm",
@@ -152,6 +178,8 @@ class CfgMusic
     };
     class AmbientTrack03_F
     {
+        name = "Solar Power";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -161,6 +189,8 @@ class CfgMusic
     };
      class AmbientTrack04a_F
     {
+        name = "Night percussions";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "dark"
@@ -170,6 +200,8 @@ class CfgMusic
     };
     class AmbientTrack04_F
     {
+        name = "Night ambient";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "dark"
@@ -179,6 +211,8 @@ class CfgMusic
     };
     class BackgroundTrack01_F
     {
+        name = "Underwater";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -188,6 +222,8 @@ class CfgMusic
     };
     class BackgroundTrack01a_F
     {
+        name = "Underwater";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -197,6 +233,8 @@ class CfgMusic
     };
     class BackgroundTrack02_F
     {
+        name = "On the road";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -206,6 +244,8 @@ class CfgMusic
     };
     class LeadTrack01_F_EPA
     {
+        name = "Conquistador";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -215,6 +255,8 @@ class CfgMusic
     };
     class LeadTrack02_F_EPA
     {
+        name = "Aegis Blues";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm",
@@ -225,6 +267,8 @@ class CfgMusic
     };
     class LeadTrack02a_F_EPA
     {
+        name = "Aegis Blues";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm",
@@ -235,6 +279,8 @@ class CfgMusic
     };
     class LeadTrack02b_F_EPA
     {
+        name = "Aegis Blues";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm",
@@ -245,6 +291,8 @@ class CfgMusic
     };
     class LeadTrack03_F_EPA
     {
+        name = "Survive the Hard Part";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "dark",
@@ -256,6 +304,8 @@ class CfgMusic
 
     class LeadTrack01_F_EPB
     {
+        name = "Adapt";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -266,6 +316,8 @@ class CfgMusic
 
     class LeadTrack01a_F_EPB
     {
+        name = "Adapt";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -275,6 +327,8 @@ class CfgMusic
     };
     class LeadTrack02_F_EPB
     {
+        name = "Exit Strategy";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "dark",
@@ -285,6 +339,8 @@ class CfgMusic
     };
     class LeadTrack02a_F_EPB
     {
+        name = "Exit Strategy";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "dark"
@@ -294,6 +350,8 @@ class CfgMusic
     };
     class LeadTrack02b_F_EPB
     {
+        name = "Exit Strategy";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "dark",
@@ -304,6 +362,8 @@ class CfgMusic
     };
     class LeadTrack03_F_EPB
     {
+        name = "Beyond Recognition";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "dark"
@@ -314,6 +374,8 @@ class CfgMusic
 
     class LeadTrack03a_F_EPB
     {
+        name = "Beyond Recognition";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "dark"
@@ -325,6 +387,8 @@ class CfgMusic
 
     class LeadTrack04_F_EPB
     {
+        name = "Canton Protocol";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "dark"
@@ -336,15 +400,20 @@ class CfgMusic
 
     class AmbientTrack01_F_EPB
     {
+        name = "Signal Lost";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
-            "dark","calm"
+            "dark",
+            "calm"
         };
         sound[] = { "\A3\music_f_epb\Music\AmbientTrack01_F_EPB.ogg", db + 0, 1.0 };
         //Stage B: Ambient Track 01 (Signal Lost)
     };
     class BackgroundTrack01_F_EPB
     {
+        name = "The Hunt";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "dark"
@@ -354,6 +423,8 @@ class CfgMusic
     };
     class LeadTrack01_F_EPC
     {
+        name = "Back on Stratis";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -364,6 +435,8 @@ class CfgMusic
     };
     class LeadTrack02_F_EPC
     {
+        name = "LZ hot";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense"
@@ -374,6 +447,8 @@ class CfgMusic
 
     class LeadTrack03_F_EPC
     {
+        name = "The Trap";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm","dark"
@@ -384,6 +459,8 @@ class CfgMusic
 
     class LeadTrack04_F_EPC
     {
+        name = "In the Open";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -394,6 +471,8 @@ class CfgMusic
 
     class LeadTrack05_F_EPC
     {
+        name = "Revenge";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense"
@@ -404,6 +483,8 @@ class CfgMusic
 
     class LeadTrack06_F_EPC
     {
+        name = "Win";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense"
@@ -414,6 +495,8 @@ class CfgMusic
 
     class LeadTrack06b_F_EPC
     {
+        name = "Win";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -424,6 +507,8 @@ class CfgMusic
 
     class EventTrack03_F_EPC
     {
+        name = "Unforeseen Perdition";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "dark"
@@ -434,6 +519,8 @@ class CfgMusic
 
     class BackgroundTrack01_F_EPC
     {
+        name = "Alone";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense"
@@ -444,6 +531,8 @@ class CfgMusic
 
     class BackgroundTrack02_F_EPC
     {
+        name = "Just Another Day";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -454,6 +543,8 @@ class CfgMusic
 
     class BackgroundTrack03_F_EPC
     {
+        name = "Altis Reqiuem";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -464,9 +555,12 @@ class CfgMusic
 
     class BackgroundTrack04_F_EPC
     {
+        name = "Assembly";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
-            "calm","dark"
+            "calm",
+            "dark"
         };
         sound[] = { "\A3\music_f_EPC\Music\BackgroundTrack04_F_EPC.ogg", db + 0, 1.0 };
         //Stage C: Background Track 04 (Assembly)
@@ -474,9 +568,12 @@ class CfgMusic
 
     class Fallout
     {
+        name = "Fallout";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
-            "calm","dark"
+            "calm",
+            "dark"
         };
         sound[] = { "A3\Missions_F_EPA\data\music\fallout.ogg", db + 0, 1.0 };
         //Fallout
@@ -484,6 +581,8 @@ class CfgMusic
 
     class Defcon
     {
+        name = "Defcon";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "dark"
@@ -494,6 +593,8 @@ class CfgMusic
 
     class Wasteland
     {
+        name = "Wasteland";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "dark"
@@ -504,6 +605,8 @@ class CfgMusic
 
     class SkyNet
     {
+        name = "SkyNet";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "dark","calm"
@@ -514,6 +617,8 @@ class CfgMusic
 
     class MAD
     {
+        name = "Wasteland";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "dark","calm"
@@ -524,6 +629,8 @@ class CfgMusic
 
     class LeadTrack01_F_Curator
     {
+        name = "Zeus DLC: Zeus";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -534,6 +641,8 @@ class CfgMusic
 
     class LeadTrack01_F_Bootcamp
     {
+        name = "This Is War (VR Remix)";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense"
@@ -544,6 +653,8 @@ class CfgMusic
 
     class LeadTrack02_F_Bootcamp
     {
+        name = "Evolution";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -554,6 +665,8 @@ class CfgMusic
 
     class LeadTrack03_F_Bootcamp
     {
+        name = "Epic Split";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -564,6 +677,8 @@ class CfgMusic
 
     class LeadTrack01_F_Heli
     {
+        name = "This Is War (Helicopters Remix)";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense"
@@ -574,6 +689,8 @@ class CfgMusic
 
     class LeadTrack01_F_Mark
     {
+        name = "This Is War (Marksmen Remix)";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense"
@@ -584,6 +701,8 @@ class CfgMusic
 
     class LeadTrack02_F_Mark
     {
+        name = "Marksmen DLC: Into the Sun";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense"
@@ -594,6 +713,8 @@ class CfgMusic
 
     class LeadTrack03_F_Mark
     {
+        name = "Marksmen DLC: Marksmen";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm","dark"
@@ -604,6 +725,8 @@ class CfgMusic
 
     class LeadTrack01_F_EXP
     {
+        name = "This Is War (Apex Remix)";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -614,6 +737,8 @@ class CfgMusic
 
     class LeadTrack02_F_EXP
     {
+        name = "Apex DLC: An Unknown Enemy";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense"
@@ -624,6 +749,8 @@ class CfgMusic
 
     class LeadTrack03_F_EXP
     {
+        name = "Apex DLC: No Time For Questions";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense"
@@ -634,6 +761,8 @@ class CfgMusic
 
     class LeadTrack04_F_EXP
     {
+        name = "This Is War (Apex Remix)";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -644,6 +773,8 @@ class CfgMusic
 
     class AmbientTrack01_F_EXP
     {
+        name = "Apex DLC: Through The Jungle";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm","dark"
@@ -654,6 +785,8 @@ class CfgMusic
 
     class AmbientTrack02_F_EXP
     {
+        name = "Apex DLC: Welcome To Tanoa";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -666,6 +799,8 @@ class CfgMusic
 
     class LeadTrack01_F_Jets
     {
+        name = "Jets DLC: Fighter Jets";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -676,6 +811,8 @@ class CfgMusic
 
     class LeadTrack02_F_Jets
     {
+        name = "Jets DLC: Air Power";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -686,6 +823,8 @@ class CfgMusic
 
     class LeadTrack01_F_Malden
     {
+        name = "Malden DLC: Flashpoint";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -696,6 +835,8 @@ class CfgMusic
 
     class LeadTrack02_F_Malden
     {
+        name = "Malden DLC: Malden";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -706,6 +847,8 @@ class CfgMusic
 
     class LeadTrack01_F_Orange
     {
+        name = "This Is War (Laws of War Remix)";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -716,6 +859,8 @@ class CfgMusic
 
     class AmbientTrack02_F_Orange
     {
+        name = "Laws of War DLC: Remnants of War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "dark"
@@ -726,6 +871,8 @@ class CfgMusic
 
     class AmbientTrack01_F_Orange
     {
+        name = "Laws of War DLC: Ambient";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -737,6 +884,8 @@ class CfgMusic
 
     class LeadTrack01_F_Tacops
     {
+        name = "Tac-Ops DLC: Opening";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense"
@@ -748,6 +897,8 @@ class CfgMusic
 
     class LeadTrack02_F_Tacops
     {
+        name = "Tac-Ops DLC: Opening";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense"
@@ -759,6 +910,8 @@ class CfgMusic
 
     class LeadTrack03_F_Tacops
     {
+        name = "Tac-Ops DLC: Opening";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense"
@@ -770,6 +923,8 @@ class CfgMusic
 
     class AmbientTrack01a_F_Tacops
     {
+        name = "Tac-Ops DLC: Ambient";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "dark"
@@ -781,6 +936,8 @@ class CfgMusic
 
     class AmbientTrack01b_F_Tacops
     {
+        name = "Tac-Ops DLC: Ambient 1";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "dark"
@@ -792,9 +949,12 @@ class CfgMusic
 
     class AmbientTrack02a_F_Tacops
     {
+        name = "Tac-Ops DLC: Ambient 2";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
-            "dark","calm"
+            "dark",
+            "calm"
         };
         sound[] = { "\A3\Music_F_Tacops\Music\AmbientTrack02a_F_Tacops.ogg", db + 0, 1.0 };
         //Tac-Ops DLC: Ambient 2a
@@ -802,6 +962,8 @@ class CfgMusic
 
     class AmbientTrack02b_F_Tacops
     {
+        name = "Tac-Ops DLC: Ambient 2";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "dark","calm"
@@ -812,6 +974,8 @@ class CfgMusic
 
     class AmbientTrack03a_F_Tacops
     {
+        name = "Tac-Ops DLC: Ambient 3";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "dark"
@@ -822,6 +986,8 @@ class CfgMusic
 
     class AmbientTrack03b_F_Tacops
     {
+        name = "Tac-Ops DLC: Ambient 3";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "dark"
@@ -832,6 +998,8 @@ class CfgMusic
 
     class AmbientTrack04a_F_Tacops
     {
+        name = "Tac-Ops DLC: Ambient 4";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "dark"
@@ -842,6 +1010,8 @@ class CfgMusic
 
     class AmbientTrack04b_F_Tacops
     {
+        name = "Tac-Ops DLC: Ambient 4";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "dark"
@@ -852,6 +1022,8 @@ class CfgMusic
 
     class MainTheme_F_Tank
     {
+        name = "This Is War (Tanks DLC Remix)";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense"
@@ -862,6 +1034,8 @@ class CfgMusic
 
     class LeadTrack01_F_Tank
     {
+        name = "Tanks DLC: Fight for the City";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense"
@@ -872,6 +1046,8 @@ class CfgMusic
 
     class LeadTrack02_F_Tank
     {
+        name = "Tanks DLC: Last Stand";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -882,6 +1058,8 @@ class CfgMusic
 
     class LeadTrack03_F_Tank
     {
+        name = "Tanks DLC: Way Back";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "dark","calm"
@@ -892,6 +1070,8 @@ class CfgMusic
 
     class LeadTrack05_F_Tank
     {
+        name = "Tanks DLC: Wrath of the Giants";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense"
@@ -902,6 +1082,8 @@ class CfgMusic
 
     class LeadTrack06_F_Tank
     {
+        name = "Tanks DLC: Iron Gods";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -912,6 +1094,8 @@ class CfgMusic
 
     class AmbientTrack01_F_Tank
     {
+        name = "Tanks DLC: Hidden Enemy";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm","dark"
@@ -925,6 +1109,8 @@ class CfgMusic
 
     class Music_Theme_Contact
     {
+        name = "Contact DLC: Transilience";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "dark"
@@ -935,6 +1121,8 @@ class CfgMusic
 
     class Music_Credits_Contact
     {
+        name = "Contact DLC: Transilience";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "dark"
@@ -945,6 +1133,8 @@ class CfgMusic
 
     class Music_Arrival
     {
+        name = "Contact DLC: Wavering Base";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "dark"
@@ -955,6 +1145,8 @@ class CfgMusic
 
     class Music_Roaming_Night
     {
+        name = "Contact DLC: Night Eyes Zero-One";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "dark"
@@ -965,6 +1157,8 @@ class CfgMusic
 
     class Music_Roaming_Night_02
     {
+        name = "Contact DLC: Night Eyes Zero-Two";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "dark"
@@ -975,6 +1169,8 @@ class CfgMusic
 
     class Music_Roaming_Day
     {
+        name = "Contact DLC: Sunrise Zero-One";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "dark"
@@ -985,6 +1181,8 @@ class CfgMusic
 
     class Music_Roaming_Day_02
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "dark"
@@ -995,6 +1193,8 @@ class CfgMusic
 
     class Music_Hostile_Drone_Close_01
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "dark"
@@ -1005,6 +1205,8 @@ class CfgMusic
 
     class Music_Battle_Alien
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense"
@@ -1015,6 +1217,8 @@ class CfgMusic
 
     class Music_Battle_Human
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense"
@@ -1025,6 +1229,8 @@ class CfgMusic
 
     class Music_Russian_Theme
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense"
@@ -1035,6 +1241,8 @@ class CfgMusic
 
     class Music_Suspended_Loop_01
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "dark"
@@ -1045,6 +1253,8 @@ class CfgMusic
 
     class Music_Tension_Loop_01
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "dark"
@@ -1057,6 +1267,8 @@ class CfgMusic
 
     class Track_C_01
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -1067,6 +1279,8 @@ class CfgMusic
 
     class Track_C_02
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "dark","calm"
@@ -1077,6 +1291,8 @@ class CfgMusic
 
     class Track_C_03
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -1087,6 +1303,8 @@ class CfgMusic
 
     class Track_C_04
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "dark"
@@ -1097,6 +1315,8 @@ class CfgMusic
 
     class Track_C_05
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -1107,6 +1327,8 @@ class CfgMusic
 
     class Track_C_06
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "dark"
@@ -1117,6 +1339,8 @@ class CfgMusic
 
     class Track_C_07
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense"
@@ -1127,6 +1351,8 @@ class CfgMusic
 
     class Track_C_08
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -1137,6 +1363,8 @@ class CfgMusic
 
     class Track_C_09
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -1147,6 +1375,8 @@ class CfgMusic
 
     class Track_C_10
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -1157,6 +1387,8 @@ class CfgMusic
 
     class Track_C_11
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -1167,6 +1399,8 @@ class CfgMusic
 
     class Track_C_12
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -1177,6 +1411,8 @@ class CfgMusic
 
     class Track_C_13
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "dark"
@@ -1187,6 +1423,8 @@ class CfgMusic
 
     class Track_C_14
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "dark"
@@ -1197,6 +1435,8 @@ class CfgMusic
 
     class Track_C_15
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "dark"
@@ -1207,6 +1447,8 @@ class CfgMusic
 
     class Track_C_16
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -1217,6 +1459,8 @@ class CfgMusic
 
     class Track_C_17
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "dark"
@@ -1227,6 +1471,8 @@ class CfgMusic
 
     class Track_C_18
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -1237,6 +1483,8 @@ class CfgMusic
 
     class Track_C_19
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -1247,6 +1495,8 @@ class CfgMusic
 
     class Track_C_20
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -1257,6 +1507,8 @@ class CfgMusic
 
     class Track_D_01
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -1267,6 +1519,8 @@ class CfgMusic
 
     class Track_D_02
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -1277,6 +1531,8 @@ class CfgMusic
 
     class Track_D_03
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -1287,6 +1543,8 @@ class CfgMusic
 
     class Track_M_01
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense"
@@ -1297,6 +1555,8 @@ class CfgMusic
 
     class Track_M_02
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -1307,6 +1567,8 @@ class CfgMusic
 
     class Track_M_03
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense"
@@ -1317,6 +1579,8 @@ class CfgMusic
 
     class Track_O_01
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense"
@@ -1327,6 +1591,8 @@ class CfgMusic
 
     class Track_O_02
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense"
@@ -1337,6 +1603,8 @@ class CfgMusic
 
     class Track_O_03
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense"
@@ -1347,6 +1615,8 @@ class CfgMusic
 
     class Track_O_04
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -1357,6 +1627,8 @@ class CfgMusic
 
     class Track_O_05
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "dark","calm"
@@ -1367,6 +1639,8 @@ class CfgMusic
 
     class Track_O_06
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense"
@@ -1377,6 +1651,8 @@ class CfgMusic
 
     class Track_O_07
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -1387,6 +1663,8 @@ class CfgMusic
 
     class Track_O_08
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -1397,6 +1675,8 @@ class CfgMusic
 
     class Track_O_09
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense"
@@ -1407,6 +1687,8 @@ class CfgMusic
 
     class Track_O_10
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense"
@@ -1417,6 +1699,8 @@ class CfgMusic
 
     class Track_O_12
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense"
@@ -1427,6 +1711,8 @@ class CfgMusic
 
     class Track_O_14
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -1437,6 +1723,8 @@ class CfgMusic
 
     class Track_O_15
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -1447,6 +1735,8 @@ class CfgMusic
 
     class Track_O_16
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense"
@@ -1457,6 +1747,8 @@ class CfgMusic
 
     class Track_P_05
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -1467,6 +1759,8 @@ class CfgMusic
 
     class Track_P_11
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -1477,6 +1771,8 @@ class CfgMusic
 
     class Track_P_12
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "dark","intense"
@@ -1487,6 +1783,8 @@ class CfgMusic
 
     class Track_P_13
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -1497,6 +1795,8 @@ class CfgMusic
 
     class Track_P_14
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -1507,6 +1807,8 @@ class CfgMusic
 
     class Track_P_15
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -1517,6 +1819,8 @@ class CfgMusic
 
     class Track_P_16
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -1527,6 +1831,8 @@ class CfgMusic
 
     class Track_P_17
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -1537,6 +1843,8 @@ class CfgMusic
 
     class Track_R_01
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense"
@@ -1547,6 +1855,8 @@ class CfgMusic
 
     class Track_R_02
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "dark","intense"
@@ -1557,6 +1867,8 @@ class CfgMusic
 
     class Track_R_03
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -1567,6 +1879,8 @@ class CfgMusic
 
     class Track_R_04
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -1577,6 +1891,8 @@ class CfgMusic
 
     class Track_R_05
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense"
@@ -1587,6 +1903,8 @@ class CfgMusic
 
     class Track_R_06
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -1597,6 +1915,8 @@ class CfgMusic
 
     class Track_R_07
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -1607,6 +1927,8 @@ class CfgMusic
 
     class Track_R_08
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense"
@@ -1617,6 +1939,8 @@ class CfgMusic
 
     class Track_R_09
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -1627,6 +1951,8 @@ class CfgMusic
 
     class Track_R_10
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense"
@@ -1637,6 +1963,8 @@ class CfgMusic
 
     class Track_R_11
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -1647,6 +1975,8 @@ class CfgMusic
 
     class Track_R_13
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -1657,6 +1987,8 @@ class CfgMusic
 
     class Track_R_14
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense"
@@ -1667,6 +1999,8 @@ class CfgMusic
 
     class Track_R_15
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense"
@@ -1677,6 +2011,8 @@ class CfgMusic
 
     class Track_R_16
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -1687,6 +2023,8 @@ class CfgMusic
 
     class Track_R_17
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense"
@@ -1697,6 +2035,8 @@ class CfgMusic
 
     class Track_R_18
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -1707,6 +2047,8 @@ class CfgMusic
 
     class Track_R_19
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -1717,6 +2059,8 @@ class CfgMusic
 
     class Track_R_20
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense"
@@ -1727,6 +2071,8 @@ class CfgMusic
 
     class Track_R_21
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense"
@@ -1737,6 +2083,8 @@ class CfgMusic
 
     class Track_R_22
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense"
@@ -1747,6 +2095,8 @@ class CfgMusic
 
     class Track_R_23
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "intense"
@@ -1757,6 +2107,8 @@ class CfgMusic
 
     class Track_R_24
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "calm"
@@ -1767,6 +2119,8 @@ class CfgMusic
 
     class OM_Music02
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "dark"
@@ -1777,6 +2131,8 @@ class CfgMusic
 
     class OM_Music03
     {
+        name = "This Is War";
+        artist = "Bohemia Interactive";
         moods[] = 
         {
             "dark"
