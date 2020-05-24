@@ -16,39 +16,59 @@ if (isDedicated) then {
 
 // ======================================== FUNCTIONS ========================================
 
-// finch your code looks fucking gross mate ~jake
-XIM_fncIteratePlayers = // defines the XIM_fncIteratePlayers function, which iterates through each player
+XIM_fncMonitorPlayers = 
 {
-	{
-		params["_oFiringAI"]; // defines _oFiringAI, which is the object of the AI who fired
-		[_oFiringAI, _x] call XIM_fncEvaluateCombat; // calls the XIM_fncEvaluateCombat function, with _oFiringAI as the first argument, and the player's object as the second
+	params[["_aPlayerMachineIDs", objNull], "_oPlayer"];
 
-		if (_x getVariable ["XIM_bCombat", true] == true) then // if XIM_fncEvaluateCombat returned true
+	if (isNull _aPlayerMachineIDs) then // if no argument in position zero was provided
+	{
+		private _aPlayerMachineIDs = [];
 		{
-			private _oPlayer = _x;
-			private _aPlayerNetIds = [];
+			if (_oPlayer distance _x <= 500) then // if the distance between the player currently being iterated in the outermost loop and the player currently being iterated in the innermost loop is less than or equal to 500
+			{
+				private _iPlayerID = owner _x;
+				_aPlayerMachineIDs pushBack _iPlayerID;
+			};
+		} forEach allPlayers - entities "HeadlessClient_F"; // for every player, except headless clients
+	}
+	else // if an argument in position zero was provided
+	{
+		[_aPlayerMachineIDs, _oPlayer] spawn
+		{
+			params ["_aPlayerMachineIDs", "_oPlayer"];
 			{
 				if (_oPlayer distance _x <= 500) then // if the distance between the player currently being iterated in the outermost loop and the player currently being iterated in the innermost loop is less than or equal to 500
 				{
-					_sPlayerID = NetId _x;
-					_aPlayerNetIds pushBack _sPlayerID;
+					private _iPlayerID = owner _x;
+					_aPlayerMachineIDs pushBack _iPlayerID;
 				};
-			} forEach allPlayers - entities "HeadlessClient_F";
-		};
-	} forEach allPlayers - entities "HeadlessClient_F"; // for every single player, excluding headless clients
-};
-
-XIM_fncEvaluateCombat = // defines XIM_fncEvaluateCombat, which checks if the player can move, before checking if they are within 500m of the argument, and returning true if they are, else returning false
-{
-	params ["_oFiringAI", "_oPlayer"]; // defines _oFiringAI, which is the object of the AI who fired
-
-	if (alive _oPlayer) then // if the player is not dead
-	{
-		if (_oPlayer distance _oFiringAI <= 500) then // if the distance to the AI who is firing is less than or equal to 500 metres
-		{
-			_oPlayer setVariable ["XIM_bCombat", true];
+			} forEach allPlayers - entities "HeadlessClient_F"; // for every player, except headless clients
 		};
 	};
+};
+
+XIM_fncIteratePlayer = // defines the XIM_fncIteratePlayers function, which iterates through each player
+{
+	params ["_oFiringAI", "_oPlayer"]; // defines _oFiringAI, which is the object of the AI who fired
+	private _aPlayerMachineIDs = []; // defines _aPlayerMachineIDs, which is an empty array
+
+	if (_oPlayer getVariable ["XIM_bCombat"] == false) then // if the client is not already in combat
+	{
+		if (alive _oPlayer) then // if the player is not dead
+		{
+			if (_oPlayer distance _oFiringAI <= 500) then // if the distance to the AI who is firing is less than or equal to 500 metres
+			{
+				private _iPlayerID = owner _oPlayer; // finds the player's machine ID, and assigns the value to _iPlayerID
+				_iPlayerID publicVariableClient ["XIM_bCombat", true]; // set the player's combat variable to true
+			};
+		};
+
+		if (_oPlayer getVariable ["XIM_bCombat"] == true) then // if the player entered combat after previously not being in combat
+		{
+			private _oPlayer = _x;
+		};
+	};
+	_aPlayerMachineIDs sort true; // sort the array in ascending order, and return the array
 };
 
 fncXIM_MusicHandler = { // defines the fncXIM_MusicHandler function, which disables ace's volume interference for the group, plays a certain type of music based on the parameter, and then reenables ace's volume interference for that same group
@@ -88,12 +108,14 @@ fncXIM_MusicRemote = {
 };
 
 // ======================================== EVENT HANDLERS ========================================
-onPlayerConnected
+onPlayerConnected // when a player connects
 {
-	
+	XIM_bCombat = false; // declare XIM_bCombat, which is a variable to determine if the player is in combat or not
+	_owner publicVariableClient "XIM_bCombat"; // broadcast the XIM_bCombat variable, with the default value of false
+	XIM_bCombat = nil; // destroy the XIM_bCombat variable, as it is no longer needed
 };
 
-["ace_firedNonPlayer", [this select 0] call XIM_fncIteratePlayers] call CBA_fnc_addEventHandler; // adds event handler for when an AI fires
+["ace_firedNonPlayer", [this select 0] call XIM_fncIteratePlayer] call CBA_fnc_addEventHandler; // adds event handler for when an AI fires
 
 "XIM_aStateChange" addPublicVariableEventHandler 
 {
