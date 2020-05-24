@@ -95,7 +95,7 @@ class CfgMusic
     };
     class LeadTrack04_F
     {
-        name = "Action Dark";
+        name = "Action Dark 2";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -142,7 +142,7 @@ class CfgMusic
     };
     class AmbientTrack01_F
     {
-        name = "East Wind";
+        name = "East Wind - Alternative";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -166,7 +166,7 @@ class CfgMusic
     };
     class AmbientTrack01b_F
     {
-        name = "East Wind";
+        name = "East Wind - Alternative 2";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -211,7 +211,7 @@ class CfgMusic
     };
     class BackgroundTrack01_F
     {
-        name = "Underwater";
+        name = "Underwater 2";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -267,7 +267,7 @@ class CfgMusic
     };
     class LeadTrack02a_F_EPA
     {
-        name = "Aegis Blues";
+        name = "Aegis Blues - Alternative";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -279,7 +279,7 @@ class CfgMusic
     };
     class LeadTrack02b_F_EPA
     {
-        name = "Aegis Blues";
+        name = "Aegis Blues - Alternative 2";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -316,7 +316,7 @@ class CfgMusic
 
     class LeadTrack01a_F_EPB
     {
-        name = "Adapt";
+        name = "Adapt - Alternative";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -339,7 +339,7 @@ class CfgMusic
     };
     class LeadTrack02a_F_EPB
     {
-        name = "Exit Strategy";
+        name = "Exit Strategy - Alternative";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -350,7 +350,7 @@ class CfgMusic
     };
     class LeadTrack02b_F_EPB
     {
-        name = "Exit Strategy";
+        name = "Exit Strategy - Alternative 2";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -374,7 +374,7 @@ class CfgMusic
 
     class LeadTrack03a_F_EPB
     {
-        name = "Beyond Recognition";
+        name = "Beyond Recognition - Alternative 1";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -495,7 +495,7 @@ class CfgMusic
 
     class LeadTrack06b_F_EPC
     {
-        name = "Win";
+        name = "Win - Alternative 1";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -761,7 +761,7 @@ class CfgMusic
 
     class LeadTrack04_F_EXP
     {
-        name = "This Is War (Apex Remix)";
+        name = "This Is War (Apex Remix - Alternative)";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1098,7 +1098,8 @@ class CfgMusic
         artist = "Bohemia Interactive";
         moods[] = 
         {
-            "calm","dark"
+            "calm",
+            "dark"
         };
         sound[] = { "\A3\Music_F_Tank\AmbientTrack01_F_Tank.ogg", db + 0, 1.0 };
         //Tanks DLC: Hidden Enemy
@@ -1181,7 +1182,7 @@ class CfgMusic
 
     class Music_Roaming_Day_02
     {
-        name = "This Is War";
+        name = "Contact DLC: Sunrise Zero-Two";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1193,7 +1194,7 @@ class CfgMusic
 
     class Music_Hostile_Drone_Close_01
     {
-        name = "This Is War";
+        name = "Contact DLC: Hostile";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1205,7 +1206,7 @@ class CfgMusic
 
     class Music_Battle_Alien
     {
-        name = "This Is War";
+        name = "Contact DLC: Contact";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1217,7 +1218,7 @@ class CfgMusic
 
     class Music_Battle_Human
     {
-        name = "This Is War";
+        name = "Contact DLC: Infighting";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1229,7 +1230,7 @@ class CfgMusic
 
     class Music_Russian_Theme
     {
-        name = "This Is War";
+        name = "Contact DLC: Sharper Claws";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1241,7 +1242,7 @@ class CfgMusic
 
     class Music_Suspended_Loop_01
     {
-        name = "This Is War";
+        name = "Contact DLC: Suspense";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1253,7 +1254,7 @@ class CfgMusic
 
     class Music_Tension_Loop_01
     {
-        name = "This Is War";
+        name = "Contact DLC: Tension";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1267,7 +1268,7 @@ class CfgMusic
 
     class Track_C_01
     {
-        name = "This Is War";
+        name = "Old Man: Chillout 1";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1279,7 +1280,7 @@ class CfgMusic
 
     class Track_C_02
     {
-        name = "This Is War";
+        name = "Old Man: Chillout 2";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1291,7 +1292,7 @@ class CfgMusic
 
     class Track_C_03
     {
-        name = "This Is War";
+        name = "Old Man: Chillout 3";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1303,7 +1304,7 @@ class CfgMusic
 
     class Track_C_04
     {
-        name = "This Is War";
+        name = "Old Man: Chillout 4";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1315,7 +1316,7 @@ class CfgMusic
 
     class Track_C_05
     {
-        name = "This Is War";
+        name = "Old Man: Chillout 5";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1327,7 +1328,7 @@ class CfgMusic
 
     class Track_C_06
     {
-        name = "This Is War";
+        name = "Old Man: Chillout 6";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1339,7 +1340,7 @@ class CfgMusic
 
     class Track_C_07
     {
-        name = "This Is War";
+        name = "Old Man: Chillout 7";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1351,7 +1352,7 @@ class CfgMusic
 
     class Track_C_08
     {
-        name = "This Is War";
+        name = "Old Man: Chillout 8";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1363,7 +1364,7 @@ class CfgMusic
 
     class Track_C_09
     {
-        name = "This Is War";
+        name = "Old Man: Chillout 9";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1375,7 +1376,7 @@ class CfgMusic
 
     class Track_C_10
     {
-        name = "This Is War";
+        name = "Old Man: Chillout 10";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1387,7 +1388,7 @@ class CfgMusic
 
     class Track_C_11
     {
-        name = "This Is War";
+        name = "Old Man: Chillout 11";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1399,7 +1400,7 @@ class CfgMusic
 
     class Track_C_12
     {
-        name = "This Is War";
+        name = "Old Man: Chillout 12";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1411,7 +1412,7 @@ class CfgMusic
 
     class Track_C_13
     {
-        name = "This Is War";
+        name = "Old Man: Chillout 13";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1423,7 +1424,7 @@ class CfgMusic
 
     class Track_C_14
     {
-        name = "This Is War";
+        name = "Old Man: Chillout 14";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1435,7 +1436,7 @@ class CfgMusic
 
     class Track_C_15
     {
-        name = "This Is War";
+        name = "Old Man: Chillout 15";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1447,7 +1448,7 @@ class CfgMusic
 
     class Track_C_16
     {
-        name = "This Is War";
+        name = "Old Man: Chillout 16";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1459,7 +1460,7 @@ class CfgMusic
 
     class Track_C_17
     {
-        name = "This Is War";
+        name = "Old Man: Chillout 17";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1471,7 +1472,7 @@ class CfgMusic
 
     class Track_C_18
     {
-        name = "This Is War";
+        name = "Old Man: Chillout 18";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1483,7 +1484,7 @@ class CfgMusic
 
     class Track_C_19
     {
-        name = "This Is War";
+        name = "Old Man: Chillout 19";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1495,7 +1496,7 @@ class CfgMusic
 
     class Track_C_20
     {
-        name = "This Is War";
+        name = "Old Man: Chillout 20";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1507,7 +1508,7 @@ class CfgMusic
 
     class Track_D_01
     {
-        name = "This Is War";
+        name = "Old Man: Dance 1";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1519,7 +1520,7 @@ class CfgMusic
 
     class Track_D_02
     {
-        name = "This Is War";
+        name = "Old Man: Dance 2";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1531,7 +1532,7 @@ class CfgMusic
 
     class Track_D_03
     {
-        name = "This Is War";
+        name = "Old Man: Dance 3";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1543,7 +1544,7 @@ class CfgMusic
 
     class Track_M_01
     {
-        name = "This Is War";
+        name = "Old Man: Metal 1";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1555,7 +1556,7 @@ class CfgMusic
 
     class Track_M_02
     {
-        name = "This Is War";
+        name = "Old Man: Metal 2";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1567,7 +1568,7 @@ class CfgMusic
 
     class Track_M_03
     {
-        name = "This Is War";
+        name = "Old Man: Metal 3";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1579,7 +1580,7 @@ class CfgMusic
 
     class Track_O_01
     {
-        name = "This Is War";
+        name = "Old Man: OST 1";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1591,7 +1592,7 @@ class CfgMusic
 
     class Track_O_02
     {
-        name = "This Is War";
+        name = "Old Man: OST 2";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1603,7 +1604,7 @@ class CfgMusic
 
     class Track_O_03
     {
-        name = "This Is War";
+        name = "Old Man: OST 3";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1615,7 +1616,7 @@ class CfgMusic
 
     class Track_O_04
     {
-        name = "This Is War";
+        name = "Old Man: OST 4";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1627,7 +1628,7 @@ class CfgMusic
 
     class Track_O_05
     {
-        name = "This Is War";
+        name = "Old Man: OST 5";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1639,7 +1640,7 @@ class CfgMusic
 
     class Track_O_06
     {
-        name = "This Is War";
+        name = "Old Man: OST 6";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1651,7 +1652,7 @@ class CfgMusic
 
     class Track_O_07
     {
-        name = "This Is War";
+        name = "Old Man: OST 7";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1663,7 +1664,7 @@ class CfgMusic
 
     class Track_O_08
     {
-        name = "This Is War";
+        name = "Old Man: OST 8";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1675,7 +1676,7 @@ class CfgMusic
 
     class Track_O_09
     {
-        name = "This Is War";
+        name = "Old Man: OST 9";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1687,7 +1688,7 @@ class CfgMusic
 
     class Track_O_10
     {
-        name = "This Is War";
+        name = "Old Man: OST 10";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1699,7 +1700,7 @@ class CfgMusic
 
     class Track_O_12
     {
-        name = "This Is War";
+        name = "Old Man: OST 12";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1711,7 +1712,7 @@ class CfgMusic
 
     class Track_O_14
     {
-        name = "This Is War";
+        name = "Old Man: OST 14";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1723,7 +1724,7 @@ class CfgMusic
 
     class Track_O_15
     {
-        name = "This Is War";
+        name = "Old Man: OST 15";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1735,7 +1736,7 @@ class CfgMusic
 
     class Track_O_16
     {
-        name = "This Is War";
+        name = "Old Man: OST 16";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1747,7 +1748,7 @@ class CfgMusic
 
     class Track_P_05
     {
-        name = "This Is War";
+        name = "Old Man: Pop 5";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1759,7 +1760,7 @@ class CfgMusic
 
     class Track_P_11
     {
-        name = "This Is War";
+        name = "Old Man: Pop 11";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1771,7 +1772,7 @@ class CfgMusic
 
     class Track_P_12
     {
-        name = "This Is War";
+        name = "Old Man: Pop 12";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1783,7 +1784,7 @@ class CfgMusic
 
     class Track_P_13
     {
-        name = "This Is War";
+        name = "Old Man: Pop 13";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1795,7 +1796,7 @@ class CfgMusic
 
     class Track_P_14
     {
-        name = "This Is War";
+        name = "Old Man: Pop 14";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1807,7 +1808,7 @@ class CfgMusic
 
     class Track_P_15
     {
-        name = "This Is War";
+        name = "Old Man: Pop 15";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1819,7 +1820,7 @@ class CfgMusic
 
     class Track_P_16
     {
-        name = "This Is War";
+        name = "Old Man: Pop 16";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1831,7 +1832,7 @@ class CfgMusic
 
     class Track_P_17
     {
-        name = "This Is War";
+        name = "Old Man: Pop 17";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1843,7 +1844,7 @@ class CfgMusic
 
     class Track_R_01
     {
-        name = "This Is War";
+        name = "Old Man: Rock 1";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1855,7 +1856,7 @@ class CfgMusic
 
     class Track_R_02
     {
-        name = "This Is War";
+        name = "Old Man: Rock 2";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1867,7 +1868,7 @@ class CfgMusic
 
     class Track_R_03
     {
-        name = "This Is War";
+        name = "Old Man: Rock 3";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1879,7 +1880,7 @@ class CfgMusic
 
     class Track_R_04
     {
-        name = "This Is War";
+        name = "Old Man: Rock 4";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1891,7 +1892,7 @@ class CfgMusic
 
     class Track_R_05
     {
-        name = "This Is War";
+        name = "Old Man: Rock 5";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1903,7 +1904,7 @@ class CfgMusic
 
     class Track_R_06
     {
-        name = "This Is War";
+        name = "Old Man: Rock 6";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1915,7 +1916,7 @@ class CfgMusic
 
     class Track_R_07
     {
-        name = "This Is War";
+        name = "Old Man: Rock 7";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1927,7 +1928,7 @@ class CfgMusic
 
     class Track_R_08
     {
-        name = "This Is War";
+        name = "Old Man: Rock 8";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1939,7 +1940,7 @@ class CfgMusic
 
     class Track_R_09
     {
-        name = "This Is War";
+        name = "Old Man: Rock 9";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1951,7 +1952,7 @@ class CfgMusic
 
     class Track_R_10
     {
-        name = "This Is War";
+        name = "Old Man: Rock 10";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1963,7 +1964,7 @@ class CfgMusic
 
     class Track_R_11
     {
-        name = "This Is War";
+        name = "Old Man: Rock 11";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1975,7 +1976,7 @@ class CfgMusic
 
     class Track_R_13
     {
-        name = "This Is War";
+        name = "Old Man: Rock 13";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1987,7 +1988,7 @@ class CfgMusic
 
     class Track_R_14
     {
-        name = "This Is War";
+        name = "Old Man: Rock 14";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -1999,7 +2000,7 @@ class CfgMusic
 
     class Track_R_15
     {
-        name = "This Is War";
+        name = "Old Man: Rock 15";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -2011,7 +2012,7 @@ class CfgMusic
 
     class Track_R_16
     {
-        name = "This Is War";
+        name = "Old Man: Rock 16";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -2023,7 +2024,7 @@ class CfgMusic
 
     class Track_R_17
     {
-        name = "This Is War";
+        name = "Old Man: Rock 17";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -2035,7 +2036,7 @@ class CfgMusic
 
     class Track_R_18
     {
-        name = "This Is War";
+        name = "Old Man: Rock 18";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -2047,7 +2048,7 @@ class CfgMusic
 
     class Track_R_19
     {
-        name = "This Is War";
+        name = "Old Man: Rock 19";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -2059,7 +2060,7 @@ class CfgMusic
 
     class Track_R_20
     {
-        name = "This Is War";
+        name = "Old Man: Rock 20";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -2071,7 +2072,7 @@ class CfgMusic
 
     class Track_R_21
     {
-        name = "This Is War";
+        name = "Old Man: Rock 21";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -2083,7 +2084,7 @@ class CfgMusic
 
     class Track_R_22
     {
-        name = "This Is War";
+        name = "Old Man: Rock 22";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -2095,7 +2096,7 @@ class CfgMusic
 
     class Track_R_23
     {
-        name = "This Is War";
+        name = "Old Man: Rock 23";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -2107,7 +2108,7 @@ class CfgMusic
 
     class Track_R_24
     {
-        name = "This Is War";
+        name = "Old Man: Rock 24";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -2119,7 +2120,7 @@ class CfgMusic
 
     class OM_Music02
     {
-        name = "This Is War";
+        name = "Old Man: Ambient 1";
         artist = "Bohemia Interactive";
         moods[] = 
         {
@@ -2131,7 +2132,7 @@ class CfgMusic
 
     class OM_Music03
     {
-        name = "This Is War";
+        name = "Old Man: Ambient 2";
         artist = "Bohemia Interactive";
         moods[] = 
         {
