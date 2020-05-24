@@ -14,11 +14,30 @@ if (isDedicated) then {
   ["initialize",[aDarkMusicClassnames,aCombatMusicClassnames,aCalmMusicClassnames]] remoteExecCall ["BIS_fnc_jukebox",0,true]; //Init jukebox globally + JIP
 };
 
+// ======================================== FUNCTIONS ========================================
 
 // finch your code looks fucking gross mate ~jake
+private _fncEvaluateCombat = 
+{
+	private _bCombat = false; // defines _bCombat, which is a bool for the combat status, with the default value of false
+	params ["_oFiringAI"]; // defines _oFiringAI, which is equal to the argument in position zero
+	{
+		if (alive _x) then // if the player is not dead
+		{
+			if ((_x getVariable ["ACEisUnconscious", false]) == false) then // if the player is not unconscious
+			{
+				if (_x distance _oFiringAI <= 500) then // if the distance to the AI who is firing is less than or equal to 500 metres
+				{
+					private _bCombat = true; // sets _bCombat to true
+				};
+			};
+		};
+		
+	} forEach allPlayers - entities "HeadlessClient_F"; // for every single client, excluding headless clients
+	_bCombat; // returns the value of _bCombat
+};
 
-
-fncXIM_MusicHandler = {
+fncXIM_MusicHandler = { // defines the fncXIM_MusicHandler function, which disables ace's volume interference for the group, plays a certain type of music based on the parameter, and then reenables ace's volume interference for that same group
 	params ["_groupOwnerIDs","_musictype"];
 
 	missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",true,_groupOwnerIDs]; //Disable ACE interference
@@ -54,29 +73,24 @@ fncXIM_MusicRemote = {
 	};	
 };
 
-  "XIM_aStateChange" addPublicVariableEventHandler {
-  		private _aXIMstatechange = _this select 1; //Store array in variable
-  		private _ximgroup = _aXIMstatechange select 0; //Retrieve group object
-  		private _ximcombat = _aXIMstatechange select 1; //Retrieve combat state
-   		
-   		[_ximgroup,_ximcombat] call fncXIM_MusicRemote;
+// ======================================== EVENT HANDLERS ========================================
+  "XIM_aStateChange" addPublicVariableEventHandler 
+{
+	private _aXIMstatechange = _this select 1; //Store array in variable
+	private _ximgroup = _aXIMstatechange select 0; //Retrieve group object
+	private _ximcombat = _aXIMstatechange select 1; //Retrieve combat state
+	
+	[_ximgroup,_ximcombat] call fncXIM_MusicRemote;
+};
 
 
-
-  	};
-
-
-"XIM_oSender" addPublicVariableEventHandler {
-  		private _oXIMSender = _this select 1; //Store array in variable
-  		private _senderID = owner _oXIMSender;
-		ximnearestenemy = _oXIMSender findNearestEnemy _oXIMSender;
+"XIM_oSender" addPublicVariableEventHandler 
+{
+	private _oXIMSender = _this select 1; //Store array in variable
+	private _senderID = owner _oXIMSender;
+	ximnearestenemy = _oXIMSender findNearestEnemy _oXIMSender;
 
 
-		XIM_oEnemy = ximnearestenemy; //Assign to missionNamespace var
-		_senderID publicVariableClient "XIM_oEnemy";
-
-
-
-
-  		
-  	};
+	XIM_oEnemy = ximnearestenemy; //Assign to missionNamespace var
+	_senderID publicVariableClient "XIM_oEnemy";
+};
