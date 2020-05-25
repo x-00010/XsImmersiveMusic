@@ -72,22 +72,19 @@ XIM_fncIteratePlayer = // defines the XIM_fncIteratePlayers function, which iter
 };
 
 fncXIM_MusicHandler = { // defines the fncXIM_MusicHandler function, which disables ace's volume interference for the group, plays a certain type of music based on the parameter, and then reenables ace's volume interference for that same group
-	params ["_groupOwnerIDs","_musictype"];
+	params ["_aXIMPlayers","_musictype"];
 
-	missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",true,_groupOwnerIDs]; //Disable ACE interference
-	["forceBehaviour",[_musictype]] remoteExecCall ["BIS_fnc_jukebox",_groupOwnerIDs]; //Changes music type based on passed parameter
-	XIM_GroupOwnerIDs = _groupOwnerIDs;
-	[{missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",false,XIM_GroupOwnerIDs];},[], 15] call CBA_fnc_waitAndExecute;
+	missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",true,_aXIMPlayers]; //Disable ACE interference
+	["forceBehaviour",[_musictype]] remoteExecCall ["BIS_fnc_jukebox",_aXIMPlayers]; //Changes music type based on passed parameter
+	[{missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",false,_aXIMPlayers];},[], 15] call CBA_fnc_waitAndExecute; //Wait 15 seconds, then enable ACE Volume Update again (earplugs, deafened,...)
 };
 
 
 fncXIM_MusicRemote = {
-	params ["_ximgroup", "_ximcombat"]; //Defining params
-	private _groupOwnerIDs = [];
-	(units _ximgroup) apply {_groupOwnerIDs pushBackUnique (owner _x)}; //Retrieving ID's for players in group
-	if (_ximcombat) then {
+	params ["_aXIMPlayers", "_bXIMCombatState"]; //Defining params
+	if (_bXIMCombatState) then {
 
-		[_groupOwnerIDs,"combat"] spawn fncXIM_MusicHandler; //Set music to type combat
+		[_aXIMPlayers,"combat"] spawn fncXIM_MusicHandler; //Set music to type combat
 			
 	} else {
 		private _sunrisesunset = date call BIS_fnc_sunriseSunsetTime;
@@ -96,11 +93,11 @@ fncXIM_MusicRemote = {
 
 		if ((rain > 0.2) or (fog > 0.2) or ((daytime > _sunset) and (daytime < _sunrise))) then {
 
-			[_groupOwnerIDs,"stealth"] spawn fncXIM_MusicHandler; //Set music to type stealth (dark)
+			[_aXIMPlayers,"stealth"] spawn fncXIM_MusicHandler; //Set music to type stealth (dark)
   			
 		} else {
 
-  			[_groupOwnerIDs,"safe"] spawn fncXIM_MusicHandler; //Set music to type safe
+  			[_aXIMPlayers,"safe"] spawn fncXIM_MusicHandler; //Set music to type safe
 
 		};
 
@@ -120,10 +117,10 @@ onPlayerConnected // when a player connects
 "XIM_aStateChange" addPublicVariableEventHandler 
 {
 	private _aXIMstatechange = _this select 1; //Store array in variable
-	private _ximgroup = _aXIMstatechange select 0; //Retrieve group object
-	private _ximcombat = _aXIMstatechange select 1; //Retrieve combat state
+	private _aXIMPlayers = _aXIMstatechange select 0; //Retrieve network ID's
+	private _bXIMCombatState = _aXIMstatechange select 1; //Retrieve combat state for those network ID's
 	
-	[_ximgroup,_ximcombat] call fncXIM_MusicRemote;
+	[_aXIMPlayers,_bXIMCombatState] call fncXIM_MusicRemote;
 };
 
 
