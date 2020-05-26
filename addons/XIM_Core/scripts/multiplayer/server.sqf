@@ -104,8 +104,7 @@ XIM_fncIteratePlayerCombat = // defines the XIM_fncIteratePlayers function, whic
 		{
 			if (_oPlayer distance _oFiringAI <= 500) then // if the distance to the AI who is firing is less than or equal to 500 metres
 			{
-				private _iPlayerID = owner _oPlayer; // finds the player's machine ID, and assigns the value to _iPlayerID
-				_iPlayerID publicVariableClient ["XIM_bCombat", true]; // set the player's combat variable to true
+				_oPlayer setVariable ["XIM_bCombat", true]; // set the player's combat variable to true
 			};
 		};
 	};
@@ -149,7 +148,7 @@ onPlayerConnected // when a player connects
 {
 	XIM_bCombat = false; // declare XIM_bCombat, which is a variable to determine if the player is in combat or not
 	_owner publicVariableClient "XIM_bCombat"; // broadcast the XIM_bCombat variable, with the default value of false
-
+	[_owner] call XIM_fncMonitorPlayers; // calls the XIM_fncMonitorPlayers function with the argument _owner
 	XIM_bCombat = nil; // destroy the XIM_bCombat variable, as it is no longer needed
 };
 
