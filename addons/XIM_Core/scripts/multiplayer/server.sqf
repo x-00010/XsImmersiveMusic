@@ -16,12 +16,24 @@ if (isDedicated) then {
 
 // ======================================== FUNCTIONS ========================================
 
-XIM_fncSendIDs = 
+XIM_fncMain = 
 {
-	params["_aPlayerMachineIDs"]; // defines the parameter _aPlayerMachineIDs in position zero
+	{
+		params["_oFiringAI"]; // defines the parameter of _oFiringAI in argument position zero
+		[_oFiringAI, _x] call XIM_fncIteratePlayerCombat; // call XIM_fncIteratePlayerCombat, with _oFiringAI and currently iterated player as arguments
+		if (_x getVariable "XIM_bCombat") then // if the player is in combat
+		{
+			[_x] call XIM_fncMonitorPlayers; // call XIM_fncMonitorPlayers, with the currently iterated player as the argument
+		}
+	} forEach allPlayers - entities "HeadlessClient_F"; // for every player, except headless clients
+};
+
+XIM_fncSendIDs = // submits the provided array of machine IDs to the server plus a true for the combat state, which triggers the publicVariable event handler
+{
+	params["_aPlayerMachineIDs", "_oPlayer"]; // defines the parameter _aPlayerMachineIDs in position zero
 	XIM_aStateChange = []; // defines XIM_aStateChange, which is an empty array
 	XIM_aStateChange append [_aPlayerMachineIDs]; // adds the _aPlayerMachineIDs array to XIM_aStateChange at position zero
-	XIM_aStateChange append true; // adds true to the XIM_aStateChange array at position one
+	XIM_aStateChange append _oPlayer getVariable "XIM_bCombat"; // adds the value of XIM_bCombat to the XIM_aStateChange array at position one
 	publicVariableServer [XIM_aStateChange]; // sends the XIM_aStateChange variable to the server via its namespace
 	XIM_aStateChange = nil; // destroys the XIM_aStateChange variable
 };
@@ -34,50 +46,51 @@ XIM_fncMonitorPlayers = // this function gets the machine IDs of all players wit
 	params["_oPlayer"]; // defines the parameter _oPlayer in position zero
 	private _bUpdateCombat = false; // defines the _bUpdateCombat variable, which is false by default
 	private _aPlayerMachineIDs = []; // defines the array _aPlayerMachineIDs, which is empty
+	if (isNil(_oPlayer getVariable "XIM_bIterating")) then // if XIM_bIterating is not defined on that player
 	{
-		if (_oPlayer distance _x <= 500) then // if the distance between the player currently being iterated in the outermost loop and the player currently being iterated in the innermost loop is less than or equal to 500
 		{
-			private _iPlayerID = owner _x; // assign _iPlayerID to the machine ID of the player who is selected
-			_aPlayerMachineIDs pushBack _iPlayerID; // add the player's machine ID to the _aPlayerMachineIDs array
-		};
-	} forEach allPlayers - entities "HeadlessClient_F"; // for every player, except headless clients
-
-	_aPlayerMachineIDs sort false; // sort _aPlayerMachineIDs in ascending order
-	[_aPlayerMachineIDs] call XIM_fncSendIDs; // call XIM_fncSendIDs with the argument _aPlayerMachineIDs
-
-	[_aPlayerMachineIDs, _oPlayer] spawn
-	{
-		params ["_aPlayerMachineIDs", "_oPlayer"];
-		waitUntil // loop until the value true is returned
+			if (_oPlayer distance _x <= 500) then // if the distance between the player currently being iterated in the outermost loop and the player currently being iterated in the innermost loop is less than or equal to 500
+			{
+				private _iPlayerID = owner _x; // assign _iPlayerID to the machine ID of the player who is selected
+				_aPlayerMachineIDs pushBack _iPlayerID; // add the player's machine ID to the _aPlayerMachineIDs array
+			};
+		} forEach allPlayers - entities "HeadlessClient_F"; // for every player, except headless clients
+		_aPlayerMachineIDs sort false; // sort _aPlayerMachineIDs in ascending order
+		[_aPlayerMachineIDs] call XIM_fncSendIDs; // call XIM_fncSendIDs with the argument _aPlayerMachineIDs
+		[_aPlayerMachineIDs, _oPlayer] spawn // adds the following code to the scheduler, with the arguments _aPlayerMachineIDs and _oPlayer
 		{
-			private _bUpdateCombat = false;
-			sleep 5; // wait 5 seconds
-			if (_oPlayer getVariable ["XIM_bCombat"] == false) exitWith {true}; // if the player is no longer in combat, exit the loop
+			params ["_aPlayerMachineIDs", "_oPlayer"]; // defines the variables _aPlayerMachineIDs and _oPlayer
+			_oPlayer setVariable ["XIM_bIterating", true]; // define the variable XIM_bIterating on the player, and set it to true
+			waitUntil // loop forever
 			{
-				_aRecentPlayerMachineIDs = []; // declares _aRecentPlayerMachineIDs, which is an empty array
-				if (_oPlayer distance _x <= 500) then // if the distance between the player currently being iterated in the outermost loop and the player currently being iterated in the innermost loop is less than or equal to 500
+				private _bUpdateCombat = false;
+				sleep 5; // wait 5 seconds
 				{
-					private _iPlayerID = owner _x; // assign _iPlayerID to the machine ID of the player who is selected
-					_aRecentPlayerMachineIDs pushBack _iPlayerID; // add the player's machine ID to the _aPlayerMachineIDs array
-				};
-			} forEach allPlayers - entities "HeadlessClient_F"; // for every player, except headless clients
-			_aRecentPlayerMachineIDs sort false; // sort _aRecentPlayerMachineIDs in ascending order
-			if (_aPlayerMachineIDs != _aRecentPlayerMachineIDs) then // if the arrays are not completely identical
-			{
-				{
-					_iRecentMachineID = _x; // assign the currently selected machine ID to _iRecentMachineID, so it can be used in a findIf
-					if (!(_aPlayerMachineIDs findIf {_x  = _iRecentMachineID})) then // if the selected ID from the _aRecentPlayerMachineIDs array is not in _aPlayerMachineIDs
+					_aRecentPlayerMachineIDs = []; // declares _aRecentPlayerMachineIDs, which is an empty array
+					if (_oPlayer distance _x <= 500) then // if the distance between the player currently being iterated in the outermost loop and the player currently being iterated in the innermost loop is less than or equal to 500
 					{
-						_bUpdateCombat = true; // then change _bUpdateCombat to true
+						private _iPlayerID = owner _x; // assign _iPlayerID to the machine ID of the player who is selected
+						_aRecentPlayerMachineIDs pushBack _iPlayerID; // add the player's machine ID to the _aPlayerMachineIDs array
 					};
-				} forEach _aRecentPlayerMachineIDs // for every entry in the _aRecentPlayerMachineIDs array
+				} forEach allPlayers - entities "HeadlessClient_F"; // for every player, except headless clients
+				_aRecentPlayerMachineIDs sort true; // sort _aRecentPlayerMachineIDs in ascending order
+				if (_aPlayerMachineIDs != _aRecentPlayerMachineIDs) then // if the arrays are not completely identical
+				{
+					{
+						_iRecentMachineID = _x; // assign the currently selected machine ID to _iRecentMachineID, so it can be used in a findIf
+						if (!(_aPlayerMachineIDs findIf {_x  = _iRecentMachineID})) then // if the selected ID from the _aRecentPlayerMachineIDs array is not in _aPlayerMachineIDs
+						{
+							_bUpdateCombat = true; // then change _bUpdateCombat to true
+						};
+					} forEach _aRecentPlayerMachineIDs // for every entry in the _aRecentPlayerMachineIDs array
+				};
+				if (_bUpdateCombat) then // if _bUpdateCombat is true
+				{
+					[_aRecentPlayerMachineIDs] call XIM_fncSendIDs; // call the XIM_fncSendIDs function with the argument _aRecentPlayerMachineIDs
+				};
+				_aPlayerMachineIDs = _aRecentPlayerMachineIDs; // set the value of _aPlayerMachineIDs to _aRecentPlayerMachineIDs
+				false;
 			};
-			if (_bUpdateCombat) then // if _bUpdateCombat is true
-			{
-				[_aRecentPlayerMachineIDs] call XIM_fncSendIDs; // call the XIM_fncSendIDs function with the argument _aRecentPlayerMachineIDs
-			};
-			_aPlayerMachineIDs = _aRecentPlayerMachineIDs; // set the value of _aPlayerMachineIDs to _aRecentPlayerMachineIDs
-			false;
 		};
 	};
 };
@@ -85,8 +98,6 @@ XIM_fncMonitorPlayers = // this function gets the machine IDs of all players wit
 XIM_fncIteratePlayerCombat = // defines the XIM_fncIteratePlayers function, which iterates through each player and determines if they are in combat
 {
 	params ["_oFiringAI", "_oPlayer"]; // defines _oFiringAI, which is the object of the AI who fired
-	private _aPlayerMachineIDs = []; // defines _aPlayerMachineIDs, which is an empty array
-
 	if (_oPlayer getVariable ["XIM_bCombat"] == false) then // if the client is not already in combat
 	{
 		if (alive _oPlayer) then // if the player is not dead
@@ -97,13 +108,7 @@ XIM_fncIteratePlayerCombat = // defines the XIM_fncIteratePlayers function, whic
 				_iPlayerID publicVariableClient ["XIM_bCombat", true]; // set the player's combat variable to true
 			};
 		};
-
-		if (_oPlayer getVariable ["XIM_bCombat"] == true) then // if the player entered combat after previously not being in combat
-		{
-			private _oPlayer = _x;
-		};
 	};
-	_aPlayerMachineIDs sort true; // sort the array in ascending order, and return the array
 };
 
 fncXIM_MusicHandler = { // defines the fncXIM_MusicHandler function, which disables ace's volume interference for the group, plays a certain type of music based on the parameter, and then reenables ace's volume interference for that same group
@@ -144,10 +149,11 @@ onPlayerConnected // when a player connects
 {
 	XIM_bCombat = false; // declare XIM_bCombat, which is a variable to determine if the player is in combat or not
 	_owner publicVariableClient "XIM_bCombat"; // broadcast the XIM_bCombat variable, with the default value of false
+
 	XIM_bCombat = nil; // destroy the XIM_bCombat variable, as it is no longer needed
 };
 
-["ace_firedNonPlayer", [this select 0] call XIM_fncIteratePlayer] call CBA_fnc_addEventHandler; // adds event handler for when an AI fires
+["ace_firedNonPlayer", [this select 0] call XIM_fncMain] call CBA_fnc_addEventHandler; // adds event handler for when an AI fires
 
 "XIM_aStateChange" addPublicVariableEventHandler 
 {
