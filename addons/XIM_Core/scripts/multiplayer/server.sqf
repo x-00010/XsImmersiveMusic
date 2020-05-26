@@ -108,10 +108,10 @@ XIM_fncIteratePlayerCombat = // defines the XIM_fncIteratePlayers function, whic
 
 fncXIM_MusicHandler = { // defines the fncXIM_MusicHandler function, which disables ace's volume interference for the group, plays a certain type of music based on the parameter, and then reenables ace's volume interference for that same group
 	params ["_aXIMPlayers","_musictype"];
-
-	missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",true,_aXIMPlayers]; //Disable ACE interference
-	["forceBehaviour",[_musictype]] remoteExecCall ["BIS_fnc_jukebox",_aXIMPlayers]; //Changes music type based on passed parameter
-	[{missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",false,_aXIMPlayers];},[], 15] call CBA_fnc_waitAndExecute; //Wait 15 seconds, then enable ACE Volume Update again (earplugs, deafened,...)
+	XIM_aPlayers = _aXIMPlayers;
+	missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",true,XIM_aPlayers]; //Disable ACE interference
+	["forceBehaviour",[_musictype]] remoteExecCall ["BIS_fnc_jukebox",XIM_aPlayers]; //Changes music type based on passed parameter
+	[{missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",false,XIM_aPlayers];},[], 15] call CBA_fnc_waitAndExecute; //Wait 15 seconds, then enable ACE Volume Update again (earplugs, deafened,...)
 };
 
 
