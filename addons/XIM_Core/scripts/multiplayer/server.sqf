@@ -97,16 +97,21 @@ XIM_fncMonitorPlayers = // this function gets the machine IDs of all players wit
 XIM_fncIteratePlayerCombat = // defines the XIM_fncIteratePlayers function, which iterates through each player and determines if they are in combat
 {
 	params ["_oFiringAI", "_oPlayer"]; // defines _oFiringAI, which is the object of the AI who fired
+
 	if (!(_oPlayer getVariable "XIM_bCombat")) then // if the client is not already in combat
 	{
+		hint "1";
 		if (alive _oPlayer) then // if the player is not dead
 		{
+			hint "2";
 			if (_oPlayer distance _oFiringAI <= 500) then // if the distance to the AI who is firing is less than or equal to 500 metres
 			{
 				_oPlayer setVariable ["XIM_bCombat", true]; // set the player's combat variable to true
+				hint "In combat!";
 			};
 		};
 	};
+	hint "pisof";
 };
 
 fncXIM_MusicHandler = { // defines the fncXIM_MusicHandler function, which disables ace's volume interference for the group, plays a certain type of music based on the parameter, and then reenables ace's volume interference for that same group
@@ -145,8 +150,8 @@ fncXIM_MusicRemote = {
 addMissionEventHandler ["PlayerConnected", // when a player connects
 {
 	params ["_id", "_uid", "_name", "_jip", "_owner", "_idstr"];
-	XIM_bCombat = false; // declare XIM_bCombat, which is a variable to determine if the player is in combat or not
-	_owner publicVariableClient "XIM_bCombat"; // broadcast the XIM_bCombat variable, with the default value of false
+	//XIM_bCombat = false; // declare XIM_bCombat, which is a variable to determine if the player is in combat or not
+	player setVariable ["XIM_bCombat", false]; // broadcast the XIM_bCombat variable, with the default value of false
 	[player] call XIM_fncMonitorPlayers; // calls the XIM_fncMonitorPlayers function with the argument _owner
 }];
 
