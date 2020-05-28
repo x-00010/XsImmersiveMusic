@@ -34,9 +34,7 @@ XIM_fncSendIDs = // submits the provided array of machine IDs to the server plus
 	XIM_aStateChange = []; // defines XIM_aStateChange, which is an empty array
 	XIM_aStateChange append [_aPlayerMachineIDs]; // adds the _aPlayerMachineIDs array to XIM_aStateChange at position zero
 	XIM_aStateChange pushBack (_oPlayer getVariable ["XIM_bCombat", false]); // adds the value of XIM_bCombat to the XIM_aStateChange array at position one
-	//hint str XIM_aStateChange;
 	publicVariableServer "XIM_aStateChange"; // sends the XIM_aStateChange variable to the server via its namespace
-	//XIM_aStateChange = nil; // destroys the XIM_aStateChange variable
 };
 
 XIM_fncMonitorPlayers = // this function gets the machine IDs of all players within a 500m radius of the argument, calls XIM_fncSendIDs with the array of the players
@@ -99,7 +97,7 @@ XIM_fncMonitorPlayers = // this function gets the machine IDs of all players wit
 XIM_fncIteratePlayerCombat = // defines the XIM_fncIteratePlayers function, which iterates through each player and determines if they are in combat
 {
 	params ["_oFiringAI", "_oPlayer"]; // defines _oFiringAI, which is the object of the AI who fired
-	if (_oPlayer getVariable ["XIM_bCombat"] == false) then // if the client is not already in combat
+	if (!(_oPlayer getVariable "XIM_bCombat")) then // if the client is not already in combat
 	{
 		if (alive _oPlayer) then // if the player is not dead
 		{
@@ -150,7 +148,6 @@ addMissionEventHandler ["PlayerConnected", // when a player connects
 	XIM_bCombat = false; // declare XIM_bCombat, which is a variable to determine if the player is in combat or not
 	_owner publicVariableClient "XIM_bCombat"; // broadcast the XIM_bCombat variable, with the default value of false
 	[player] call XIM_fncMonitorPlayers; // calls the XIM_fncMonitorPlayers function with the argument _owner
-	//XIM_bCombat = nil; // destroy the XIM_bCombat variable, as it is no longer needed
 }];
 
 ["ace_firedNonPlayer", XIM_fncMain] call CBA_fnc_addEventHandler; // adds event handler for when an AI fires
