@@ -24,7 +24,7 @@ XIM_fncMain =
 		if (_x getVariable "XIM_bCombat") then // if the player is in combat
 		{
 			[_x] call XIM_fncMonitorPlayers; // call XIM_fncMonitorPlayers, with the currently iterated player as the argument
-		}
+		};
 	} forEach (allPlayers - entities "HeadlessClient_F"); // for every player, except headless clients
 };
 
@@ -85,7 +85,7 @@ XIM_fncMonitorPlayers = // this function gets the machine IDs of all players wit
 				};
 				if (_bUpdateCombat) then // if _bUpdateCombat is true
 				{
-					[_aRecentPlayerMachineIDs] call XIM_fncSendIDs; // call the XIM_fncSendIDs function with the argument _aRecentPlayerMachineIDs
+					[_aRecentPlayerMachineIDs, _oPlayer] call XIM_fncSendIDs; // call the XIM_fncSendIDs function with the argument _aRecentPlayerMachineIDs
 				};
 				_aPlayerMachineIDs = _aRecentPlayerMachineIDs; // set the value of _aPlayerMachineIDs to _aRecentPlayerMachineIDs
 				false;
