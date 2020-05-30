@@ -33,7 +33,7 @@ XIM_fncSendIDs = // submits the provided array of machine IDs to the server plus
 	params["_aPlayerMachineIDs", "_oPlayer"]; // defines the parameter _aPlayerMachineIDs in position zero
 	XIM_aStateChange = []; // defines XIM_aStateChange, which is an empty array
 	XIM_aStateChange append [_aPlayerMachineIDs]; // adds the _aPlayerMachineIDs array to XIM_aStateChange at position zero
-	XIM_aStateChange pushBack (_oPlayer getVariable ["XIM_bCombat", false]); // adds the value of XIM_bCombat to the XIM_aStateChange array at position one
+	XIM_aStateChange pushBack (_oPlayer getVariable "XIM_bCombat"); // adds the value of XIM_bCombat to the XIM_aStateChange array at position one
 	publicVariableServer "XIM_aStateChange"; // sends the XIM_aStateChange variable to the server via its namespace
 };
 
