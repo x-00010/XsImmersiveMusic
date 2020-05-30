@@ -34,6 +34,7 @@ XIM_fncSendIDs = // submits the provided array of machine IDs to the server plus
 	XIM_aStateChange = []; // defines XIM_aStateChange, which is an empty array
 	XIM_aStateChange append [_aPlayerMachineIDs]; // adds the _aPlayerMachineIDs array to XIM_aStateChange at position zero
 	XIM_aStateChange pushBack (_oPlayer getVariable "XIM_bCombat"); // adds the value of XIM_bCombat to the XIM_aStateChange array at position one
+	hint format ["ids sent %1", (_oPlayer getVariable "XIM_bCombat")];
 	publicVariableServer "XIM_aStateChange"; // sends the XIM_aStateChange variable to the server via its namespace
 };
 
@@ -54,12 +55,15 @@ XIM_fncMonitorPlayers = // this function gets the machine IDs of all players wit
 				_aPlayerMachineIDs pushBack _iPlayerID; // add the player's machine ID to the _aPlayerMachineIDs array
 			};
 		} forEach (allPlayers - entities "HeadlessClient_F"); // for every player, except headless clients
-		_aPlayerMachineIDs sort false; // sort _aPlayerMachineIDs in ascending order
+		_aPlayerMachineIDs sort true; // sort _aPlayerMachineIDs in ascending order
 		[_aPlayerMachineIDs, _oPlayer] call XIM_fncSendIDs; // call XIM_fncSendIDs with the argument _aPlayerMachineIDs
+		_oPlayer setVariable ["XIM_bIterating", true]; // define the variable XIM_bIterating on the player, and set it to true
+	}
+	else
+	{
 		[_aPlayerMachineIDs, _oPlayer] spawn // adds the following code to the scheduler, with the arguments _aPlayerMachineIDs and _oPlayer
 		{
 			params ["_aPlayerMachineIDs", "_oPlayer"]; // defines the variables _aPlayerMachineIDs and _oPlayer
-			_oPlayer setVariable ["XIM_bIterating", true]; // define the variable XIM_bIterating on the player, and set it to true
 			waitUntil // loop forever
 			{
 				private _aRecentPlayerMachineIDs = []; // declares _aRecentPlayerMachineIDs, which is an empty array
@@ -111,7 +115,6 @@ XIM_fncIteratePlayerCombat = // defines the XIM_fncIteratePlayers function, whic
 			};
 		};
 	};
-	hint "pisof";
 };
 
 fncXIM_MusicHandler = { // defines the fncXIM_MusicHandler function, which disables ace's volume interference for the group, plays a certain type of music based on the parameter, and then reenables ace's volume interference for that same group
