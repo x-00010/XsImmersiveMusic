@@ -21,10 +21,6 @@ XIM_fncMain =
 	{
 		params["_oFiringAI"]; // defines the parameter of _oFiringAI in argument position zero
 		[_oFiringAI, _x] call XIM_fncIteratePlayerCombat; // call XIM_fncIteratePlayerCombat, with _oFiringAI and currently iterated player as arguments
-		if (_x getVariable "XIM_bCombat") then // if the player is in combat
-		{
-			[_x] call XIM_fncMonitorPlayers; // call XIM_fncMonitorPlayers, with the currently iterated player as the argument
-		};
 	} forEach (allPlayers - entities "HeadlessClient_F"); // for every player, except headless clients
 };
 
@@ -38,7 +34,7 @@ XIM_fncSendIDs = // submits the provided array of machine IDs to the server plus
 	publicVariableServer "XIM_aStateChange"; // sends the XIM_aStateChange variable to the server via its namespace
 };
 
-XIM_fncMonitorPlayers = // this function gets the machine IDs of all players within a 500m radius of the argument, calls XIM_fncSendIDs with the array of the players
+XIM_fncWatchPlayers = // this function gets the machine IDs of all players within a 500m radius of the argument, calls XIM_fncSendIDs with the array of the players
 						// as the argument and then checks all of the players within 500m of the argument again every 5 seconds. 
 						// if a new player has entered the 500m radius, then XIM_fncSendIDs is called, with the array containing the latest player machine IDs as the
 						// argument.
@@ -58,42 +54,40 @@ XIM_fncMonitorPlayers = // this function gets the machine IDs of all players wit
 		_aPlayerMachineIDs sort true; // sort _aPlayerMachineIDs in ascending order
 		[_aPlayerMachineIDs, _oPlayer] call XIM_fncSendIDs; // call XIM_fncSendIDs with the argument _aPlayerMachineIDs
 		_oPlayer setVariable ["XIM_bIterating", true]; // define the variable XIM_bIterating on the player, and set it to true
-	}
-	else
+	};
+	[_aPlayerMachineIDs, _oPlayer] spawn // adds the following code to the scheduler, with the arguments _aPlayerMachineIDs and _oPlayer
 	{
-		[_aPlayerMachineIDs, _oPlayer] spawn // adds the following code to the scheduler, with the arguments _aPlayerMachineIDs and _oPlayer
+		params ["_aPlayerMachineIDs", "_oPlayer"]; // defines the variables _aPlayerMachineIDs and _oPlayer
+		waitUntil // loop forever
 		{
-			params ["_aPlayerMachineIDs", "_oPlayer"]; // defines the variables _aPlayerMachineIDs and _oPlayer
-			waitUntil // loop forever
+			private _aRecentPlayerMachineIDs = []; // declares _aRecentPlayerMachineIDs, which is an empty array
+			private _bUpdateCombat = false;
+			sleep 5; // wait 5 seconds
 			{
-				private _aRecentPlayerMachineIDs = []; // declares _aRecentPlayerMachineIDs, which is an empty array
-				private _bUpdateCombat = false;
-				sleep 5; // wait 5 seconds
+				if (_oPlayer distance _x <= 500) then // if the distance between the player currently being iterated in the outermost loop and the player currently being iterated in the innermost loop is less than or equal to 500
 				{
-					if (_oPlayer distance _x <= 500) then // if the distance between the player currently being iterated in the outermost loop and the player currently being iterated in the innermost loop is less than or equal to 500
+					private _iPlayerID = owner _x; // assign _iPlayerID to the machine ID of the player who is selected
+					_aRecentPlayerMachineIDs pushBack _iPlayerID; // add the player's machine ID to the _aPlayerMachineIDs array
+				};
+			} forEach (allPlayers - entities "HeadlessClient_F"); // for every player, except headless clients
+			_aRecentPlayerMachineIDs sort true; // sort _aRecentPlayerMachineIDs in ascending order
+			if (!(_aPlayerMachineIDs isEqualTo _aRecentPlayerMachineIDs)) then // if the arrays are not completely identical
+			{
+				{
+					_iRecentMachineID = _x; // assign the currently selected machine ID to _iRecentMachineID, so it can be used in a findIf
+					if (_aPlayerMachineIDs findIf {_x  = _iRecentMachineID} == -1) then // if the selected ID from the _aRecentPlayerMachineIDs array is not in _aPlayerMachineIDs
 					{
-						private _iPlayerID = owner _x; // assign _iPlayerID to the machine ID of the player who is selected
-						_aRecentPlayerMachineIDs pushBack _iPlayerID; // add the player's machine ID to the _aPlayerMachineIDs array
+						_bUpdateCombat = true; // then change _bUpdateCombat to true
 					};
-				} forEach (allPlayers - entities "HeadlessClient_F"); // for every player, except headless clients
-				_aRecentPlayerMachineIDs sort true; // sort _aRecentPlayerMachineIDs in ascending order
-				if (!(_aPlayerMachineIDs isEqualTo _aRecentPlayerMachineIDs)) then // if the arrays are not completely identical
-				{
-					{
-						_iRecentMachineID = _x; // assign the currently selected machine ID to _iRecentMachineID, so it can be used in a findIf
-						if (_aPlayerMachineIDs findIf {_x  = _iRecentMachineID} == -1) then // if the selected ID from the _aRecentPlayerMachineIDs array is not in _aPlayerMachineIDs
-						{
-							_bUpdateCombat = true; // then change _bUpdateCombat to true
-						};
-					} forEach _aRecentPlayerMachineIDs // for every entry in the _aRecentPlayerMachineIDs array
-				};
-				if (_bUpdateCombat) then // if _bUpdateCombat is true
-				{
-					[_aRecentPlayerMachineIDs, _oPlayer] call XIM_fncSendIDs; // call the XIM_fncSendIDs function with the argument _aRecentPlayerMachineIDs
-				};
-				_aPlayerMachineIDs = _aRecentPlayerMachineIDs; // set the value of _aPlayerMachineIDs to _aRecentPlayerMachineIDs
-				false;
+				} forEach _aRecentPlayerMachineIDs // for every entry in the _aRecentPlayerMachineIDs array
 			};
+			if (_bUpdateCombat) then // if _bUpdateCombat is true
+			{
+				[_aRecentPlayerMachineIDs, _oPlayer] call XIM_fncSendIDs; // call the XIM_fncSendIDs function with the argument _aRecentPlayerMachineIDs
+			};
+			_aPlayerMachineIDs = _aRecentPlayerMachineIDs; // set the value of _aPlayerMachineIDs to _aRecentPlayerMachineIDs
+			XIM_aPlayerMachineIDs = _aPlayerMachineIDs;
+			false;
 		};
 	};
 };
@@ -104,14 +98,13 @@ XIM_fncIteratePlayerCombat = // defines the XIM_fncIteratePlayers function, whic
 
 	if (!(_oPlayer getVariable "XIM_bCombat")) then // if the client is not already in combat
 	{
-		hint "1";
 		if (alive _oPlayer) then // if the player is not dead
 		{
-			hint "2";
 			if (_oPlayer distance _oFiringAI <= 500) then // if the distance to the AI who is firing is less than or equal to 500 metres
 			{
 				_oPlayer setVariable ["XIM_bCombat", true]; // set the player's combat variable to true
 				hint "In combat!";
+				[XIM_aPlayerMachineIDs, _oPlayer] call XIM_fncSendIDs; // call XIM_fncSendIDs with the argument _aPlayerMachineIDs
 			};
 		};
 	};
@@ -155,7 +148,7 @@ addMissionEventHandler ["PlayerConnected", // when a player connects
 	params ["_id", "_uid", "_name", "_jip", "_owner", "_idstr"];
 	//XIM_bCombat = false; // declare XIM_bCombat, which is a variable to determine if the player is in combat or not
 	player setVariable ["XIM_bCombat", false]; // broadcast the XIM_bCombat variable, with the default value of false
-	[player] call XIM_fncMonitorPlayers; // calls the XIM_fncMonitorPlayers function with the argument _owner
+	[player] call XIM_fncWatchPlayers; // calls the XIM_fncWatchPlayers function with the argument _owner
 }];
 
 ["ace_firedNonPlayer", XIM_fncMain] call CBA_fnc_addEventHandler; // adds event handler for when an AI fires
