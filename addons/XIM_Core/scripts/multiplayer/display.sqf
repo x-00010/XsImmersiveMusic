@@ -1,5 +1,4 @@
 addMusicEventHandler ["MusicStart", {
-_nowplaying = "Now playing";
-_trackname = getText (configFile >> "CfgMusic" >> _this select 0 >> "name");
-_artistname = "by" + getText (configFile >> "CfgMusic" >> _this select 0 >> "artist");
-[[_nowplaying, 2, 5, 2],[_trackname, 2, 5, 2],[_artistname, 2, 5, 2]] spawn BIS_fnc_EXP_camp_SITREP}];
+private _trackname = getText (configFile >> "CfgMusic" >> _this select 0 >> "name");
+private _artistname = getText (configFile >> "CfgMusic" >> _this select 0 >> "artist");
+[parseText format["Now playing<br/><t font='PuristaBold' size='1.6'>%1</t><br/><t font='PuristaBold' size='0.8'>%2</t>", _trackname,_artistname], true, nil, 5, 1, 0] spawn BIS_fnc_textTiles;}];
