@@ -30,7 +30,6 @@ XIM_fncSendIDs = // submits the provided array of machine IDs to the server plus
 	XIM_aStateChange = []; // defines XIM_aStateChange, which is an empty array
 	XIM_aStateChange append [_aPlayerMachineIDs]; // adds the _aPlayerMachineIDs array to XIM_aStateChange at position zero
 	XIM_aStateChange pushBack (_oPlayer getVariable "XIM_bCombat"); // adds the value of XIM_bCombat to the XIM_aStateChange array at position one
-	hint format ["ids sent %1", (_oPlayer getVariable "XIM_bCombat")];
 	publicVariableServer "XIM_aStateChange"; // sends the XIM_aStateChange variable to the server via its namespace
 };
 
@@ -103,7 +102,6 @@ XIM_fncIteratePlayerCombat = // defines the XIM_fncIteratePlayers function, whic
 			if (_oPlayer distance _oFiringAI <= 500) then // if the distance to the AI who is firing is less than or equal to 500 metres
 			{
 				_oPlayer setVariable ["XIM_bCombat", true]; // set the player's combat variable to true
-				hint "In combat!";
 				[XIM_aPlayerMachineIDs, _oPlayer] call XIM_fncSendIDs; // call XIM_fncSendIDs with the argument _aPlayerMachineIDs
 			};
 		};
@@ -145,8 +143,6 @@ fncXIM_MusicRemote = {
 // ======================================== EVENT HANDLERS ========================================
 addMissionEventHandler ["PlayerConnected", // when a player connects
 {
-	params ["_id", "_uid", "_name", "_jip", "_owner", "_idstr"];
-	//XIM_bCombat = false; // declare XIM_bCombat, which is a variable to determine if the player is in combat or not
 	player setVariable ["XIM_bCombat", false]; // broadcast the XIM_bCombat variable, with the default value of false
 	[player] call XIM_fncWatchPlayers; // calls the XIM_fncWatchPlayers function with the argument _owner
 }];
