@@ -114,8 +114,33 @@ fncXIM_MusicHandler = { // defines the fncXIM_MusicHandler function, which disab
 	params ["_aXIMPlayers","_musictype"];
 	XIM_aPlayers = _aXIMPlayers;
 	missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",true,XIM_aPlayers]; //Disable ACE interference
-	["forceBehaviour",[_musictype]] remoteExecCall ["BIS_fnc_jukebox",XIM_aPlayers]; //Changes music type based on passed parameter
+	XIM_trackname = [_musictype] call fncXIM_TrackSelect;
+
+	
+	[5,0] remoteExecCall ["fadeMusic",XIM_aPlayers,false]; //Fades currently playing music, if there is a track playing
+	[{[XIM_trackname] remoteExecCall ["playMusic", XIM_aPlayers, false];},[], 5] call CBA_fnc_waitAndExecute;
+	[5,1] remoteExecCall ["fadeMusic",XIM_aPlayers,false];
+
 	[{missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",false,XIM_aPlayers];},[], 15] call CBA_fnc_waitAndExecute; //Wait 15 seconds, then enable ACE Volume Update again (earplugs, deafened,...)
+};
+
+fncXIM_TrackSelect = {
+	params ["_musictype"];
+	private _trackclassname = "";
+
+	switch (_musictype) do { 
+		case "combat" : { _trackclassname = selectRandom aCombatMusicClassnames; }; 
+		case "dark" : { _trackclassname = selectRandom aDarkMusicClassnames;}; 
+		case "calm" : { _trackclassname = selectRandom aCalmMusicClassnames; }; 
+	};
+	
+	_trackclassname; //Return classname
+
+};
+
+fncXIM_Shuffler = {
+	params ["_gXIMPlayNextForGroup"];
+
 };
 
 
@@ -156,12 +181,17 @@ addMissionEventHandler ["PlayerConnected", // when a player connects
 "XIM_aStateChange" addPublicVariableEventHandler 
 {
 	private _aXIMstatechange = _this select 1; //Store array in variable
-	private _aXIMPlayers = _aXIMstatechange select 0; //Retrieve network ID's
+	private _gXIMPlayers = _aXIMstatechange select 0; //Retrieve network ID's
 	private _bXIMCombatState = _aXIMstatechange select 1; //Retrieve combat state for those network ID's
-	[_aXIMPlayers,_bXIMCombatState] call fncXIM_MusicRemote;
+	[_gXIMPlayers,_bXIMCombatState] call fncXIM_MusicRemote;
 };
 
-
+"XIM_gPlayNextForGroup" addPublicVariableEventHandler {
+//Detects broadcast from group leader that tells server to play next track for his group
+	private _gXIMPlayNextForGroup = _this select 1;
+	
+	[_gXIMPlayNextForGroup] call fncXIM_Shuffler;
+};
 "XIM_oSender" addPublicVariableEventHandler 
 {
 	private _oXIMSender = _this select 1; //Store array in variable
