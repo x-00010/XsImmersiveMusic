@@ -2,7 +2,10 @@
 
 if (isMultiplayer) then // if client is in multiplayer
 {
-	execVM "\XIM_Core\scripts\multiplayer\display.sqf"; //Notifications
+	if (hasInterface) then
+	{
+		execVM "\XIM_Core\scripts\multiplayer\client.sqf"; // displays currently playing song
+	};
 	
 	if (isServer) then // runs on the dedicated server, or player host, either way it runs on machine id 2
 	{
