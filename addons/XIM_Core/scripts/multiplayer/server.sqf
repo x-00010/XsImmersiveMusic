@@ -14,7 +14,7 @@ if (isDedicated) then {
   ["initialize",[aDarkMusicClassnames,aCombatMusicClassnames,aCalmMusicClassnames]] remoteExecCall ["BIS_fnc_jukebox",0,true]; //Init jukebox globally + JIP
 };
 
-// ======================================== FUNCTIONS ========================================
+// ======================================== LOGIC FUNCTIONS ========================================
 
 XIM_fncMain = // this function calls XIM_fncIteratePlayerCombat every time a shot is fired for every single player on the server
 {
@@ -135,21 +135,60 @@ XIM_fncIteratePlayerCombat = // defines the XIM_fncIteratePlayers function, whic
 	};
 };
 
+// ======================================MUSIC FUNCTIONS================================================
+
 fncXIM_MusicHandler = { // defines the fncXIM_MusicHandler function, which disables ace's volume interference for the group, plays a certain type of music based on the parameter, and then reenables ace's volume interference for that same group
 	params ["_aXIMPlayers","_musictype"];
 	XIM_aPlayers = _aXIMPlayers;
+
 	missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",true,XIM_aPlayers]; //Disable ACE interference
-	["forceBehaviour",[_musictype]] remoteExecCall ["BIS_fnc_jukebox",XIM_aPlayers]; //Changes music type based on passed parameter
+	XIM_trackname = [_musictype] call fncXIM_TrackSelect;
+
+	
+	[5,0] remoteExecCall ["fadeMusic",XIM_aPlayers,false]; //Fades currently playing music, if there is a track playing
+	[{[XIM_trackname] remoteExecCall ["playMusic", XIM_aPlayers, false];},[], 5] call CBA_fnc_waitAndExecute;
+	[5,1] remoteExecCall ["fadeMusic",XIM_aPlayers,false];
+
 	[{missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",false,XIM_aPlayers];},[], 15] call CBA_fnc_waitAndExecute; //Wait 15 seconds, then enable ACE Volume Update again (earplugs, deafened,...)
+};
+
+fncXIM_TrackSelect = {
+	params ["_musictype"];
+	private _trackclassname = "";
+
+	switch (_musictype) do { 
+		case "combat" : { _trackclassname = selectRandom aCombatMusicClassnames; }; 
+		case "dark" : { _trackclassname = selectRandom aDarkMusicClassnames;}; 
+		case "calm" : { _trackclassname = selectRandom aCalmMusicClassnames; }; 
+	};
+	
+	_trackclassname; //Return classname
+
+};
+
+fncXIM_Shuffler = {
+	params ["_aXIMPlayers","_musictype"];
+	private _groupOwnerIDs = [];
+	(units _gXIMPlayNextForGroup) apply {_groupOwnerIDs pushBackUnique (owner _x)}; //Retrieving ID's for players in group
+ 
+	_trackname = [_musictype] call fncXIM_TrackSelect;
+
+	[_trackname] remoteExecCall ["playMusic", _groupOwnerIDs, false];
+	[5,1] remoteExecCall ["fadeMusic",_groupOwnerIDs,false];
+	[{missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",false,_groupOwnerIDs];},[], 10] call CBA_fnc_waitAndExecute; //Wait 10 seconds, then enable ACE Volume Update again (earplugs, deafened,...)
 };
 
 
 fncXIM_MusicRemote = {
-	params ["_aXIMPlayers", "_bXIMCombatState"]; //Defining params
+	params ["_gXIMGroup", "_bXIMCombatState","_XIMMusicRemoteFunction"]; //Defining params
+	private _groupOwnerIDs = [];
+	(units _gXIMGroup) apply {_groupOwnerIDs pushBackUnique (owner _x)}; //Retrieving ID's for players in group
+	private _sXIM_MusicType = "";
+
 	if (_bXIMCombatState) then {
 
-		[_aXIMPlayers,"combat"] spawn fncXIM_MusicHandler; //Set music to type combat
-			
+		_sXIM_MusicType = "combat";
+				
 	} else {
 		private _sunrisesunset = date call BIS_fnc_sunriseSunsetTime;
 		private _sunrise = _sunrisesunset select 0;
@@ -157,15 +196,22 @@ fncXIM_MusicRemote = {
 
 		if ((rain > 0.2) or (fog > 0.2) or ((daytime > _sunset) and (daytime < _sunrise))) then {
 
-			[_aXIMPlayers,"stealth"] spawn fncXIM_MusicHandler; //Set music to type stealth (dark)
-  			
-		} else {
+			_sXIM_MusicType = "dark";
+	  	} else {
 
-  			[_aXIMPlayers,"safe"] spawn fncXIM_MusicHandler; //Set music to type safe
+	  		_sXIM_MusicType = "calm";
 		};
 
 	};	
+
+	switch (_XIMMusicRemoteFunction) do { 
+		case "next" : {  [_groupOwnerIDs,_sXIM_MusicType] call fncXIM_Shuffler; }; 
+		case "statechange" : { [_groupOwnerIDs,_sXIM_MusicType] call fncXIM_MusicHandler; }; 
+	};
+
 };
+
+
 
 // ======================================== EVENT HANDLERS ========================================
 addMissionEventHandler ["PlayerConnected", // when a player connects
@@ -180,12 +226,19 @@ addMissionEventHandler ["PlayerConnected", // when a player connects
 "XIM_aStateChange" addPublicVariableEventHandler 
 {
 	private _aXIMstatechange = _this select 1; //Store array in variable
-	private _aXIMPlayers = _aXIMstatechange select 0; //Retrieve network ID's
+	private _gXIMPlayers = _aXIMstatechange select 0; //Retrieve network ID's
 	private _bXIMCombatState = _aXIMstatechange select 1; //Retrieve combat state for those network ID's
-	[_aXIMPlayers,_bXIMCombatState] call fncXIM_MusicRemote;
+	[_gXIMPlayers,_bXIMCombatState,"statechange"] call fncXIM_MusicRemote;
 };
 
-
+"XIM_aPlayNext" addPublicVariableEventHandler {
+//Detects broadcast from group leader that tells server to play next track for his group
+	private _aXIMPlayNext = _this select 1;
+	private _gXIMGroup = _aXIMPlayNextForGroup select 0;
+	private _bXIMCombatState = _aXIMPlayNextForGroup select 1;
+	
+	[_gXIMGroup,_bXIMCombatState,"next"] call fncXIM_MusicRemote;
+};
 "XIM_oSender" addPublicVariableEventHandler 
 {
 	private _oXIMSender = _this select 1; //Store array in variable
