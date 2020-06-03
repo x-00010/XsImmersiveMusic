@@ -132,12 +132,13 @@ fncXIM_Shuffler = {
 	private _groupOwnerIDs = [];
 
 	(units _gXIMGroup) apply {_groupOwnerIDs pushBackUnique (owner _x)}; //Retrieving ID's for players in group
- 
+	XIM_groupOwnerIDs = _groupOwnerIDs;
+
 	_trackname = [_musictype] call fncXIM_TrackSelect;
 	[0,0] remoteExecCall ["fadeMusic",_groupOwnerIDs,false];
 	[_trackname] remoteExecCall ["playMusic", _groupOwnerIDs, false];
 	[5,1] remoteExecCall ["fadeMusic",_groupOwnerIDs,false];
-	[{missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",false,_groupOwnerIDs];},[], 10] call CBA_fnc_waitAndExecute; //Wait 10 seconds, then enable ACE Volume Update again (earplugs, deafened,...)
+	[{missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",false,XIM_groupOwnerIDs];},[], 10] call CBA_fnc_waitAndExecute; //Wait 10 seconds, then enable ACE Volume Update again (earplugs, deafened,...)
 };
 
 
