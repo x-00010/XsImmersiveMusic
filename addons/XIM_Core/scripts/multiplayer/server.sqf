@@ -16,7 +16,7 @@ if (isDedicated) then {
 
 // ======================================== FUNCTIONS ========================================
 
-XIM_fncMain = 
+XIM_fncMain = // this function calls XIM_fncIteratePlayerCombat every time a shot is fired for every single player on the server
 {
 	{
 		params["_oFiringAI"]; // defines the parameter of _oFiringAI in argument position zero
@@ -24,19 +24,42 @@ XIM_fncMain =
 	} forEach (allPlayers - entities "HeadlessClient_F"); // for every player, except headless clients
 };
 
-XIM_fncSendIDs = // submits the provided array of machine IDs to the server plus a true for the combat state, which triggers the publicVariable event handler
+XIM_fncCombatTimeout = // this function determines whether the player has not had an AI fire near them in the past 5 mins, and if they have not, sets XIM_bCombat to
+					   // false
 {
-	params["_aPlayerMachineIDs", "_oPlayer"]; // defines the parameter _aPlayerMachineIDs in position zero
+	params["_oPlayer"]; // defines the parameter _oPlayer
+	[_oPlayer] spawn // adds the following code to the scheduler
+	{
+		params["_oPlayer"]; // defines the parameter _oPlayer
+		waitUntil // repeats the following code once every frame (ish)
+		{
+			if (_oPlayer getVariable ["XIM_bCombat", true]) then // if the player is in combat
+			{
+				_oPlayer setVariable ["XIM_bRecentCombat", false];
+				if (_oPlayer getVariable "XIM_bRecentCombat") then
+				{
+					sleep 300; // sleep for 5 minutes
+					_oPlayer setVariable ["XIM_bCombat", false]; // sets the player's XIM_bCombat to false
+				};
+			};
+			false;
+		};
+	};
+};
+
+XIM_fncSendGroup = // submits the provided array of machine IDs to the server plus a true for the combat state, which triggers the publicVariable event handler
+{
+	params["_oPlayer"]; // defines the parameter _aPlayerMachineIDs in position zero
 	XIM_aStateChange = []; // defines XIM_aStateChange, which is an empty array
-	XIM_aStateChange append [_aPlayerMachineIDs]; // adds the _aPlayerMachineIDs array to XIM_aStateChange at position zero
+	XIM_aStateChange append [group _oPlayer]; // adds the _aPlayerMachineIDs array to XIM_aStateChange at position zero
 	XIM_aStateChange pushBack (_oPlayer getVariable "XIM_bCombat"); // adds the value of XIM_bCombat to the XIM_aStateChange array at position one
 	publicVariableServer "XIM_aStateChange"; // sends the XIM_aStateChange variable to the server via its namespace
 };
 
 XIM_fncWatchPlayers = // this function gets the machine IDs of all players within a 500m radius of the argument, calls XIM_fncSendIDs with the array of the players
-						// as the argument and then checks all of the players within 500m of the argument again every 5 seconds. 
+						// as the argument and then checks all of the players within 500m of the argument again every 5 seconds
 						// if a new player has entered the 500m radius, then XIM_fncSendIDs is called, with the array containing the latest player machine IDs as the
-						// argument.
+						// argument
 {
 	params["_oPlayer"]; // defines the parameter _oPlayer in position zero
 	private _bUpdateCombat = false; // defines the _bUpdateCombat variable, which is false by default
@@ -95,14 +118,18 @@ XIM_fncIteratePlayerCombat = // defines the XIM_fncIteratePlayers function, whic
 {
 	params ["_oFiringAI", "_oPlayer"]; // defines _oFiringAI, which is the object of the AI who fired
 
-	if (!(_oPlayer getVariable "XIM_bCombat")) then // if the client is not already in combat
+	if (alive _oPlayer) then // if the player is not dead
 	{
-		if (alive _oPlayer) then // if the player is not dead
+		if (_oPlayer distance _oFiringAI <= 500) then // if the distance to the AI who is firing is less than or equal to 500 metres
 		{
-			if (_oPlayer distance _oFiringAI <= 500) then // if the distance to the AI who is firing is less than or equal to 500 metres
+			if (!(_oPlayer getVariable "XIM_bCombat")) then // if the player is not already in combat
 			{
 				_oPlayer setVariable ["XIM_bCombat", true]; // set the player's combat variable to true
 				[XIM_aPlayerMachineIDs, _oPlayer] call XIM_fncSendIDs; // call XIM_fncSendIDs with the argument _aPlayerMachineIDs
+			}
+			else // if the player is in combat
+			{
+				_oPlayer setVariable ["XIM_bRecentCombat", false]; // set the player's recent combat variable to true
 			};
 		};
 	};
@@ -144,7 +171,8 @@ fncXIM_MusicRemote = {
 addMissionEventHandler ["PlayerConnected", // when a player connects
 {
 	player setVariable ["XIM_bCombat", false]; // broadcast the XIM_bCombat variable, with the default value of false
-	[player] call XIM_fncWatchPlayers; // calls the XIM_fncWatchPlayers function with the argument _owner
+	[player] call XIM_fncWatchPlayers; // calls the XIM_fncWatchPlayers function with the argument player
+	[player] call XIM_fncCombatTimeout; // calls the XIM_fncWatchPlayers function with the argument player
 }];
 
 ["ace_firedNonPlayer", XIM_fncMain] call CBA_fnc_addEventHandler; // adds event handler for when an AI fires
