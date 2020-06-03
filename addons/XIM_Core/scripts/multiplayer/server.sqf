@@ -28,7 +28,7 @@ XIM_fncMain = // this function calls XIM_fncIteratePlayerCombat every time a sho
 			};
 		} forEach (units (group _x)); // for every player in the player's group
 
-		if ((!(_bCombatMasterExists)) or (_x getVariable "XIM_bCombatMaster")) then
+		if ((!(_bCombatMasterExists)) or (_x getVariable ["XIM_bCombatMaster", false])) then
 		{
 			[_oFiringAI, _x] call XIM_fncIteratePlayerCombat; // call XIM_fncIteratePlayerCombat, with _oFiringAI and currently iterated player as arguments
 		};
@@ -53,13 +53,21 @@ XIM_fncCombatTimeout = // this function determines whether the player has not ha
 		params["_oPlayer"]; // defines the parameter _oPlayer
 		waitUntil // repeats the following code once every frame (ish)
 		{
-			if (_oPlayer getVariable ["XIM_bCombat", false]) then // if the player is in combat
+			private _bTimedOut = false;
+			if (_oPlayer getVariable "XIM_bCombatMaster") then
 			{
 				_oPlayer setVariable ["XIM_bRecentCombat", false];
 				if (!(_oPlayer getVariable "XIM_bRecentCombat")) then
 				{
 					sleep 300; // sleep for 5 minutes
+					_bTimedOut = true;
+				};
+
+				if (_bTimedOut) then
+				{
+					_oPlayer setVariable ["XIM_bCombatMaster", false];
 					_oPlayer setVariable ["XIM_bCombat", false]; // sets the player's XIM_bCombat to false
+					[_oPlayer] call XIM_fncSendGroup;
 				};
 			};
 			false;
@@ -78,11 +86,11 @@ XIM_fncIteratePlayerCombat = // defines the XIM_fncIteratePlayers function, whic
 			if (!(_oPlayer getVariable "XIM_bCombat")) then // if the player is not already in combat
 			{
 				_oPlayer setVariable ["XIM_bCombat", true]; // set the player's combat variable to true
-				[_oPlayer] call XIM_fncSendGroup; // call XIM_fncSendIDs with the argument _aPlayerMachineIDs
+				[_oPlayer] call XIM_fncSendGroup; // call XIM_fncSendGroup with the argument _oPlayer
 			}
 			else // if the player is in combat
 			{
-				_oPlayer setVariable ["XIM_bRecentCombat", true]; // set the player's recent combat variable to false
+				_oPlayer setVariable ["XIM_bRecentCombat", true]; // set the player's recent combat variable to true
 			};
 		};
 	};

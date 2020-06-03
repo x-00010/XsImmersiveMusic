@@ -1,13 +1,13 @@
 
 // ======================================== FUNCTIONS ========================================
 
-XIM_fncSendGroup = // submits the provided unit's group to the server plus the unit's combat state, which triggers the publicVariable event handler
+XIM_fncPlayNext = // submits the provided unit's group to the server plus the unit's combat state, which triggers the publicVariable event handler
 {
 	params["_oPlayer"]; // defines the parameter _aPlayerMachineIDs in position zero
-	XIM_aStateChange = []; // defines XIM_aStateChange, which is an empty array
-	XIM_aStateChange pushBack [group _oPlayer]; // adds the player's group to XIM_aStateChange at position zero
-	XIM_aStateChange pushBack (_oPlayer getVariable "XIM_bCombat"); // adds the value of XIM_bCombat to the XIM_aStateChange array at position one
-	publicVariableServer "XIM_aStateChange"; // sends the XIM_aStateChange variable to the server via its namespace
+	XIM_aPlayNext = []; // defines XIM_aStateChange, which is an empty array
+	XIM_aPlayNext pushBack [group _oPlayer]; // adds the player's group to XIM_aStateChange at position zero
+	XIM_aPlayNext pushBack (_oPlayer getVariable "XIM_bCombat"); // adds the value of XIM_bCombat to the XIM_aStateChange array at position one
+	publicVariableServer "XIM_aPlayNext"; // sends the XIM_aStateChange variable to the server via its namespace
 };
 
 // ======================================== EVENT HANDLERS ========================================
@@ -19,8 +19,8 @@ private _artistname = getText (configFile >> "CfgMusic" >> _this select 0 >> "ar
 
 addMusicEventHandler ["MusicStop", // once the currently playing track has finished playing
 {
-	if (leader (group player)) then
+	if ((leader (group player)) == player) then
 	{
-		[player] call XIM_fncSendGroup;
+		[player] call XIM_fncPlayNext;
 	};
 }];
