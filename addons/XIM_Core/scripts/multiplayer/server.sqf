@@ -193,16 +193,16 @@ addMissionEventHandler ["PlayerConnected", // when a player connects
 "XIM_aStateChange" addPublicVariableEventHandler 
 {
 	private _aXIMstatechange = _this select 1; //Store array in variable
-	private _gXIMGroup = _aXIMstatechange select 0; //Retrieve network ID's
+	private _gXIMGroup = _aXIMstatechange select 0; //Retrieve group
 	private _bXIMCombatState = _aXIMstatechange select 1; //Retrieve combat state for those network ID's
 	[_gXIMGroup,_bXIMCombatState,"statechange"] call fncXIM_MusicRemote;
 };
 
 "XIM_aPlayNext" addPublicVariableEventHandler {
 //Detects broadcast from group leader that tells server to play next track for his group
-	private _aXIMPlayNext = _this select 1;
-	private _gXIMGroup = _aXIMPlayNext select 0;
-	private _bXIMCombatState = _aXIMPlayNext select 1;
+	private _aXIMPlayNext = _this select 1; //Retrieve array
+	private _gXIMGroup = _aXIMPlayNext select 0; //Retrieve group
+	private _bXIMCombatState = _aXIMPlayNext select 1; //Retrieve state
 	
 	[_gXIMGroup,_bXIMCombatState,"next"] call fncXIM_MusicRemote;
 };
