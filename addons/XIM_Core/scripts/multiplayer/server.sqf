@@ -100,7 +100,7 @@ XIM_fncIteratePlayerCombat = // defines the XIM_fncIteratePlayers function, whic
 
 fncXIM_MusicHandler = { // defines the fncXIM_MusicHandler function, which disables ace's volume interference for the group, plays a certain type of music based on the parameter, and then reenables ace's volume interference for that same group
 	params ["_aXIMPlayers","_musictype"];
-	XIM_aPlayers = _aXIMPlayers;
+	XIM_aPlayers = _aXIMPlayers; //Global for use in CBA function
 
 	missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",true,XIM_aPlayers]; //Disable ACE interference
 	XIM_trackname = [_musictype] call fncXIM_TrackSelect;
@@ -128,16 +128,16 @@ fncXIM_TrackSelect = {
 };
 
 fncXIM_Shuffler = {
-	params ["_aXIMPlayers","_musictype"];
+	params ["_gXIMGroup","_musictype"];
 	private _groupOwnerIDs = [];
-	(units _gXIMPlayNextForGroup) apply {_groupOwnerIDs pushBackUnique (owner _x)}; //Retrieving ID's for players in group
-	XIM_groupOwnerIDs = _groupOwnerIDs;
+
+	(units _gXIMGroup) apply {_groupOwnerIDs pushBackUnique (owner _x)}; //Retrieving ID's for players in group
  
 	_trackname = [_musictype] call fncXIM_TrackSelect;
-
-	[_trackname] remoteExecCall ["playMusic", XIM_groupOwnerIDs, false];
-	[5,1] remoteExecCall ["fadeMusic",XIM_groupOwnerIDs,false];
-	[{missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",false,XIM_groupOwnerIDs];},[], 10] call CBA_fnc_waitAndExecute; //Wait 10 seconds, then enable ACE Volume Update again (earplugs, deafened,...)
+	[0,0] remoteExecCall ["fadeMusic",_groupOwnerIDs,false];
+	[_trackname] remoteExecCall ["playMusic", _groupOwnerIDs, false];
+	[5,1] remoteExecCall ["fadeMusic",_groupOwnerIDs,false];
+	[{missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",false,_groupOwnerIDs];},[], 10] call CBA_fnc_waitAndExecute; //Wait 10 seconds, then enable ACE Volume Update again (earplugs, deafened,...)
 };
 
 
@@ -201,16 +201,16 @@ addMissionEventHandler ["PlayerConnected", // when a player connects
 "XIM_aStateChange" addPublicVariableEventHandler 
 {
 	private _aXIMstatechange = _this select 1; //Store array in variable
-	private _gXIMPlayers = _aXIMstatechange select 0; //Retrieve network ID's
+	private _gXIMGroup = _aXIMstatechange select 0; //Retrieve network ID's
 	private _bXIMCombatState = _aXIMstatechange select 1; //Retrieve combat state for those network ID's
-	[_gXIMPlayers,_bXIMCombatState,"statechange"] call fncXIM_MusicRemote;
+	[_gXIMGroup,_bXIMCombatState,"statechange"] call fncXIM_MusicRemote;
 };
 
 "XIM_aPlayNext" addPublicVariableEventHandler {
 //Detects broadcast from group leader that tells server to play next track for his group
 	private _aXIMPlayNext = _this select 1;
-	private _gXIMGroup = _aXIMPlayNextForGroup select 0;
-	private _bXIMCombatState = _aXIMPlayNextForGroup select 1;
+	private _gXIMGroup = _aXIMPlayNext select 0;
+	private _bXIMCombatState = _aXIMPlayNext select 1;
 	
 	[_gXIMGroup,_bXIMCombatState,"next"] call fncXIM_MusicRemote;
 };
