@@ -8,19 +8,30 @@ aCalmMusicClassnames = "'calm' in getArray (_x >> 'moods') " configClasses (conf
 
 
 
-if (isDedicated) then {
+/*if (isDedicated) then {
   ["initialize",[aDarkMusicClassnames,aCombatMusicClassnames,aCalmMusicClassnames]] remoteExecCall ["BIS_fnc_jukebox",-2,true]; //Init jukebox on clients + JIP
 } else {
   ["initialize",[aDarkMusicClassnames,aCombatMusicClassnames,aCalmMusicClassnames]] remoteExecCall ["BIS_fnc_jukebox",0,true]; //Init jukebox globally + JIP
-};
+};*/
 
 // ======================================== LOGIC FUNCTIONS ========================================
 
 XIM_fncMain = // this function calls XIM_fncIteratePlayerCombat every time a shot is fired for every single player on the server
 {
 	{
+		private _bCombatMasterExists = false;
 		params["_oFiringAI"]; // defines the parameter of _oFiringAI in argument position zero
-		[_oFiringAI, _x] call XIM_fncIteratePlayerCombat; // call XIM_fncIteratePlayerCombat, with _oFiringAI and currently iterated player as arguments
+		{
+			if (_x getVariable ["XIM_bCombatMaster", false]) then
+			{
+				_bCombatMasterExists = true;
+			};
+		} forEach (units (group _x)); // for every player in the player's group
+
+		if ((!(_bCombatMasterExists)) or (_x getVariable "XIM_bCombatMaster")) then
+		{
+			[_oFiringAI, _x] call XIM_fncIteratePlayerCombat; // call XIM_fncIteratePlayerCombat, with _oFiringAI and currently iterated player as arguments
+		};
 	} forEach (allPlayers - entities "HeadlessClient_F"); // for every player, except headless clients
 };
 
@@ -28,7 +39,7 @@ XIM_fncSendGroup = // submits the provided unit's group to the server plus the u
 {
 	params["_oPlayer"]; // defines the parameter _aPlayerMachineIDs in position zero
 	XIM_aStateChange = []; // defines XIM_aStateChange, which is an empty array
-	XIM_aStateChange append [group _oPlayer]; // adds the _aPlayerMachineIDs array to XIM_aStateChange at position zero
+	XIM_aStateChange pushBack [group _oPlayer]; // adds the player's group to XIM_aStateChange at position zero
 	XIM_aStateChange pushBack (_oPlayer getVariable "XIM_bCombat"); // adds the value of XIM_bCombat to the XIM_aStateChange array at position one
 	publicVariableServer "XIM_aStateChange"; // sends the XIM_aStateChange variable to the server via its namespace
 };
@@ -42,10 +53,10 @@ XIM_fncCombatTimeout = // this function determines whether the player has not ha
 		params["_oPlayer"]; // defines the parameter _oPlayer
 		waitUntil // repeats the following code once every frame (ish)
 		{
-			if (_oPlayer getVariable ["XIM_bCombat", true]) then // if the player is in combat
+			if (_oPlayer getVariable ["XIM_bCombat", false]) then // if the player is in combat
 			{
 				_oPlayer setVariable ["XIM_bRecentCombat", false];
-				if (_oPlayer getVariable "XIM_bRecentCombat") then
+				if (!(_oPlayer getVariable "XIM_bRecentCombat")) then
 				{
 					sleep 300; // sleep for 5 minutes
 					_oPlayer setVariable ["XIM_bCombat", false]; // sets the player's XIM_bCombat to false
@@ -67,18 +78,17 @@ XIM_fncIteratePlayerCombat = // defines the XIM_fncIteratePlayers function, whic
 			if (!(_oPlayer getVariable "XIM_bCombat")) then // if the player is not already in combat
 			{
 				_oPlayer setVariable ["XIM_bCombat", true]; // set the player's combat variable to true
-				_oPlayer setVariable ["XIM_bRecentCombat", true]; // set the player's recent combat variable to true
 				[_oPlayer] call XIM_fncSendGroup; // call XIM_fncSendIDs with the argument _aPlayerMachineIDs
 			}
 			else // if the player is in combat
 			{
-				_oPlayer setVariable ["XIM_bRecentCombat", false]; // set the player's recent combat variable to false
+				_oPlayer setVariable ["XIM_bRecentCombat", true]; // set the player's recent combat variable to false
 			};
 		};
 	};
 };
 
-// ======================================MUSIC FUNCTIONS================================================
+// ====================================== MUSIC FUNCTIONS ================================================
 
 fncXIM_MusicHandler = { // defines the fncXIM_MusicHandler function, which disables ace's volume interference for the group, plays a certain type of music based on the parameter, and then reenables ace's volume interference for that same group
 	params ["_aXIMPlayers","_musictype"];
@@ -155,7 +165,20 @@ fncXIM_MusicRemote = {
 
 };
 
+// ======================================== LOOP ========================================
 
+waitUntil
+{
+	{
+		if (_x == leader group _x) then
+		{
+			{
+				
+			} forEach ((units group _x) - _x)
+		};
+	} forEach (allPlayers - entities "HeadlessClient_F");
+	false;
+};
 
 // ======================================== EVENT HANDLERS ========================================
 addMissionEventHandler ["PlayerConnected", // when a player connects
