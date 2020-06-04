@@ -9,7 +9,7 @@ aCalmMusicClassnames = "'calm' in getArray (_x >> 'moods') " configClasses (conf
 
 // ======================================== LOGIC FUNCTIONS ========================================
 
-XIM_fncMain = // this function calls XIM_fncIteratePlayerCombat every time a shot is fired for every single player on the server
+XIM_fncMain = // this function calls XIM_fncIteratePlayerCombat every time a shot is fired for the combat master in that group
 {
 	{
 		private _bCombatMasterExists = false;
@@ -32,9 +32,18 @@ XIM_fncSendGroup = // submits the provided unit's group to the server plus the u
 {
 	params["_oPlayer"]; // defines the parameter _aPlayerMachineIDs in position zero
 	XIM_aStateChange = []; // defines XIM_aStateChange, which is an empty array
-	XIM_aStateChange pushBack [group _oPlayer]; // adds the player's group to XIM_aStateChange at position zero
+	XIM_aStateChange pushBack group _oPlayer; // adds the player's group to XIM_aStateChange at position zero
 	XIM_aStateChange pushBack (_oPlayer getVariable "XIM_bCombat"); // adds the value of XIM_bCombat to the XIM_aStateChange array at position one
 	publicVariableServer "XIM_aStateChange"; // sends the XIM_aStateChange variable to the server via its namespace
+};
+
+XIM_fncPlayNext = // submits the provided unit's group to the server plus the unit's combat state, which triggers the publicVariable event handler
+{
+	params["_oPlayer"]; // defines the parameter _aPlayerMachineIDs in position zero
+	XIM_aPlayNext = []; // defines XIM_aStateChange, which is an empty array
+	XIM_aPlayNext pushBack group _oPlayer; // adds the player's group to XIM_aStateChange at position zero
+	XIM_aPlayNext pushBack (_oPlayer getVariable "XIM_bCombat"); // adds the value of XIM_bCombat to the XIM_aStateChange array at position one
+	publicVariableServer "XIM_aPlayNext"; // sends the XIM_aStateChange variable to the server via its namespace
 };
 
 XIM_fncCombatTimeout = // this function determines whether the player has not had an AI fire near them in the past 5 mins, and if they have not, sets XIM_bCombat to
@@ -165,26 +174,16 @@ fncXIM_MusicRemote = {
 
 };
 
-// ======================================== LOOP ========================================
-
-waitUntil
-{
-	{
-		if (_x == leader group _x) then
-		{
-			{
-				
-			} forEach ((units group _x) - _x)
-		};
-	} forEach (allPlayers - entities "HeadlessClient_F");
-	false;
-};
-
 // ======================================== EVENT HANDLERS ========================================
 addMissionEventHandler ["PlayerConnected", // when a player connects
 {
 	player setVariable ["XIM_bCombat", false]; // set the XIM_bCombat variable on the client, with the default value of false
 	player setVariable ["XIM_bCombatMaster", false]; // set the XIM_bCombatMaster variable on the client, with the default value of false
+	if (leader (group player) == player) then
+	{
+		[player] call XIM_fncSendGroup;
+		[player] call XIM_fncPlayNext;
+	};
 	[player] call XIM_fncCombatTimeout; // calls the XIM_fncCombatTimeout function with the argument player
 }];
 
