@@ -182,7 +182,6 @@ addMissionEventHandler ["PlayerConnected", // when a player connects
 	if (leader (group player) == player) then
 	{
 		[player] call XIM_fncSendGroup;
-		[player] call XIM_fncPlayNext;
 	};
 	[player] call XIM_fncCombatTimeout; // calls the XIM_fncCombatTimeout function with the argument player
 }];
