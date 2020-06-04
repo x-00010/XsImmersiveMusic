@@ -103,7 +103,6 @@ XIM_fncIteratePlayerCombat = // defines the XIM_fncIteratePlayers function, whic
 fncXIM_MusicHandler = { // defines the fncXIM_MusicHandler function, which disables ace's volume interference for the group, plays a certain type of music based on the parameter, and then reenables ace's volume interference for that same group
 	params ["_groupOwnerIDs","_musictype"];
 	XIM_aPlayers = _groupOwnerIDs; //Global for use in CBA function
-
 	missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",true,XIM_aPlayers]; //Disable ACE interference
 	XIM_trackname = [_musictype] call fncXIM_TrackSelect;
 
