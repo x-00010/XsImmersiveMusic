@@ -61,7 +61,7 @@ XIM_fncCombatTimeout = // this function determines whether the player has not ha
 				_oPlayer setVariable ["XIM_bRecentCombat", false];
 				if (!(_oPlayer getVariable "XIM_bRecentCombat")) then
 				{
-					sleep 300; // sleep for 5 minutes
+					sleep 10; // sleep for 5 minutes
 					_bTimedOut = true;
 				};
 
@@ -202,14 +202,4 @@ addMissionEventHandler ["PlayerConnected", // when a player connects
 	private _bXIMCombatState = _aXIMPlayNext select 1; //Retrieve state
 	
 	[_gXIMGroup,_bXIMCombatState,"next"] call fncXIM_MusicRemote;
-};
-"XIM_oSender" addPublicVariableEventHandler 
-{
-	private _oXIMSender = _this select 1; //Store array in variable
-	private _senderID = owner _oXIMSender;
-	ximnearestenemy = _oXIMSender findNearestEnemy _oXIMSender;
-
-
-	XIM_oEnemy = ximnearestenemy; //Assign to missionNamespace var
-	_senderID publicVariableClient "XIM_oEnemy";
 };
