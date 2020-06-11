@@ -59,11 +59,10 @@ XIM_fncCombatTimeout = // this function determines whether the player has not ha
 			if (_oPlayer getVariable "XIM_bCombatMaster") then
 			{
 				_oPlayer setVariable ["XIM_bRecentCombat", false];
-				if (!(_oPlayer getVariable "XIM_bRecentCombat")) then
+				sleep 10; // sleep for 5 minutes
+				if (!(_oPlayer getVariable "XIM_bRecentCombat")) then // if XIM_bRecentCombat is still false after 5 minutes
 				{
-					sleep 10; // sleep for 5 minutes
-					hint "no longer in combat";
-					_bTimedOut = true;
+					_bTimedOut = true; // then set _bTimedOut to true
 				};
 			};
 			if (_bTimedOut) then
