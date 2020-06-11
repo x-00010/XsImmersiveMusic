@@ -61,12 +61,15 @@ XIM_fncCombatTimeout = // this function determines whether the player has not ha
 				_oPlayer setVariable ["XIM_bRecentCombat", false];
 				if (!(_oPlayer getVariable "XIM_bRecentCombat")) then
 				{
+					hint "begun sleep";
 					sleep 10; // sleep for 5 minutes
 					_bTimedOut = true;
+					hint "finished sleep";
 				};
 			};
 			if (_bTimedOut) then
 			{
+				hint "timed out";
 				_oPlayer setVariable ["XIM_bCombatMaster", false];
 				_oPlayer setVariable ["XIM_bCombat", false]; // sets the player's XIM_bCombat to false
 				[_oPlayer] call XIM_fncSendGroup;
