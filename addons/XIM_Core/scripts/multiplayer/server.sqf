@@ -133,7 +133,7 @@ fncXIM_Shuffler = {
 	params ["_groupOwnerIDs","_musictype"];
 	
 	XIM_groupOwnerIDs = _groupOwnerIDs;
-
+	missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",true,XIM_aPlayers]; //Disable ACE interference
 	_trackname = [_musictype] call fncXIM_TrackSelect;
 	[0,0] remoteExecCall ["fadeMusic",_groupOwnerIDs,false];
 	[_trackname] remoteExecCall ["playMusic", _groupOwnerIDs, false];
