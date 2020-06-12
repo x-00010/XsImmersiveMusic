@@ -177,13 +177,22 @@ fncXIM_MusicRemote = {
 // ======================================== EVENT HANDLERS ========================================
 addMissionEventHandler ["PlayerConnected", // when a player connects
 {
-	player setVariable ["XIM_bCombat", false]; // set the XIM_bCombat variable on the client, with the default value of false
-	player setVariable ["XIM_bCombatMaster", false]; // set the XIM_bCombatMaster variable on the client, with the default value of false
-	if (leader (group player) == player) then // if the player is the leader of their group
+	params ["_id", "_uid", "_name", "_jip", "_owner"]; // declares params
+	private _oPlayer = objNull; // declares _oPlayer, which is objNull by default
 	{
-		[player] call XIM_fncSendGroup; // calls the XIM_fncSendGroup function with the argument player
+		if ((local _x) == _owner) then // if the currently iterated player's owner has the same machine id as the player who just connected
+		{
+			_oPlayer = _x; // _oPlayer is equal to the currently iterated player
+		};
+	} forEach (allPlayers - entities "HeadlessClient_F"); // for every player, except headless clients
+
+	_oPlayer setVariable ["XIM_bCombat", false]; // set the XIM_bCombat variable on the client, with the default value of false
+	_oPlayer setVariable ["XIM_bCombatMaster", false]; // set the XIM_bCombatMaster variable on the client, with the default value of false
+	if (leader (group _oPlayer) == _oPlayer) then // if the player is the leader of their group
+	{
+		[_oPlayer] call XIM_fncSendGroup; // calls the XIM_fncSendGroup function with the argument player
 	};
-	[player] call XIM_fncCombatTimeout; // calls the XIM_fncCombatTimeout function with the argument player
+	[_oPlayer] call XIM_fncCombatTimeout; // calls the XIM_fncCombatTimeout function with the argument player
 }];
 
 ["ace_firedNonPlayer", XIM_fncMain] call CBA_fnc_addEventHandler; // adds event handler for when an AI fires
