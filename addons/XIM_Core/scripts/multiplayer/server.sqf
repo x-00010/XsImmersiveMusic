@@ -12,16 +12,17 @@ aCalmMusicClassnames = "'calm' in getArray (_x >> 'moods') " configClasses (conf
 XIM_fncMain = // this function calls XIM_fncIteratePlayerCombat every time a shot is fired for the combat master in that group
 {
 	{
-		private _bCombatMasterExists = false;
+		private _bCombatMasterExists = false; // defines _bCombatMasterExists, which is false by default
 		params["_oFiringAI"]; // defines the parameter of _oFiringAI in argument position zero
 		{
-			if (_x getVariable ["XIM_bCombatMaster", false]) then
+			if (_x getVariable ["XIM_bCombatMaster", false]) then // if the iterated unit is a combat master
 			{
-				_bCombatMasterExists = true;
+				_bCombatMasterExists = true; // set _bCombatMasterExists to true
 			};
 		} forEach (units (group _x)); // for every player in the player's group
 
-		if ((!(_bCombatMasterExists)) or (_x getVariable ["XIM_bCombatMaster", false])) then
+		if ((!(_bCombatMasterExists)) or (_x getVariable ["XIM_bCombatMaster", false])) then // if the combat master does not exist, or the currently selected player
+																							 // is a combat master then
 		{
 			[_oFiringAI, _x] call XIM_fncIteratePlayerCombat; // call XIM_fncIteratePlayerCombat, with _oFiringAI and currently iterated player as arguments
 		};
@@ -55,24 +56,23 @@ XIM_fncCombatTimeout = // this function determines whether the player has not ha
 		params["_oPlayer"]; // defines the parameter _oPlayer
 		waitUntil // repeats the following code once every frame (ish)
 		{
-			private _bTimedOut = false;
-			if (_oPlayer getVariable "XIM_bCombatMaster") then
+			private _bTimedOut = false; // declares _bTimedOut, which is false by default
+			if (_oPlayer getVariable "XIM_bCombatMaster") then // if the player is the combat master for that group
 			{
-				_oPlayer setVariable ["XIM_bRecentCombat", false];
-				sleep 10; // sleep for 5 minutes
-				if (!(_oPlayer getVariable "XIM_bRecentCombat")) then // if XIM_bRecentCombat is still false after 5 minutes
+				_oPlayer setVariable ["XIM_bRecentCombat", false]; // set the player's recent combat variable to false
+				sleep 120; // sleep for 2 minutes
+				if (!(_oPlayer getVariable "XIM_bRecentCombat")) then // if XIM_bRecentCombat is still false after 2 minutes
 				{
 					_bTimedOut = true; // then set _bTimedOut to true
 				};
 			};
-			if (_bTimedOut) then
+			if (_bTimedOut) then // if _bTimedOut is true
 			{
-				hint "timed out";
-				_oPlayer setVariable ["XIM_bCombatMaster", false];
-				_oPlayer setVariable ["XIM_bCombat", false]; // sets the player's XIM_bCombat to false
-				[_oPlayer] call XIM_fncSendGroup;
+				_oPlayer setVariable ["XIM_bCombatMaster", false]; // sets the player's combat master variable to false
+				_oPlayer setVariable ["XIM_bCombat", false]; // sets the player's combat state to false
+				[_oPlayer] call XIM_fncSendGroup; // calls the XIM_fncSendGroup function with the argument of _oPlayer
 			};
-			false;
+			false; // makes the loop start all over again
 		};
 	};
 };
@@ -88,7 +88,7 @@ XIM_fncIteratePlayerCombat = // defines the XIM_fncIteratePlayers function, whic
 			if (!(_oPlayer getVariable "XIM_bCombat")) then // if the player is not already in combat
 			{
 				_oPlayer setVariable ["XIM_bCombat", true]; // set the player's combat variable to true
-				_oPlayer setVariable ["XIM_bCombatMaster", true];
+				_oPlayer setVariable ["XIM_bCombatMaster", true]; // set the player's combat master variable to true
 				[_oPlayer] call XIM_fncSendGroup; // call XIM_fncSendGroup with the argument _oPlayer
 			}
 			else // if the player is in combat
@@ -105,7 +105,7 @@ fncXIM_MusicHandler = { // defines the fncXIM_MusicHandler function, which disab
 	params ["_groupOwnerIDs","_musictype"];
 	XIM_aPlayers = _groupOwnerIDs; //Global for use in CBA function
 	missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",true,XIM_aPlayers]; //Disable ACE interference
-	XIM_trackname = [_musictype] call fncXIM_TrackSelect;
+	XIM_trackname = [_musictype] call fncXIM_TrackSelect; // select a random track from the given music type
 
 	
 	[5,0] remoteExecCall ["fadeMusic",XIM_aPlayers,false]; //Fades currently playing music, if there is a track playing
@@ -120,9 +120,9 @@ fncXIM_TrackSelect = {
 	private _trackclassname = "";
 
 	switch (_musictype) do { 
-		case "combat" : { _trackclassname = selectRandom aCombatMusicClassnames; }; 
-		case "dark" : { _trackclassname = selectRandom aDarkMusicClassnames;}; 
-		case "calm" : { _trackclassname = selectRandom aCalmMusicClassnames; }; 
+		case "combat" : { _trackclassname = selectRandom aCombatMusicClassnames; }; // select a random track from the aCombatMusicClassnames array
+		case "dark" : { _trackclassname = selectRandom aDarkMusicClassnames;}; // select a random track from the aDarkMusicClassnames array
+		case "calm" : { _trackclassname = selectRandom aCalmMusicClassnames; };  // select a random track from the aCalmMusicClassnames array
 	};
 	
 	_trackclassname; //Return classname
@@ -134,9 +134,9 @@ fncXIM_Shuffler = {
 	
 	XIM_groupOwnerIDs = _groupOwnerIDs;
 	missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",true,XIM_aPlayers]; //Disable ACE interference
-	_trackname = [_musictype] call fncXIM_TrackSelect;
+	_trackname = [_musictype] call fncXIM_TrackSelect; // select a random track from the given music type
 	[0,0] remoteExecCall ["fadeMusic",_groupOwnerIDs,false];
-	[_trackname] remoteExecCall ["playMusic", _groupOwnerIDs, false];
+	[_trackname] remoteExecCall ["playMusic", _groupOwnerIDs, false]; // plays the selected song on all clients in the group
 	[5,1] remoteExecCall ["fadeMusic",_groupOwnerIDs,false];
 	[{missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",false,XIM_groupOwnerIDs];},[], 10] call CBA_fnc_waitAndExecute; //Wait 10 seconds, then enable ACE Volume Update again (earplugs, deafened,...)
 };
@@ -148,21 +148,21 @@ fncXIM_MusicRemote = {
 	(units _gXIMGroup) apply {_groupOwnerIDs pushBackUnique (owner _x)}; //Retrieving ID's for players in group
 	private _sXIM_MusicType = "";
 
-	if (_bXIMCombatState) then {
+	if (_bXIMCombatState) then { // if _bXIMCombatState is true
 
-		_sXIM_MusicType = "combat";
+		_sXIM_MusicType = "combat"; // then set the music type to combat
 				
 	} else {
 		private _sunrisesunset = date call BIS_fnc_sunriseSunsetTime;
 		private _sunrise = _sunrisesunset select 0;
 		private _sunset = _sunrisesunset select 1;
 
-		if ((rain > 0.2) or (fog > 0.2) or ((daytime > _sunset) and (daytime < _sunrise))) then {
+		if ((rain > 0.2) or (fog > 0.2) or ((daytime > _sunset) and (daytime < _sunrise))) then { // if it is foggy, raining or night time
 
-			_sXIM_MusicType = "dark";
+			_sXIM_MusicType = "dark"; // set the music to dark
 	  	} else {
 
-	  		_sXIM_MusicType = "calm";
+	  		_sXIM_MusicType = "calm"; // otherwise set it to calm
 		};
 
 	};	
@@ -179,16 +179,16 @@ addMissionEventHandler ["PlayerConnected", // when a player connects
 {
 	player setVariable ["XIM_bCombat", false]; // set the XIM_bCombat variable on the client, with the default value of false
 	player setVariable ["XIM_bCombatMaster", false]; // set the XIM_bCombatMaster variable on the client, with the default value of false
-	if (leader (group player) == player) then
+	if (leader (group player) == player) then // if the player is the leader of their group
 	{
-		[player] call XIM_fncSendGroup;
+		[player] call XIM_fncSendGroup; // calls the XIM_fncSendGroup function with the argument player
 	};
 	[player] call XIM_fncCombatTimeout; // calls the XIM_fncCombatTimeout function with the argument player
 }];
 
 ["ace_firedNonPlayer", XIM_fncMain] call CBA_fnc_addEventHandler; // adds event handler for when an AI fires
 
-"XIM_aStateChange" addPublicVariableEventHandler 
+"XIM_aStateChange" addPublicVariableEventHandler  // detects a broadcast from the combat master, which contains the group and its combat state 
 {
 	private _aXIMstatechange = _this select 1; //Store array in variable
 	private _gXIMGroup = _aXIMstatechange select 0; //Retrieve group
@@ -196,8 +196,7 @@ addMissionEventHandler ["PlayerConnected", // when a player connects
 	[_gXIMGroup,_bXIMCombatState,"statechange"] call fncXIM_MusicRemote;
 };
 
-"XIM_aPlayNext" addPublicVariableEventHandler {
-//Detects broadcast from group leader that tells server to play next track for his group
+"XIM_aPlayNext" addPublicVariableEventHandler { // detects broadcast from group leader that tells server to play next track for his group
 	private _aXIMPlayNext = _this select 1; //Retrieve array
 	private _gXIMGroup = _aXIMPlayNext select 0; //Retrieve group
 	private _bXIMCombatState = _aXIMPlayNext select 1; //Retrieve state
