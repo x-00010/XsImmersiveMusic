@@ -180,7 +180,7 @@ addMissionEventHandler ["PlayerConnected", // when a player connects
 	params ["_id", "_uid", "_name", "_jip", "_owner"]; // declares params
 	private _oPlayer = objNull; // declares _oPlayer, which is objNull by default
 	{
-		if ((local _x) == _owner) then // if the currently iterated player's owner has the same machine id as the player who just connected
+		if ((owner _x) == _owner) then // if the currently iterated player's owner has the same machine id as the player who just connected
 		{
 			_oPlayer = _x; // _oPlayer is equal to the currently iterated player
 		};
