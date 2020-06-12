@@ -179,12 +179,8 @@ addMissionEventHandler ["PlayerConnected", // when a player connects
 {
 	params ["_id", "_uid", "_name", "_jip", "_owner"]; // declares params
 	private _oPlayer = objNull; // declares _oPlayer, which is objNull by default
-	{
-		if ((owner _x) == _owner) then // if the currently iterated player's owner has the same machine id as the player who just connected
-		{
-			_oPlayer = _x; // _oPlayer is equal to the currently iterated player
-		};
-	} forEach (allPlayers - entities "HeadlessClient_F"); // for every player, except headless clients
+
+	_oPlayer = (allPlayers - entities "HeadlessClient_F") select owner _x == _owner;
 
 	_oPlayer setVariable ["XIM_bCombat", false]; // set the XIM_bCombat variable on the client, with the default value of false
 	_oPlayer setVariable ["XIM_bCombatMaster", false]; // set the XIM_bCombatMaster variable on the client, with the default value of false
