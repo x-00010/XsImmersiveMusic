@@ -16,6 +16,24 @@ class CfgPatches
     };
 };
 
+class CfgVehicles 
+{
+    class Man;
+    class CAManBase: Man 
+    {
+        class ACE_SelfActions 
+        {
+            class skipSong
+            {
+                displayName = "Skip Song";
+                condition = "leader (group player) == player";
+                exceptions[] = {};
+                statement = "[player] call XIM_fncPlayNext";
+            };
+        };
+    };
+};
+
 class Extended_PreInit_EventHandlers 
 {
     class XIMCoreStart // preinit event handler
