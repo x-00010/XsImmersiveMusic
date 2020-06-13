@@ -186,13 +186,20 @@ addMissionEventHandler ["PlayerConnected", // when a player connects
 		};
 	} forEach ((allPlayers - entities "HeadlessClient_F")); // for every player, except headless clients
 
-	_oPlayer setVariable ["XIM_bCombat", false]; // set the XIM_bCombat variable on the client, with the default value of false
-	_oPlayer setVariable ["XIM_bCombatMaster", false]; // set the XIM_bCombatMaster variable on the client, with the default value of false
-	if (leader (group _oPlayer) == _oPlayer) then // if the player is the leader of their group
+	if (_oPlayer != objNull) then
 	{
-		[_oPlayer] call XIM_fncSendGroup; // calls the XIM_fncSendGroup function with the argument player
+		_oPlayer setVariable ["XIM_bCombat", false]; // set the XIM_bCombat variable on the client, with the default value of false
+		_oPlayer setVariable ["XIM_bCombatMaster", false]; // set the XIM_bCombatMaster variable on the client, with the default value of false
+		if (leader (group _oPlayer) == _oPlayer) then // if the player is the leader of their group
+		{
+			[_oPlayer] call XIM_fncSendGroup; // calls the XIM_fncSendGroup function with the argument player
+		};
+		[_oPlayer] call XIM_fncCombatTimeout; // calls the XIM_fncCombatTimeout function with the argument player
+	}
+	else
+	{
+		diag_log("XIM - Error, could not determine player object from machine ID");
 	};
-	[_oPlayer] call XIM_fncCombatTimeout; // calls the XIM_fncCombatTimeout function with the argument player
 }];
 
 ["ace_firedNonPlayer", XIM_fncMain] call CBA_fnc_addEventHandler; // adds event handler for when an AI fires
