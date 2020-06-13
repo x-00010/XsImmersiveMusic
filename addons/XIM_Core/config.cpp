@@ -25,7 +25,7 @@ class CfgVehicles
         {
             class skipSong
             {
-                displayName = "Skip Song";
+                displayName = "Skip song";
                 condition = "leader (group player) == player";
                 exceptions[] = {};
                 statement = "[player] call XIM_fncPlayNext";
