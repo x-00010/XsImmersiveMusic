@@ -60,7 +60,7 @@ XIM_fncCombatTimeout = // this function determines whether the player has not ha
 			if (_oPlayer getVariable "XIM_bCombatMaster") then // if the player is the combat master for that group
 			{
 				_oPlayer setVariable ["XIM_bRecentCombat", false]; // set the player's recent combat variable to false
-				sleep XIM_iCombatRefreshTime; // sleep for 2 minutes by default
+				sleep XIM_iCombatRefreshTime; // sleep for the value of XIM_iCombatRefreshTime, which is 120 seconds by default
 				if (!(_oPlayer getVariable "XIM_bRecentCombat")) then // if XIM_bRecentCombat is still false after 2 minutes
 				{
 					_bTimedOut = true; // then set _bTimedOut to true
@@ -83,7 +83,8 @@ XIM_fncIteratePlayerCombat = // defines the XIM_fncIteratePlayers function, whic
 
 	if (alive _oPlayer) then // if the player is not dead
 	{
-		if (_oPlayer distance _oFiringAI <= XIM_iCombatRange) then // if the distance to the AI who is firing is less than or equal to the value of XIM_iCombatRange
+		if (_oPlayer distance _oFiringAI <= XIM_iCombatRange) then // if the distance to the AI who is firing is less than or equal to the value of XIM_iCombatRange,
+																   // which is 500 metres by default
 		{
 			if (!(_oPlayer getVariable "XIM_bCombat")) then // if the player is not already in combat
 			{
