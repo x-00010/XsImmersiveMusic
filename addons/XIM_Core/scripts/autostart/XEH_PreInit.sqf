@@ -15,7 +15,17 @@
     ["Combat refresh time", "How often to check if the player is still in combat (in seconds)."], // name and tooltip for the setting
     ["XIM - X's Immersive Music", "Combat variables"], // category the setting is in
     [1, 300, 120, 0], // minimum of 1, maximum of 300, default of 500, no decimals
-    nil, // disables synchronising the XIM_iCombatRange variable across clients, as it is not needed
+    nil, // disables synchronising the XIM_iCombatRefreshTime variable across clients, as it is not needed
+    {} // executes nothing when the setting is changed, as it is not necessary
+] call cba_settings_fnc_init;
+
+[
+    "XIM_bNowPlayingEnabled", // the name of the variable which the output from the slider is assigned to
+    "CHECKBOX", // interactive slider setting type
+    ["Enable 'Now Playing' UI", "Enable or disable the UI which displays the song currently playing when it starts."], // name and tooltip for the setting
+    ["XIM - X's Immersive Music", "UI elements"], // category the setting is in
+    [true], // default value of true
+    nil, // disables synchronising the XIM_bNowPlayingEnabled variable across clients, as it is not needed
     {} // executes nothing when the setting is changed, as it is not necessary
 ] call cba_settings_fnc_init;
 
