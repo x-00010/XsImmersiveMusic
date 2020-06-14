@@ -1,4 +1,13 @@
 // put cba debug setting stuff here
+[
+    "XIM_iCombatRange", // the name of the variable which the output from the slider is assigned to
+    "SLIDER", // interactive slider setting type
+    ["AI detection range", "The maximum range that AI can be from the player to instigate combat."], // name and tooltip for the setting
+    "XIM - X's Immersive Music", // category the setting is in
+    [500, 2000, 500, 0], // minimum of 500, maximum of 2000, default of 500, no decimals
+    nil, // disables synchronising the XIM_iCombatRange variable across clients, as it is not needed
+    {} // executes nothing when the setting is changed, as it is not necessary
+] call cba_settings_fnc_init;
 
 if (isMultiplayer) then // if client is in multiplayer
 {
