@@ -83,7 +83,7 @@ XIM_fncIteratePlayerCombat = // defines the XIM_fncIteratePlayers function, whic
 
 	if (alive _oPlayer) then // if the player is not dead
 	{
-		if (_oPlayer distance _oFiringAI <= 500) then // if the distance to the AI who is firing is less than or equal to 500 metres
+		if (_oPlayer distance _oFiringAI <= XIM_iCombatRange) then // if the distance to the AI who is firing is less than or equal to the value of XIM_iCombatRange
 		{
 			if (!(_oPlayer getVariable "XIM_bCombat")) then // if the player is not already in combat
 			{
