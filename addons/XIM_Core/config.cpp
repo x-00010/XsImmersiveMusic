@@ -1579,6 +1579,7 @@ class CfgMusic
         moods[] = 
         {
             "calm"
+            "intense"
         };
         sound[] = { "\a3\Music_F_Oldman\music\radio\metal\Track_M_02.ogg", db + 0, 1.0 };
         //Old Man : Metal 02
