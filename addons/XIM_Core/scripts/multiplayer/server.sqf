@@ -12,6 +12,7 @@ aCalmMusicClassnames = "'calm' in getArray (_x >> 'moods') " configClasses (conf
 XIM_fncMain = // this function calls XIM_fncIteratePlayerCombat every time a shot is fired for the combat master in that group
 {
 	{
+		diag_log ("XIM: AI has fired");
 		private _bCombatMasterExists = false; // defines _bCombatMasterExists, which is false by default
 		params["_oFiringAI"]; // defines the parameter of _oFiringAI in argument position zero
 		{
@@ -20,7 +21,7 @@ XIM_fncMain = // this function calls XIM_fncIteratePlayerCombat every time a sho
 				_bCombatMasterExists = true; // set _bCombatMasterExists to true
 			};
 		} forEach (units (group _x)); // for every player in the player's group
-
+		diag_log ("XIM: Reached combat master if");
 		if ((!(_bCombatMasterExists)) or (_x getVariable ["XIM_bCombatMaster", false])) then // if the combat master does not exist, or the currently selected player
 																							 // is a combat master then
 		{
@@ -73,6 +74,7 @@ XIM_fncCombatTimeout = // this function determines whether the player has not ha
 XIM_fncIteratePlayerCombat = // defines the XIM_fncIteratePlayers function, which iterates through each player and determines if they are in combat
 {
 	params ["_oFiringAI", "_oPlayer"]; // defines _oFiringAI, which is the object of the AI who fired
+	diag_log ("XIM: Iterating player combat");
 
 	if (alive _oPlayer) then // if the player is not dead
 	{
@@ -83,6 +85,7 @@ XIM_fncIteratePlayerCombat = // defines the XIM_fncIteratePlayers function, whic
 			{
 				_oPlayer setVariable ["XIM_bCombat", true]; // set the player's combat variable to true
 				_oPlayer setVariable ["XIM_bCombatMaster", true]; // set the player's combat master variable to true
+				
 				[_oPlayer] call XIM_fncSendGroup; // call XIM_fncSendGroup with the argument _oPlayer
 			}
 			else // if the player is in combat
