@@ -198,7 +198,7 @@ addMissionEventHandler ["PlayerConnected", // when a player connects
 		[_oPlayer] spawn
 		{
 			params ["_oPlayer"];
-			sleep 2; // sleep for two seconds
+			sleep 10; // sleep for ten seconds
 			_oPlayer setVariable ["XIM_bCombat", false]; // set the XIM_bCombat variable on the client, with the default value of false
 			_oPlayer setVariable ["XIM_bCombatMaster", false]; // set the XIM_bCombatMaster variable on the client, with the default value of false
 			diag_log ("XIM: Player variables have been set");
