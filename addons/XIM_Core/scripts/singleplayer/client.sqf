@@ -170,6 +170,22 @@ player setVariable ["XIM_bCombatMaster", false]; // set the XIM_bCombatMaster va
 
 ["ace_firedNonPlayer", XIM_fncMain] call CBA_fnc_addEventHandler; // adds event handler for when an AI fires
 
+"XIM_aStateChange" addPublicVariableEventHandler  // detects a broadcast from the combat master, which contains the group and its combat state 
+{
+	private _aXIMstatechange = _this select 1; //Store array in variable
+	private _gXIMGroup = _aXIMstatechange select 0; //Retrieve group
+	private _bXIMCombatState = _aXIMstatechange select 1; //Retrieve combat state for those network ID's
+	[_gXIMGroup,_bXIMCombatState,"statechange"] call fncXIM_MusicRemote;
+};
+
+"XIM_aPlayNext" addPublicVariableEventHandler { // detects broadcast from group leader that tells server to play next track for his group
+	private _aXIMPlayNext = _this select 1; //Retrieve array
+	private _gXIMGroup = _aXIMPlayNext select 0; //Retrieve group
+	private _bXIMCombatState = _aXIMPlayNext select 1; //Retrieve state
+	
+	[_gXIMGroup,_bXIMCombatState,"next"] call fncXIM_MusicRemote;
+};
+
 addMusicEventHandler ["MusicStart", {
 	if (XIM_bNowPlayingEnabled) then
 	{
