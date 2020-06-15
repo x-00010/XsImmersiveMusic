@@ -5,13 +5,6 @@ aCombatMusicClassnames = "'intense' in getArray (_x >> 'moods') " configClasses 
 aDarkMusicClassnames = "'dark' in getArray (_x >> 'moods') " configClasses (configFile >> "CfgMusic") apply {configName _x} call BIS_fnc_arrayShuffle;
 aCalmMusicClassnames = "'calm' in getArray (_x >> 'moods') " configClasses (configFile >> "CfgMusic") apply {configName _x} call BIS_fnc_arrayShuffle;
 
-// ======================================== INIT ========================================
-
-player setVariable ["XIM_bCombat", false]; // set the XIM_bCombat variable on the client, with the default value of false
-player setVariable ["XIM_bCombatMaster", false]; // set the XIM_bCombatMaster variable on the client, with the default value of false
-[player] call XIM_fncSendGroup; // calls the XIM_fncSendGroup function with the argument player
-[player] call XIM_fncCombatTimeout; // calls the XIM_fncCombatTimeout function with the argument player
-
 // ======================================== FUNCTIONS ========================================
 
 XIM_fncMain = 
@@ -165,6 +158,13 @@ fncXIM_MusicRemote = {
 	};
 
 };
+
+// ======================================== INIT ========================================
+
+player setVariable ["XIM_bCombat", false]; // set the XIM_bCombat variable on the client, with the default value of false
+player setVariable ["XIM_bCombatMaster", false]; // set the XIM_bCombatMaster variable on the client, with the default value of false
+[player] call XIM_fncSendGroup; // calls the XIM_fncSendGroup function with the argument player
+[player] call XIM_fncCombatTimeout; // calls the XIM_fncCombatTimeout function with the argument player
 
 // ======================================== EVENT HANDLERS ========================================
 
