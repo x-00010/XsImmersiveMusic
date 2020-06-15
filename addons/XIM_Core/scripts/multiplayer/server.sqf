@@ -32,10 +32,12 @@ XIM_fncMain = // this function calls XIM_fncIteratePlayerCombat every time a sho
 XIM_fncSendGroup = // submits the provided unit's group to the server plus the unit's combat state, which triggers the publicVariable event handler
 {
 	params["_oPlayer"]; // defines the parameter _aPlayerMachineIDs in position zero
+	diag_log ("XIM: SendGroup called");
 	XIM_aStateChange = []; // defines XIM_aStateChange, which is an empty array
 	XIM_aStateChange pushBack group _oPlayer; // adds the player's group to XIM_aStateChange at position zero
 	XIM_aStateChange pushBack (_oPlayer getVariable "XIM_bCombat"); // adds the value of XIM_bCombat to the XIM_aStateChange array at position one
 	publicVariableServer "XIM_aStateChange"; // sends the XIM_aStateChange variable to the server via its namespace
+	diag_log ("XIM: StateChange sent");
 };
 
 XIM_fncPlayNext = // submits the provided unit's group to the server plus the unit's combat state, which triggers the publicVariable event handler
@@ -104,6 +106,7 @@ XIM_fncIteratePlayerCombat = // defines the XIM_fncIteratePlayers function, whic
 
 fncXIM_MusicHandler = { // defines the fncXIM_MusicHandler function, which disables ace's volume interference for the group, plays a certain type of music based on the parameter, and then reenables ace's volume interference for that same group
 	params ["_groupOwnerIDs","_musictype"];
+	diag_log ("XIM: MusicHandler called");
 	XIM_aPlayers = _groupOwnerIDs; //Global for use in CBA function
 	missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",true,XIM_aPlayers]; //Disable ACE interference
 	XIM_trackname = [_musictype] call fncXIM_TrackSelect; // select a random track from the given music type
@@ -118,6 +121,7 @@ fncXIM_MusicHandler = { // defines the fncXIM_MusicHandler function, which disab
 
 fncXIM_TrackSelect = {
 	params ["_musictype"];
+	diag_log ("XIM: TrackSelect called");
 	private _trackclassname = "";
 
 	switch (_musictype) do { 
@@ -132,7 +136,7 @@ fncXIM_TrackSelect = {
 
 fncXIM_Shuffler = {
 	params ["_groupOwnerIDs","_musictype"];
-	
+	diag_log ("XIM: Shuffler called");
 	XIM_groupOwnerIDs = _groupOwnerIDs;
 	missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",true,XIM_aPlayers]; //Disable ACE interference
 	_trackname = [_musictype] call fncXIM_TrackSelect; // select a random track from the given music type
@@ -145,6 +149,7 @@ fncXIM_Shuffler = {
 
 fncXIM_MusicRemote = {
 	params ["_gXIMGroup", "_bXIMCombatState","_XIMMusicRemoteFunction"]; //Defining params
+	diag_log ("XIM: MusicRemote called");
 	private _groupOwnerIDs = [];
 	(units _gXIMGroup) apply {_groupOwnerIDs pushBackUnique (owner _x)}; //Retrieving ID's for players in group
 	private _sXIM_MusicType = "";
@@ -179,6 +184,7 @@ fncXIM_MusicRemote = {
 addMissionEventHandler ["PlayerConnected", // when a player connects
 {
 	params ["_id", "_uid", "_name", "_jip", "_owner"]; // declares params
+	diag_log ("XIM: Player has connected");
 	private _oPlayer = objNull; // declares _oPlayer, which is objNull by default
 	{
 		if ((owner _x) == _owner) then // if the currently iterated player's owner has the same machine id as the player who just connected
@@ -191,8 +197,10 @@ addMissionEventHandler ["PlayerConnected", // when a player connects
 	{
 		_oPlayer setVariable ["XIM_bCombat", false]; // set the XIM_bCombat variable on the client, with the default value of false
 		_oPlayer setVariable ["XIM_bCombatMaster", false]; // set the XIM_bCombatMaster variable on the client, with the default value of false
+		diag_log ("XIM: Player variables have been set");
 		if (leader (group _oPlayer) == _oPlayer) then // if the player is the leader of their group
 		{
+			diag_log ("XIM: Player is the leader of the group");
 			[_oPlayer] call XIM_fncSendGroup; // calls the XIM_fncSendGroup function with the argument player
 		};
 		[_oPlayer] call XIM_fncCombatTimeout; // calls the XIM_fncCombatTimeout function with the argument player
@@ -207,6 +215,7 @@ addMissionEventHandler ["PlayerConnected", // when a player connects
 
 "XIM_aStateChange" addPublicVariableEventHandler  // detects a broadcast from the combat master, which contains the group and its combat state 
 {
+	diag_log ("XIM: StateChange recieved");
 	private _aXIMstatechange = _this select 1; //Store array in variable
 	private _gXIMGroup = _aXIMstatechange select 0; //Retrieve group
 	private _bXIMCombatState = _aXIMstatechange select 1; //Retrieve combat state for those network ID's
@@ -214,6 +223,7 @@ addMissionEventHandler ["PlayerConnected", // when a player connects
 };
 
 "XIM_aPlayNext" addPublicVariableEventHandler { // detects broadcast from group leader that tells server to play next track for his group
+	diag_log ("XIM: PlayNext recieved");
 	private _aXIMPlayNext = _this select 1; //Retrieve array
 	private _gXIMGroup = _aXIMPlayNext select 0; //Retrieve group
 	private _bXIMCombatState = _aXIMPlayNext select 1; //Retrieve state

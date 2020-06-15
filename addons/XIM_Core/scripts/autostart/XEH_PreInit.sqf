@@ -38,6 +38,7 @@ if (isMultiplayer) then // if client is in multiplayer
 	
 	if (isServer) then // runs on the dedicated server, or player host, either way it runs on machine id 2
 	{
+        diag_log ("XIM: isServer true");
 		execVM "\XIM_Core\scripts\multiplayer\server.sqf"; // executes server.sqf
 	};
 } 
