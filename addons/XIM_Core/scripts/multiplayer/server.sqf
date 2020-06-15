@@ -85,7 +85,6 @@ XIM_fncIteratePlayerCombat = // defines the XIM_fncIteratePlayers function, whic
 			{
 				_oPlayer setVariable ["XIM_bCombat", true]; // set the player's combat variable to true
 				_oPlayer setVariable ["XIM_bCombatMaster", true]; // set the player's combat master variable to true
-				
 				[_oPlayer] call XIM_fncSendGroup; // call XIM_fncSendGroup with the argument _oPlayer
 			}
 			else // if the player is in combat
@@ -196,13 +195,13 @@ addMissionEventHandler ["PlayerConnected", // when a player connects
 
 	if (_oPlayer != objNull) then
 	{
-		_oPlayer setVariable ["XIM_bCombat", false]; // set the XIM_bCombat variable on the client, with the default value of false
-		_oPlayer setVariable ["XIM_bCombatMaster", false]; // set the XIM_bCombatMaster variable on the client, with the default value of false
-		diag_log ("XIM: Player variables have been set");
 		[_oPlayer] spawn
 		{
 			params ["_oPlayer"];
 			sleep 2; // sleep for two seconds
+			_oPlayer setVariable ["XIM_bCombat", false]; // set the XIM_bCombat variable on the client, with the default value of false
+			_oPlayer setVariable ["XIM_bCombatMaster", false]; // set the XIM_bCombatMaster variable on the client, with the default value of false
+			diag_log ("XIM: Player variables have been set");
 			[_oPlayer] call XIM_fncSendGroup; // calls the XIM_fncSendGroup function with the argument player
 		};
 		[_oPlayer] call XIM_fncCombatTimeout; // calls the XIM_fncCombatTimeout function with the argument player
