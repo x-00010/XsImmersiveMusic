@@ -46,13 +46,13 @@ XIM_fncCombatTimeout = // this function determines whether the player has not ha
 XIM_fncSendGroup = // submits the provided unit's group to the server plus the unit's combat state, which triggers the publicVariable event handler
 {
 	params["_oPlayer"]; // defines the parameter _aPlayerMachineIDs in position zero
-	[group _oPlayer,_oPlayer getVariable "XIM_bCombat","statechange"] call fncXIM_MusicRemote;
+	[group _oPlayer,_oPlayer getVariable ["XIM_bCombat", false],"statechange"] call fncXIM_MusicRemote;
 };
 
 XIM_fncPlayNext = // submits the provided unit's group to the server plus the unit's combat state, which triggers the publicVariable event handler
 {
 	params["_oPlayer"]; // defines the parameter _aPlayerMachineIDs in position zero
-	[group _oPlayer,_oPlayer getVariable "XIM_bCombat","next"] call fncXIM_MusicRemote;
+	[group _oPlayer,_oPlayer getVariable ["XIM_bCombat", false],"next"] call fncXIM_MusicRemote;
 };
 
 XIM_fncIteratePlayerCombat = // defines the XIM_fncIteratePlayers function, which iterates through each player and determines if they are in combat
