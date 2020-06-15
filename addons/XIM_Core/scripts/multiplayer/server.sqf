@@ -196,9 +196,10 @@ addMissionEventHandler ["PlayerConnected", // when a player connects
 		_oPlayer setVariable ["XIM_bCombat", false]; // set the XIM_bCombat variable on the client, with the default value of false
 		_oPlayer setVariable ["XIM_bCombatMaster", false]; // set the XIM_bCombatMaster variable on the client, with the default value of false
 		diag_log ("XIM: Player variables have been set");
-		if (leader (group _oPlayer) == _oPlayer) then // if the player is the leader of their group
+		[_oPlayer] spawn
 		{
-			diag_log ("XIM: Player is the leader of the group");
+			params ["_oPlayer"];
+			sleep 2; // sleep for two seconds
 			[_oPlayer] call XIM_fncSendGroup; // calls the XIM_fncSendGroup function with the argument player
 		};
 		[_oPlayer] call XIM_fncCombatTimeout; // calls the XIM_fncCombatTimeout function with the argument player
