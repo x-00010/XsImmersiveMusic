@@ -169,10 +169,7 @@ fncXIM_MusicRemote = {
 
 	};	
 
-	if (_sXIM_MusicType == "") then
-	{
-		diag_log ("XIM: Music type is empty");
-	};
+	diag_log (str (_sXIM_MusicType));
 
 	switch (_XIMMusicRemoteFunction) do { 
 		case "next" : {  [_groupOwnerIDs,_sXIM_MusicType] call fncXIM_Shuffler; }; 
