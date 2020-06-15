@@ -131,6 +131,10 @@ fncXIM_Shuffler = {
 	XIM_groupOwnerIDs = _groupOwnerIDs;
 	missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",true,XIM_groupOwnerIDs]; //Disable ACE interference
 	_trackname = [_musictype] call fncXIM_TrackSelect; // select a random track from the given music type
+	if (_trackname == "") then
+	{
+		diag_log ("XIM: Track name is empty!");
+	};
 	[0,0] remoteExecCall ["fadeMusic",XIM_groupOwnerIDs,false];
 	[_trackname] remoteExecCall ["playMusic", XIM_groupOwnerIDs, false]; // plays the selected song on all clients in the group
 	[5,1] remoteExecCall ["fadeMusic",XIM_groupOwnerIDs,false];
@@ -189,6 +193,7 @@ addMissionEventHandler ["PlayerConnected", // when a player connects
 		_oPlayer setVariable ["XIM_bCombat", false]; // set the XIM_bCombat variable on the client, with the default value of false
 		_oPlayer setVariable ["XIM_bCombatMaster", false]; // set the XIM_bCombatMaster variable on the client, with the default value of false
 		diag_log ("XIM: Player variables have been set");
+		sleep 1; // 
 		if (leader (group _oPlayer) == _oPlayer) then // if the player is the leader of their group
 		{
 			diag_log ("XIM: Player is the leader of the group");
