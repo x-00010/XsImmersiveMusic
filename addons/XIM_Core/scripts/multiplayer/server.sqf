@@ -193,26 +193,25 @@ addMissionEventHandler ["PlayerConnected", // when a player connects
 	{
 		params ["_owner"];
 		private _oPlayer = objNull; // declares _oPlayer, which is objNull by default
-		sleep 10; // sleep for ten seconds
+		waitUntil
 		{
-			if ((owner _x) == _owner) then // if the currently iterated player's owner has the same machine id as the player who just connected
+			sleep 1;
 			{
-				_oPlayer = _x; // _oPlayer is equal to the currently iterated player
-			};
-		} forEach ((allPlayers - entities "HeadlessClient_F")); // for every player, except headless clients
+				if ((owner _x) == _owner) then // if the currently iterated player's owner has the same machine id as the player who just connected
+				{
+					_oPlayer = _x; // _oPlayer is equal to the currently iterated player
+				};
+			} forEach (allPlayers - entities "HeadlessClient_F"); // for every player, except headless clients
 
-		if (!isNull _oPlayer) then
-		{					
-			_oPlayer setVariable ["XIM_bCombat", false]; // set the XIM_bCombat variable on the client, with the default value of false
-			_oPlayer setVariable ["XIM_bCombatMaster", false]; // set the XIM_bCombatMaster variable on the client, with the default value of false
-			diag_log ("XIM: Player variables have been set");
-			[_oPlayer] call XIM_fncSendGroup; // calls the XIM_fncSendGroup function with the argument player
-			[_oPlayer] call XIM_fncCombatTimeout; // calls the XIM_fncCombatTimeout function with the argument player
-		}
-		else
-		{
-			diag_log("XIM: Player object is null");
-		};
+			if (!isNull _oPlayer) exitWith{true};
+			false;
+		};	
+
+		_oPlayer setVariable ["XIM_bCombat", false]; // set the XIM_bCombat variable on the client, with the default value of false
+		_oPlayer setVariable ["XIM_bCombatMaster", false]; // set the XIM_bCombatMaster variable on the client, with the default value of false
+		diag_log ("XIM: Player variables have been set");
+		[_oPlayer] call XIM_fncSendGroup; // calls the XIM_fncSendGroup function with the argument player
+		[_oPlayer] call XIM_fncCombatTimeout; // calls the XIM_fncCombatTimeout function with the argument player
 	};
 }];
 
