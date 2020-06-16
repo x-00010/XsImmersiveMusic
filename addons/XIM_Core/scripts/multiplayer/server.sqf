@@ -208,15 +208,17 @@ addMissionEventHandler ["PlayerConnected", // when a player connects
 				};
 			} forEach (allPlayers - entities "HeadlessClient_F"); // for every player, except headless clients
 
-			if (!isNull _oPlayer) exitWith{true};
+			if (!isNull _oPlayer) then
+			{
+				_oPlayer setVariable ["XIM_bCombat", false]; // set the XIM_bCombat variable on the client, with the default value of false
+				_oPlayer setVariable ["XIM_bCombatMaster", false]; // set the XIM_bCombatMaster variable on the client, with the default value of false
+				diag_log ("XIM: Player variables have been set");
+				[_oPlayer] call XIM_fncSendGroup; // calls the XIM_fncSendGroup function with the argument player
+				[_oPlayer] call XIM_fncCombatTimeout; // calls the XIM_fncCombatTimeout function with the argument player
+				if (true) exitWith {true};
+			};
 			false;
 		};	
-
-		_oPlayer setVariable ["XIM_bCombat", false]; // set the XIM_bCombat variable on the client, with the default value of false
-		_oPlayer setVariable ["XIM_bCombatMaster", false]; // set the XIM_bCombatMaster variable on the client, with the default value of false
-		diag_log ("XIM: Player variables have been set");
-		[_oPlayer] call XIM_fncSendGroup; // calls the XIM_fncSendGroup function with the argument player
-		[_oPlayer] call XIM_fncCombatTimeout; // calls the XIM_fncCombatTimeout function with the argument player
 	};
 }];
 
