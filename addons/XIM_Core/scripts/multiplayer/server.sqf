@@ -215,8 +215,8 @@ addMissionEventHandler ["PlayerConnected", // when a player connects
 				diag_log ("XIM: Player variables have been set");
 				[_oPlayer] call XIM_fncSendGroup; // calls the XIM_fncSendGroup function with the argument player
 				[_oPlayer] call XIM_fncCombatTimeout; // calls the XIM_fncCombatTimeout function with the argument player
-				if (true) exitWith {true};
 			};
+			if (!isNull _oPlayer) exitWith {true};
 			false;
 		};	
 	};
