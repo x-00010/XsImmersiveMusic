@@ -36,6 +36,8 @@ XIM_fncSendGroup = // submits the provided unit's group to the server plus the u
 	diag_log ("XIM: SendGroup called");
 	XIM_aStateChange = []; // defines XIM_aStateChange, which is an empty array
 	XIM_aStateChange pushBack group _oPlayer; // adds the player's group to XIM_aStateChange at position zero
+	diag_log(_oPlayer);
+	diag_log(group _oPlayer);
 	XIM_aStateChange pushBack (_oPlayer getVariable ["XIM_bCombat", false]); // adds the value of XIM_bCombat to the XIM_aStateChange array at position one
 	publicVariableServer "XIM_aStateChange"; // sends the XIM_aStateChange variable to the server via its namespace
 	diag_log ("XIM: StateChange sent");
