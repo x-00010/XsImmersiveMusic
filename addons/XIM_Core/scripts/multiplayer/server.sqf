@@ -54,7 +54,7 @@ XIM_fncCombatTimeout = // this function determines whether the player has not ha
 		waitUntil // repeats the following code once every frame (ish)
 		{
 			private _bTimedOut = false; // declares _bTimedOut, which is false by default
-			diag_log (str _oPlayer getVariable "XIM_bCombatMaster");
+			diag_log (str (_oPlayer getVariable "XIM_bCombatMaster"));
 			if (_oPlayer getVariable "XIM_bCombatMaster") then // if the player is the combat master for that group
 			{
 				diag_log("XIM: Combat master is true (timeout)");
