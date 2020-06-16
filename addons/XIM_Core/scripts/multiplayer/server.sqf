@@ -38,7 +38,7 @@ XIM_fncSendGroup = // submits the provided unit's group to the server plus the u
 	XIM_aStateChange pushBack group _oPlayer; // adds the player's group to XIM_aStateChange at position zero
 	diag_log(str _oPlayer);
 	diag_log(str (group _oPlayer));
-	diag_log("XIM: Player and group variables logged");
+	diag_log("XIM: Player and g'roup variables logged");
 	XIM_aStateChange pushBack (_oPlayer getVariable ["XIM_bCombat", false]); // adds the value of XIM_bCombat to the XIM_aStateChange array at position one
 	publicVariableServer "XIM_aStateChange"; // sends the XIM_aStateChange variable to the server via its namespace
 	diag_log ("XIM: StateChange sent");
@@ -189,30 +189,30 @@ addMissionEventHandler ["PlayerConnected", // when a player connects
 {
 	params ["_id", "_uid", "_name", "_jip", "_owner"]; // declares params
 	diag_log ("XIM: Player has connected");
-	private _oPlayer = objNull; // declares _oPlayer, which is objNull by default
+	[_owner] spawn
 	{
-		if ((owner _x) == _owner) then // if the currently iterated player's owner has the same machine id as the player who just connected
+		params ["_owner"];
+		private _oPlayer = objNull; // declares _oPlayer, which is objNull by default
+		sleep 10; // sleep for ten seconds
 		{
-			_oPlayer = _x; // _oPlayer is equal to the currently iterated player
-		};
-	} forEach ((allPlayers - entities "HeadlessClient_F")); // for every player, except headless clients
+			if ((owner _x) == _owner) then // if the currently iterated player's owner has the same machine id as the player who just connected
+			{
+				_oPlayer = _x; // _oPlayer is equal to the currently iterated player
+			};
+		} forEach ((allPlayers - entities "HeadlessClient_F")); // for every player, except headless clients
 
-	if (_oPlayer != objNull) then
-	{
-		[_oPlayer] spawn
-		{
-			params ["_oPlayer"];
-			sleep 10; // sleep for ten seconds
+		if (!isNull _oPlayer) then
+		{					
 			_oPlayer setVariable ["XIM_bCombat", false]; // set the XIM_bCombat variable on the client, with the default value of false
 			_oPlayer setVariable ["XIM_bCombatMaster", false]; // set the XIM_bCombatMaster variable on the client, with the default value of false
 			diag_log ("XIM: Player variables have been set");
 			[_oPlayer] call XIM_fncSendGroup; // calls the XIM_fncSendGroup function with the argument player
+			[_oPlayer] call XIM_fncCombatTimeout; // calls the XIM_fncCombatTimeout function with the argument player
+		}
+		else
+		{
+			diag_log("XIM: Player object is null");
 		};
-		[_oPlayer] call XIM_fncCombatTimeout; // calls the XIM_fncCombatTimeout function with the argument player
-	}
-	else
-	{
-		diag_log("XIM - Error, could not determine player object from machine ID");
 	};
 }];
 
