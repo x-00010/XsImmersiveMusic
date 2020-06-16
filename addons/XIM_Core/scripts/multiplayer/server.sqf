@@ -232,7 +232,8 @@ addMissionEventHandler ["PlayerConnected", // when a player connects
 	diag_log ("XIM: PlayNext recieved");
 	private _aXIMPlayNext = _this select 1; //Retrieve array
 	private _gXIMGroup = _aXIMPlayNext select 0; //Retrieve group
-	private _bXIMCombatState = _aXIMPlayNext select 1; //Retrieve state
+	private _oXIMGroupLeader = _aXIMPlayNext select 1; //Retrieve leader
+	private _bXIMCombatState = _oXIMGroupLeader getVariable ["XIM_bCombat", false];
 	
 	[_gXIMGroup,_bXIMCombatState,"next"] call fncXIM_MusicRemote;
 };
