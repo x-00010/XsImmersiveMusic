@@ -197,6 +197,8 @@ addMissionEventHandler ["PlayerConnected", // when a player connects
 
 ["ace_firedNonPlayer", XIM_fncMain] call CBA_fnc_addEventHandler; // adds event handler for when an AI fires
 
+["ace_firedNonPlayerVehicle", XIM_fncMain] call CBA_fnc_addEventHandler; // adds event handler for when an AI fires inside a vehicle
+
 "XIM_aStateChange" addPublicVariableEventHandler  // detects a broadcast from the combat master, which contains the group and its combat state 
 {
 	private _aXIMstatechange = _this select 1; //Store array in variable
