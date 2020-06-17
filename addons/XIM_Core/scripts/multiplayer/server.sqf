@@ -12,7 +12,6 @@ aCalmMusicClassnames = "'calm' in getArray (_x >> 'moods') " configClasses (conf
 XIM_fncMain = // this function calls XIM_fncIteratePlayerCombat every time a shot is fired for the combat master in that group
 {
 	{
-		diag_log ("XIM: AI has fired");
 		private _bCombatMasterExists = false; // defines _bCombatMasterExists, which is false by default
 		params["_oFiringAI"]; // defines the parameter of _oFiringAI in argument position zero
 		{
@@ -21,7 +20,6 @@ XIM_fncMain = // this function calls XIM_fncIteratePlayerCombat every time a sho
 				_bCombatMasterExists = true; // set _bCombatMasterExists to true
 			};
 		} forEach (units (group _x)); // for every player in the player's group
-		diag_log ("XIM: Reached combat master if");
 		if ((!(_bCombatMasterExists)) or (_x getVariable ["XIM_bCombatMaster", false])) then // if the combat master does not exist, or the currently selected player
 																							 // is a combat master then
 		{
@@ -33,15 +31,10 @@ XIM_fncMain = // this function calls XIM_fncIteratePlayerCombat every time a sho
 XIM_fncSendGroup = // submits the provided unit's group to the server plus the unit's combat state, which triggers the publicVariable event handler
 {
 	params["_oPlayer"]; // defines the parameter _aPlayerMachineIDs in position zero
-	diag_log ("XIM: SendGroup called");
 	XIM_aStateChange = []; // defines XIM_aStateChange, which is an empty array
 	XIM_aStateChange pushBack group _oPlayer; // adds the player's group to XIM_aStateChange at position zero
-	diag_log(str _oPlayer);
-	diag_log(str (group _oPlayer));
-	diag_log("XIM: Player and g'roup variables logged");
 	XIM_aStateChange pushBack (_oPlayer getVariable ["XIM_bCombat", false]); // adds the value of XIM_bCombat to the XIM_aStateChange array at position one
 	publicVariableServer "XIM_aStateChange"; // sends the XIM_aStateChange variable to the server via its namespace
-	diag_log ("XIM: StateChange sent");
 };
 
 XIM_fncCombatTimeout = // this function determines whether the player has not had an AI fire near them in the past 5 mins, and if they have not, sets XIM_bCombat to
@@ -55,16 +48,12 @@ XIM_fncCombatTimeout = // this function determines whether the player has not ha
 		{
 			private _bTimedOut = false; // declares _bTimedOut, which is false by default
 			sleep 1;
-			diag_log (str (_oPlayer getVariable "XIM_bCombatMaster"));
 			if (_oPlayer getVariable "XIM_bCombatMaster") then // if the player is the combat master for that group
 			{
-				diag_log("XIM: Combat master is true (timeout)");
 				_oPlayer setVariable ["XIM_bRecentCombat", false]; // set the player's recent combat variable to false
 				sleep XIM_iCombatRefreshTime; // sleep for the value of XIM_iCombatRefreshTime, which is 120 seconds by default
-				diag_log("XIM: Sleep has finished (timeout)");
 				if (!(_oPlayer getVariable "XIM_bRecentCombat")) then // if XIM_bRecentCombat is still false after 2 minutes
 				{
-					diag_log("XIM: Recent combat is false");
 					_bTimedOut = true; // then set _bTimedOut to true
 				};
 			};
@@ -82,7 +71,6 @@ XIM_fncCombatTimeout = // this function determines whether the player has not ha
 XIM_fncIteratePlayerCombat = // defines the XIM_fncIteratePlayers function, which iterates through each player and determines if they are in combat
 {
 	params ["_oFiringAI", "_oPlayer"]; // defines _oFiringAI, which is the object of the AI who fired
-	diag_log ("XIM: Iterating player combat");
 
 	if (alive _oPlayer) then // if the player is not dead
 	{
@@ -91,14 +79,12 @@ XIM_fncIteratePlayerCombat = // defines the XIM_fncIteratePlayers function, whic
 		{
 			if (!(_oPlayer getVariable "XIM_bCombat")) then // if the player is not already in combat
 			{
-				diag_log("XIM: bCombat is false");
 				_oPlayer setVariable ["XIM_bCombat", true]; // set the player's combat variable to true
 				_oPlayer setVariable ["XIM_bCombatMaster", true]; // set the player's combat master variable to true
 				[_oPlayer] call XIM_fncSendGroup; // call XIM_fncSendGroup with the argument _oPlayer
 			}
 			else // if the player is in combat
 			{
-				diag_log("XIM: bCombat is true");
 				_oPlayer setVariable ["XIM_bRecentCombat", true]; // set the player's recent combat variable to true
 			};
 		};
@@ -109,7 +95,6 @@ XIM_fncIteratePlayerCombat = // defines the XIM_fncIteratePlayers function, whic
 
 fncXIM_MusicHandler = { // defines the fncXIM_MusicHandler function, which disables ace's volume interference for the group, plays a certain type of music based on the parameter, and then reenables ace's volume interference for that same group
 	params ["_groupOwnerIDs","_musictype"];
-	diag_log ("XIM: MusicHandler called");
 	[format ["%1",_groupOwnerIDs]] remoteExec ["hint",0,false];
 	XIM_groupOwnerIDs = _groupOwnerIDs; //Global for use in CBA function
 	missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",true,XIM_groupOwnerIDs]; //Disable ACE interference
@@ -123,14 +108,12 @@ fncXIM_MusicHandler = { // defines the fncXIM_MusicHandler function, which disab
 
 fncXIM_TrackSelect = {
 	params ["_musictype"];
-	diag_log ("XIM: TrackSelect called");
 	private _trackclassname = "";
 
 	switch (_musictype) do { 
 		case "combat" : { _trackclassname = selectRandom aCombatMusicClassnames; }; // select a random track from the aCombatMusicClassnames array
 		case "dark" : { _trackclassname = selectRandom aDarkMusicClassnames;}; // select a random track from the aDarkMusicClassnames array
 		case "calm" : { _trackclassname = selectRandom aCalmMusicClassnames; };  // select a random track from the aCalmMusicClassnames array
-		default {diag_log ("XIM: Invalid music type");};
 	};
 	
 	_trackclassname; //Return classname
@@ -139,14 +122,9 @@ fncXIM_TrackSelect = {
 
 fncXIM_Shuffler = {
 	params ["_groupOwnerIDs","_musictype"];
-	diag_log ("XIM: Shuffler called");
 	XIM_groupOwnerIDs = _groupOwnerIDs;
 	missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",true,XIM_groupOwnerIDs]; //Disable ACE interference
 	_trackname = [_musictype] call fncXIM_TrackSelect; // select a random track from the given music type
-	if (_trackname == "") then
-	{
-		diag_log ("XIM: Track name is empty!");
-	};
 	[0,0] remoteExecCall ["fadeMusic",XIM_groupOwnerIDs,false];
 	[_trackname] remoteExecCall ["playMusic", XIM_groupOwnerIDs, false]; // plays the selected song on all clients in the group
 	[10,1] remoteExecCall ["fadeMusic",XIM_groupOwnerIDs,false];
@@ -156,7 +134,6 @@ fncXIM_Shuffler = {
 
 fncXIM_MusicRemote = {
 	params ["_gXIMGroup", "_bXIMCombatState","_XIMMusicRemoteFunction"]; //Defining params
-	diag_log ("XIM: MusicRemote called");
 	private _groupOwnerIDs = [];
 	(units _gXIMGroup) apply {_groupOwnerIDs pushBackUnique (owner _x)}; //Retrieving ID's for players in group
 	private _sXIM_MusicType = "";
@@ -180,8 +157,6 @@ fncXIM_MusicRemote = {
 
 	};	
 
-	diag_log (str (_sXIM_MusicType));
-
 	switch (_XIMMusicRemoteFunction) do { 
 		case "next" : {  [_groupOwnerIDs,_sXIM_MusicType] call fncXIM_Shuffler; }; 
 		case "statechange" : { [_groupOwnerIDs,_sXIM_MusicType] call fncXIM_MusicHandler; }; 
@@ -193,7 +168,6 @@ fncXIM_MusicRemote = {
 addMissionEventHandler ["PlayerConnected", // when a player connects
 {
 	params ["_id", "_uid", "_name", "_jip", "_owner"]; // declares params
-	diag_log ("XIM: Player has connected");
 	[_owner] spawn
 	{
 		params ["_owner"];
@@ -212,7 +186,6 @@ addMissionEventHandler ["PlayerConnected", // when a player connects
 			{
 				_oPlayer setVariable ["XIM_bCombat", false]; // set the XIM_bCombat variable on the client, with the default value of false
 				_oPlayer setVariable ["XIM_bCombatMaster", false]; // set the XIM_bCombatMaster variable on the client, with the default value of false
-				diag_log ("XIM: Player variables have been set");
 				[_oPlayer] call XIM_fncSendGroup; // calls the XIM_fncSendGroup function with the argument player
 				[_oPlayer] call XIM_fncCombatTimeout; // calls the XIM_fncCombatTimeout function with the argument player
 			};
@@ -226,7 +199,6 @@ addMissionEventHandler ["PlayerConnected", // when a player connects
 
 "XIM_aStateChange" addPublicVariableEventHandler  // detects a broadcast from the combat master, which contains the group and its combat state 
 {
-	diag_log ("XIM: StateChange recieved");
 	private _aXIMstatechange = _this select 1; //Store array in variable
 	private _gXIMGroup = _aXIMstatechange select 0; //Retrieve group
 	private _bXIMCombatState = _aXIMstatechange select 1; //Retrieve combat state for those network ID's
@@ -234,7 +206,6 @@ addMissionEventHandler ["PlayerConnected", // when a player connects
 };
 
 "XIM_aPlayNext" addPublicVariableEventHandler { // detects broadcast from group leader that tells server to play next track for his group
-	diag_log ("XIM: PlayNext recieved");
 	private _aXIMPlayNext = _this select 1; //Retrieve array
 	private _gXIMGroup = _aXIMPlayNext select 0; //Retrieve group
 	private _oXIMGroupLeader = _aXIMPlayNext select 1; //Retrieve leader
