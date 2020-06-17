@@ -20,7 +20,6 @@ XIM_fncMain = // this function calls XIM_fncIteratePlayerCombat every time a sho
 				_bCombatMasterExists = true; // set _bCombatMasterExists to true
 			};
 		} forEach (units (group _x)); // for every player in the player's group
-
 		if ((!(_bCombatMasterExists)) or (_x getVariable ["XIM_bCombatMaster", false])) then // if the combat master does not exist, or the currently selected player
 																							 // is a combat master then
 		{
@@ -34,17 +33,8 @@ XIM_fncSendGroup = // submits the provided unit's group to the server plus the u
 	params["_oPlayer"]; // defines the parameter _aPlayerMachineIDs in position zero
 	XIM_aStateChange = []; // defines XIM_aStateChange, which is an empty array
 	XIM_aStateChange pushBack group _oPlayer; // adds the player's group to XIM_aStateChange at position zero
-	XIM_aStateChange pushBack (_oPlayer getVariable "XIM_bCombat"); // adds the value of XIM_bCombat to the XIM_aStateChange array at position one
+	XIM_aStateChange pushBack (_oPlayer getVariable ["XIM_bCombat", false]); // adds the value of XIM_bCombat to the XIM_aStateChange array at position one
 	publicVariableServer "XIM_aStateChange"; // sends the XIM_aStateChange variable to the server via its namespace
-};
-
-XIM_fncPlayNext = // submits the provided unit's group to the server plus the unit's combat state, which triggers the publicVariable event handler
-{
-	params["_oPlayer"]; // defines the parameter _aPlayerMachineIDs in position zero
-	XIM_aPlayNext = []; // defines XIM_aStateChange, which is an empty array
-	XIM_aPlayNext pushBack group _oPlayer; // adds the player's group to XIM_aStateChange at position zero
-	XIM_aPlayNext pushBack (_oPlayer getVariable "XIM_bCombat"); // adds the value of XIM_bCombat to the XIM_aStateChange array at position one
-	publicVariableServer "XIM_aPlayNext"; // sends the XIM_aStateChange variable to the server via its namespace
 };
 
 XIM_fncCombatTimeout = // this function determines whether the player has not had an AI fire near them in the past 5 mins, and if they have not, sets XIM_bCombat to
@@ -57,6 +47,7 @@ XIM_fncCombatTimeout = // this function determines whether the player has not ha
 		waitUntil // repeats the following code once every frame (ish)
 		{
 			private _bTimedOut = false; // declares _bTimedOut, which is false by default
+			sleep 1;
 			if (_oPlayer getVariable "XIM_bCombatMaster") then // if the player is the combat master for that group
 			{
 				_oPlayer setVariable ["XIM_bRecentCombat", false]; // set the player's recent combat variable to false
@@ -104,16 +95,15 @@ XIM_fncIteratePlayerCombat = // defines the XIM_fncIteratePlayers function, whic
 
 fncXIM_MusicHandler = { // defines the fncXIM_MusicHandler function, which disables ace's volume interference for the group, plays a certain type of music based on the parameter, and then reenables ace's volume interference for that same group
 	params ["_groupOwnerIDs","_musictype"];
-	XIM_aPlayers = _groupOwnerIDs; //Global for use in CBA function
-	missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",true,XIM_aPlayers]; //Disable ACE interference
+	[format ["%1",_groupOwnerIDs]] remoteExec ["hint",0,false];
+	XIM_groupOwnerIDs = _groupOwnerIDs; //Global for use in CBA function
+	missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",true,XIM_groupOwnerIDs]; //Disable ACE interference
 	XIM_trackname = [_musictype] call fncXIM_TrackSelect; // select a random track from the given music type
 
 	
-	[5,0] remoteExecCall ["fadeMusic",XIM_aPlayers,false]; //Fades currently playing music, if there is a track playing
-	[{[XIM_trackname] remoteExecCall ["playMusic", XIM_aPlayers, false];},[], 5] call CBA_fnc_waitAndExecute;
-	[5,1] remoteExecCall ["fadeMusic",XIM_aPlayers,false];
-
-	[{missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",false,XIM_aPlayers];},[], 15] call CBA_fnc_waitAndExecute; //Wait 15 seconds, then enable ACE Volume Update again (earplugs, deafened,...)
+	[10,0] remoteExecCall ["fadeMusic",XIM_groupOwnerIDs,false]; //Fades currently playing music
+	[{[XIM_trackname] remoteExecCall ["playMusic", XIM_groupOwnerIDs, false];[10,1] remoteExecCall ["fadeMusic",XIM_groupOwnerIDs,false];},[], 10] call CBA_fnc_waitAndExecute;
+	[{missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",false,XIM_groupOwnerIDs];},[], 30] call CBA_fnc_waitAndExecute; //Wait 30 seconds, then enable ACE Volume Update again (earplugs, deafened,...)
 };
 
 fncXIM_TrackSelect = {
@@ -132,14 +122,13 @@ fncXIM_TrackSelect = {
 
 fncXIM_Shuffler = {
 	params ["_groupOwnerIDs","_musictype"];
-	
 	XIM_groupOwnerIDs = _groupOwnerIDs;
-	missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",true,XIM_aPlayers]; //Disable ACE interference
+	missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",true,XIM_groupOwnerIDs]; //Disable ACE interference
 	_trackname = [_musictype] call fncXIM_TrackSelect; // select a random track from the given music type
-	[0,0] remoteExecCall ["fadeMusic",_groupOwnerIDs,false];
-	[_trackname] remoteExecCall ["playMusic", _groupOwnerIDs, false]; // plays the selected song on all clients in the group
-	[5,1] remoteExecCall ["fadeMusic",_groupOwnerIDs,false];
-	[{missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",false,XIM_groupOwnerIDs];},[], 10] call CBA_fnc_waitAndExecute; //Wait 10 seconds, then enable ACE Volume Update again (earplugs, deafened,...)
+	[0,0] remoteExecCall ["fadeMusic",XIM_groupOwnerIDs,false];
+	[_trackname] remoteExecCall ["playMusic", XIM_groupOwnerIDs, false]; // plays the selected song on all clients in the group
+	[10,1] remoteExecCall ["fadeMusic",XIM_groupOwnerIDs,false];
+	[{missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",false,XIM_groupOwnerIDs];},[], 15] call CBA_fnc_waitAndExecute; //Wait 15 seconds, then enable ACE Volume Update again (earplugs, deafened,...)
 };
 
 
@@ -179,27 +168,30 @@ fncXIM_MusicRemote = {
 addMissionEventHandler ["PlayerConnected", // when a player connects
 {
 	params ["_id", "_uid", "_name", "_jip", "_owner"]; // declares params
-	private _oPlayer = objNull; // declares _oPlayer, which is objNull by default
+	[_owner] spawn
 	{
-		if ((owner _x) == _owner) then // if the currently iterated player's owner has the same machine id as the player who just connected
+		params ["_owner"];
+		private _oPlayer = objNull; // declares _oPlayer, which is objNull by default
+		waitUntil
 		{
-			_oPlayer = _x; // _oPlayer is equal to the currently iterated player
-		};
-	} forEach ((allPlayers - entities "HeadlessClient_F")); // for every player, except headless clients
+			sleep 1;
+			{
+				if ((owner _x) == _owner) then // if the currently iterated player's owner has the same machine id as the player who just connected
+				{
+					_oPlayer = _x; // _oPlayer is equal to the currently iterated player
+				};
+			} forEach (allPlayers - entities "HeadlessClient_F"); // for every player, except headless clients
 
-	if (_oPlayer != objNull) then
-	{
-		_oPlayer setVariable ["XIM_bCombat", false]; // set the XIM_bCombat variable on the client, with the default value of false
-		_oPlayer setVariable ["XIM_bCombatMaster", false]; // set the XIM_bCombatMaster variable on the client, with the default value of false
-		if (leader (group _oPlayer) == _oPlayer) then // if the player is the leader of their group
-		{
-			[_oPlayer] call XIM_fncSendGroup; // calls the XIM_fncSendGroup function with the argument player
-		};
-		[_oPlayer] call XIM_fncCombatTimeout; // calls the XIM_fncCombatTimeout function with the argument player
-	}
-	else
-	{
-		diag_log("XIM - Error, could not determine player object from machine ID");
+			if (!isNull _oPlayer) then
+			{
+				_oPlayer setVariable ["XIM_bCombat", false]; // set the XIM_bCombat variable on the client, with the default value of false
+				_oPlayer setVariable ["XIM_bCombatMaster", false]; // set the XIM_bCombatMaster variable on the client, with the default value of false
+				[_oPlayer] call XIM_fncSendGroup; // calls the XIM_fncSendGroup function with the argument player
+				[_oPlayer] call XIM_fncCombatTimeout; // calls the XIM_fncCombatTimeout function with the argument player
+			};
+			if (!isNull _oPlayer) exitWith {true};
+			false;
+		};	
 	};
 }];
 
@@ -216,7 +208,8 @@ addMissionEventHandler ["PlayerConnected", // when a player connects
 "XIM_aPlayNext" addPublicVariableEventHandler { // detects broadcast from group leader that tells server to play next track for his group
 	private _aXIMPlayNext = _this select 1; //Retrieve array
 	private _gXIMGroup = _aXIMPlayNext select 0; //Retrieve group
-	private _bXIMCombatState = _aXIMPlayNext select 1; //Retrieve state
+	private _oXIMGroupLeader = _aXIMPlayNext select 1; //Retrieve leader
+	private _bXIMCombatState = _oXIMGroupLeader getVariable ["XIM_bCombat", false];
 	
 	[_gXIMGroup,_bXIMCombatState,"next"] call fncXIM_MusicRemote;
 };
