@@ -116,11 +116,9 @@ fncXIM_MusicHandler = { // defines the fncXIM_MusicHandler function, which disab
 	XIM_trackname = [_musictype] call fncXIM_TrackSelect; // select a random track from the given music type
 
 	
-	[5,0] remoteExecCall ["fadeMusic",XIM_groupOwnerIDs,false]; //Fades currently playing music, if there is a track playing
-	[{[XIM_trackname] remoteExecCall ["playMusic", XIM_groupOwnerIDs, false];},[], 5] call CBA_fnc_waitAndExecute;
-	[5,1] remoteExecCall ["fadeMusic",XIM_groupOwnerIDs,false];
-
-	[{missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",false,XIM_groupOwnerIDs];},[], 15] call CBA_fnc_waitAndExecute; //Wait 15 seconds, then enable ACE Volume Update again (earplugs, deafened,...)
+	[10,0] remoteExecCall ["fadeMusic",XIM_groupOwnerIDs,false]; //Fades currently playing music
+	[{[XIM_trackname] remoteExecCall ["playMusic", XIM_groupOwnerIDs, false];[10,1] remoteExecCall ["fadeMusic",XIM_groupOwnerIDs,false];},[], 10] call CBA_fnc_waitAndExecute;
+	[{missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",false,XIM_groupOwnerIDs];},[], 30] call CBA_fnc_waitAndExecute; //Wait 30 seconds, then enable ACE Volume Update again (earplugs, deafened,...)
 };
 
 fncXIM_TrackSelect = {
@@ -151,8 +149,8 @@ fncXIM_Shuffler = {
 	};
 	[0,0] remoteExecCall ["fadeMusic",XIM_groupOwnerIDs,false];
 	[_trackname] remoteExecCall ["playMusic", XIM_groupOwnerIDs, false]; // plays the selected song on all clients in the group
-	[5,1] remoteExecCall ["fadeMusic",XIM_groupOwnerIDs,false];
-	[{missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",false,XIM_groupOwnerIDs];},[], 10] call CBA_fnc_waitAndExecute; //Wait 10 seconds, then enable ACE Volume Update again (earplugs, deafened,...)
+	[10,1] remoteExecCall ["fadeMusic",XIM_groupOwnerIDs,false];
+	[{missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",false,XIM_groupOwnerIDs];},[], 15] call CBA_fnc_waitAndExecute; //Wait 15 seconds, then enable ACE Volume Update again (earplugs, deafened,...)
 };
 
 
