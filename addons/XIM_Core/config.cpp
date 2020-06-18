@@ -42,7 +42,7 @@ class CfgVehicles
                 displayName = "Start music";
                 condition = "((leader (group player) == player) or !isMultiplayer) and (XIM_bMusicStopped == true)";
                 exceptions[] = {};
-                statement = "XIM_bMusicStopped = nil; [player] call XIM_fncPlayNext";
+                statement = "XIM_bMusicStopped = nil; [player] call XIM_fncPlayNext;";
             };
         };
     };
