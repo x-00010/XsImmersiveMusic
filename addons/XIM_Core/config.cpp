@@ -40,7 +40,7 @@ class CfgVehicles
             class startMusic
             {
                 displayName = "Start music";
-                condition = "((leader (group player) == player) or !isMultiplayer) and (group player getVariable 'XIM_bMusicStopped')";
+                condition = "((leader (group player) == player) or !isMultiplayer) and (group player getVariable ['XIM_bMusicStopped', false])";
                 exceptions[] = {};
                 statement = "[] call XIM_fncStartMusic";
             };
