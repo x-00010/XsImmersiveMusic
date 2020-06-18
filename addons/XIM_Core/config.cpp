@@ -26,9 +26,23 @@ class CfgVehicles
             class skipSong
             {
                 displayName = "Skip song";
-                condition = "(leader (group player) == player) or !isMultiplayer";
+                condition = "((leader (group player) == player) or !isMultiplayer) and (isNull XIM_bMusicStopped)";
                 exceptions[] = {};
                 statement = "[player] call XIM_fncPlayNext";
+            };
+            class stopMusic
+            {
+                displayName = "Stop music";
+                condition = "(leader (group player) == player) or !isMultiplayer";
+                exceptions[] = {};
+                statement = "XIM_bMusicStopped = true; [""] remoteExecCall ["playMusic", group player, false];";
+            };
+            class startMusic
+            {
+                displayName = "Start music";
+                condition = "((leader (group player) == player) or !isMultiplayer) and (XIM_bMusicStopped == true)";
+                exceptions[] = {};
+                statement = "XIM_bMusicStopped = nil; [player] call XIM_fncPlayNext";
             };
         };
     };
