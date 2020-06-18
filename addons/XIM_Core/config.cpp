@@ -35,7 +35,7 @@ class CfgVehicles
                 displayName = "Stop music";
                 condition = "(leader (group player) == player) or !isMultiplayer";
                 exceptions[] = {};
-                statement = "XIM_bMusicStopped = true; [""] remoteExecCall ["playMusic", group player, false];";
+                statement = "XIM_bMusicStopped = true; ([""] remoteExecCall ["playMusic", group player, false]);";
             };
             class startMusic
             {
