@@ -10,6 +10,18 @@ XIM_fncPlayNext = // submits the provided unit's group to the server plus the un
 	publicVariableServer "XIM_aPlayNext"; // sends the XIM_aStateChange variable to the server via its namespace
 };
 
+XIM_fncStopMusic =  // stops music playing on all clients in the group
+{
+	[""] remoteExecCall ["playMusic", group player, false]; // stops music playing on all clients in the group
+	group player setVariable ["XIM_bMusicStopped", true]; // set the XIM_bMusicStopped variable to true in the group's namespace
+};
+
+XIM_fncStartMusic = // starts playing music for all clients in the group
+{
+	group player setVariable ["XIM_bMusicStopped", false]; // set the XIM_bMusicStopped variable to true in the group's namespace
+	[player] call XIM_fncPlayNext;
+};
+
 // ======================================== EVENT HANDLERS ========================================
 
 addMusicEventHandler ["MusicStart", {

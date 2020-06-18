@@ -134,33 +134,48 @@ fncXIM_Shuffler = {
 fncXIM_MusicRemote = {
 	params ["_gXIMGroup", "_bXIMCombatState","_XIMMusicRemoteFunction"]; //Defining params
 	private _groupOwnerIDs = [];
-	(units _gXIMGroup) apply {_groupOwnerIDs pushBackUnique (owner _x)}; //Retrieving ID's for players in group
-	private _sXIM_MusicType = "";
 
-	if (_bXIMCombatState) then { // if _bXIMCombatState is true
+	if (!(_gXIMGroup getVariable ["XIM_bMusicStopped", false])) then // if XIM_bMusicStopped is false
+	{
+		(units _gXIMGroup) apply {_groupOwnerIDs pushBackUnique (owner _x)}; //Retrieving ID's for players in group
+		private _sXIM_MusicType = "";
 
-		_sXIM_MusicType = "combat"; // then set the music type to combat
-				
-	} else {
-		private _sunrisesunset = date call BIS_fnc_sunriseSunsetTime;
-		private _sunrise = _sunrisesunset select 0;
-		private _sunset = _sunrisesunset select 1;
+		if (_bXIMCombatState) then { // if _bXIMCombatState is true
 
-		if ((rain > 0.2) or (fog > 0.2) or ((daytime > _sunset) and (daytime < _sunrise))) then { // if it is foggy, raining or night time
+			if (XIM_bCombatMusicEnabled) then // if combat music is enabled in the cba settings
+			{
+				_sXIM_MusicType = "combat"; // then set the music type to combat
+			};
+					
+		} else {
+			private _sunrisesunset = date call BIS_fnc_sunriseSunsetTime;
+			private _sunrise = _sunrisesunset select 0;
+			private _sunset = _sunrisesunset select 1;
 
-			_sXIM_MusicType = "dark"; // set the music to dark
-	  	} else {
+			if ((rain > 0.2) or (fog > 0.2) or ((daytime > _sunset) and (daytime < _sunrise))) then { // if it is foggy, raining or night time
 
-	  		_sXIM_MusicType = "calm"; // otherwise set it to calm
+				if (XIM_bStealthMusicEnabled) then // if stealth music is enabled in the cba settings
+				{
+					_sXIM_MusicType = "dark"; // set the music to dark
+				};
+			} else {
+
+				if (XIM_bCalmMusicEnabled) then // if calm music is enabled in the cba settings
+				{
+					_sXIM_MusicType = "calm"; // otherwise set it to calm
+				};
+			};
+
+		};	
+
+		if (!(_sXIM_MusicType == "")) then // if _sXIM_MusicType is not an empty string
+		{
+			switch (_XIMMusicRemoteFunction) do { 
+				case "next" : {  [_groupOwnerIDs,_sXIM_MusicType] call fncXIM_Shuffler; }; 
+				case "statechange" : { [_groupOwnerIDs,_sXIM_MusicType] call fncXIM_MusicHandler; }; 
+			};
 		};
-
-	};	
-
-	switch (_XIMMusicRemoteFunction) do { 
-		case "next" : {  [_groupOwnerIDs,_sXIM_MusicType] call fncXIM_Shuffler; }; 
-		case "statechange" : { [_groupOwnerIDs,_sXIM_MusicType] call fncXIM_MusicHandler; }; 
 	};
-
 };
 
 // ======================================== EVENT HANDLERS ========================================
