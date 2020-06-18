@@ -33,7 +33,7 @@ class CfgVehicles
             class stopMusic
             {
                 displayName = "Stop music";
-                condition = "(leader (group player) == player) or !isMultiplayer and (!(group player getVariable ['XIM_bMusicStopped', false]))";
+                condition = "((leader (group player) == player) or !isMultiplayer) and (!(group player getVariable ['XIM_bMusicStopped', false]))";
                 exceptions[] = {};
                 statement = "[] call XIM_fncStopMusic";
             };
