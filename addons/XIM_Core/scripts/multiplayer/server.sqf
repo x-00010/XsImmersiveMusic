@@ -110,9 +110,9 @@ fncXIM_TrackSelect = {
 	private _trackclassname = "";
 
 	switch (_musictype) do { 
-		case "combat" : { _trackclassname = selectRandom aCombatMusicClassnames; }; // select a random track from the aCombatMusicClassnames array
-		case "dark" : { _trackclassname = selectRandom aDarkMusicClassnames;}; // select a random track from the aDarkMusicClassnames array
-		case "calm" : { _trackclassname = selectRandom aCalmMusicClassnames; };  // select a random track from the aCalmMusicClassnames array
+		case "combat" : { _trackclassname = selectRandom XIM_aCombatMusicClassnames; }; // select a random track from the aCombatMusicClassnames array
+		case "dark" : { _trackclassname = selectRandom XIM_aDarkMusicClassnames;}; // select a random track from the aDarkMusicClassnames array
+		case "calm" : { _trackclassname = selectRandom XIM_aCalmMusicClassnames; };  // select a random track from the aCalmMusicClassnames array
 	};
 	
 	_trackclassname; //Return classname
