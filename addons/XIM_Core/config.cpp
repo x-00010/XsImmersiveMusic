@@ -66,7 +66,6 @@ class CfgMusic
         {
             "intense"
         };
-        sound[] = { "\A3\music_f\Music\LeadTrack01_F.ogg", db + 0, 1.0 }; 
         //This is war
     };
     class LeadTrack01a_F
@@ -77,7 +76,6 @@ class CfgMusic
         {
             "intense"
         };
-        sound[] = { "\A3\music_f\Music\LeadTrack01a_F.ogg", db + 0, 1.0 };
         //This is war a
     };
     class LeadTrack01b_F
@@ -88,7 +86,6 @@ class CfgMusic
         {
             "intense"
         };
-        sound[] = { "\A3\music_f\Music\LeadTrack01b_F.ogg", db + 0, 1.0 };
         //This is war b
     };
     class LeadTrack01c_F
@@ -99,7 +96,6 @@ class CfgMusic
         {
             "intense"
         };
-        sound[] = { "\A3\music_f\Music\LeadTrack01c_F.ogg", db + 0, 1.0 };
         //Main menu
     };
     class LeadTrack02_F
@@ -111,7 +107,6 @@ class CfgMusic
             "dark",
             "intense"
         };
-        sound[] = { "\A3\music_f\Music\LeadTrack02_F.ogg", db + 0, 1.0 };
         //Proteus
     };
     class LeadTrack03_F
@@ -122,7 +117,6 @@ class CfgMusic
         {
             "intense"
         };
-        sound[] = { "\A3\music_f\Music\LeadTrack03_F.ogg", db + 0, 1.0 };
         //Combined Arms
     };
     class LeadTrack04_F
@@ -134,7 +128,6 @@ class CfgMusic
             "intense",
             "dark"
         };
-        sound[] = { "\A3\music_f\Music\LeadTrack04_F.ogg", db + 0, 1.0 };
         //Action Dark 2
     };
     class LeadTrack04a_F
@@ -146,7 +139,6 @@ class CfgMusic
             "intense",
             "dark"
         };
-        sound[] = { "\A3\music_f\Music\LeadTrack04a_F.ogg", db + 0, 1.0 };
         //Action Dark
     };
     class LeadTrack05_F
@@ -157,7 +149,6 @@ class CfgMusic
         {
             "intense"
         };
-        sound[] = { "\A3\music_f\Music\LeadTrack05_F.ogg", db + 0, 1.0 };
         //Taking Kavala
     };
     class LeadTrack06_F
@@ -169,7 +160,6 @@ class CfgMusic
             "intense",
             "dark"
         };
-        sound[] = { "\A3\music_f\Music\LeadTrack06_F.ogg", db + 0, 1.0 };
         //Down at the Garina bay
     };
     class AmbientTrack01_F
@@ -181,7 +171,6 @@ class CfgMusic
             "calm",
             "dark"
         };
-        sound[] = { "\A3\music_f\Music\AmbientTrack01_F.ogg", db + 0, 1.0 };
         //East Wind Alternative 1
     };
     class AmbientTrack01a_F
@@ -193,7 +182,6 @@ class CfgMusic
             "calm",
             "dark"
         };
-        sound[] = { "\A3\music_f\Music\AmbientTrack01a_F.ogg", db + 0, 1.0 };
         //East Wind
     };
     class AmbientTrack01b_F
@@ -205,7 +193,6 @@ class CfgMusic
             "calm",
             "dark"
         };
-        sound[] = { "\A3\music_f\Music\AmbientTrack01b_F.ogg", db + 0, 1.0 };
         //East Wind Alternative 2
     };
     class AmbientTrack03_F
@@ -216,7 +203,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\A3\music_f\Music\AmbientTrack03_F.ogg", db + 0, 1.0 };
         //Solar Power
     };
      class AmbientTrack04a_F
@@ -227,7 +213,6 @@ class CfgMusic
         {
             "dark"
         };
-        sound[] = { "\A3\music_f\Music\AmbientTrack04a_F.ogg", db + 0, 1.0 };
         //Night percussions
     };
     class AmbientTrack04_F
@@ -238,7 +223,6 @@ class CfgMusic
         {
             "dark"
         };
-        sound[] = { "\A3\music_f\Music\AmbientTrack04_F.ogg", db + 0, 1.0 };
         //Night ambient
     };
     class BackgroundTrack01_F
@@ -249,7 +233,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\A3\music_f\Music\BackgroundTrack01_F.ogg", db + 0, 1.0 };
         //Underwater 2
     };
     class BackgroundTrack01a_F
@@ -260,7 +243,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\A3\music_f\Music\BackgroundTrack01a_F.ogg", db + 0, 1.0 };
     	  //Underwater
     };
     class BackgroundTrack02_F
@@ -271,7 +253,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\A3\music_f\Music\BackgroundTrack02_F.ogg", db + 0, 1.0 };
         //On the road
     };
     class LeadTrack01_F_EPA
@@ -282,7 +263,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\A3\music_f_epa\Music\LeadTrack01_F_EPA.ogg", db + 0, 1.0 };
         //Stage A: Lead Track 01 (Conquistador)
     };
     class LeadTrack02_F_EPA
@@ -294,7 +274,6 @@ class CfgMusic
             "calm",
             "dark"
         };
-        sound[] = { "\A3\music_f_epa\Music\LeadTrack02_F_EPA.ogg", db + 0, 1.0 };
         //Stage A: Lead Track 02 (Aegis Blues)
     };
     class LeadTrack02a_F_EPA
@@ -306,7 +285,6 @@ class CfgMusic
             "calm",
             "dark"
         };
-        sound[] = { "\A3\music_f_epa\Music\LeadTrack02a_F_EPA.ogg", db + 0, 1.0 };
         //Stage A: Lead Track 02 (Aegis Blues - Alternative 1)
     };
     class LeadTrack02b_F_EPA
@@ -318,7 +296,6 @@ class CfgMusic
             "calm",
             "dark"
         };
-        sound[] = { "\A3\music_f_epa\Music\LeadTrack02b_F_EPA.ogg", db + 0, 1.0 };
         //Stage A: Lead Track 02 (Aegis Blues - Alternative 2)
     };
     class LeadTrack03_F_EPA
@@ -330,7 +307,6 @@ class CfgMusic
             "dark",
             "intense"
         };
-        sound[] = { "\A3\music_f_epa\Music\LeadTrack03_F_EPA.ogg", db + 0, 1.0 };
         //Stage A: Lead Track 03 (Survive the Hard Part)
     };
 
@@ -342,7 +318,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\A3\music_f_epb\Music\LeadTrack01_F_EPB.ogg", db + 0, 1.0 };
         //Stage B: Lead Track 01 (Adapt)
     };
 
@@ -354,7 +329,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\A3\music_f_epb\Music\LeadTrack01a_F_EPB.ogg", db + 0, 1.0 };
         //Stage B: Lead Track 01 (Adapt - Alternative)
     };
     class LeadTrack02_F_EPB
@@ -366,7 +340,6 @@ class CfgMusic
             "dark",
             "intense"
         };
-        sound[] = { "\A3\music_f_epb\Music\LeadTrack02_F_EPB.ogg", db + 0, 1.0 };
         //Stage B: Lead Track 02 (Exit Strategy)
     };
     class LeadTrack02a_F_EPB
@@ -377,7 +350,6 @@ class CfgMusic
         {
             "dark"
         };
-        sound[] = { "\A3\music_f_epb\Music\LeadTrack02a_F_EPB.ogg", db + 0, 1.0 };
         //Stage B: Lead Track 02 (Exit Strategy - Alternative 1)
     };
     class LeadTrack02b_F_EPB
@@ -389,7 +361,6 @@ class CfgMusic
             "dark",
             "intense"
         };
-        sound[] = { "\A3\music_f_epb\Music\LeadTrack02b_F_EPB.ogg", db + 0, 1.0 };
         //Stage B: Lead Track 02 (Exit Strategy - Alternative 2)
     };
     class LeadTrack03_F_EPB
@@ -400,7 +371,6 @@ class CfgMusic
         {
             "dark"
         };
-        sound[] = { "\A3\music_f_epb\Music\LeadTrack03_F_EPB.ogg", db + 0, 1.0 };
         //Stage B: Lead Track 03 (Beyond Recognition)
     };
 
@@ -412,7 +382,6 @@ class CfgMusic
         {
             "dark"
         };
-        sound[] = { "\A3\music_f_epb\Music\LeadTrack03a_F_EPB.ogg", db + 0, 1.0 };
         //Stage B: Lead Track 03 (Beyond Recognition - Alternative 1)
     };
 
@@ -425,7 +394,6 @@ class CfgMusic
         {
             "dark"
         };
-        sound[] = { "\A3\music_f_epb\Music\LeadTrack04_F_EPB.ogg", db + 0, 1.0 };
         //Stage B: Lead Track 04 (Canton Protocol)
 
     };
@@ -439,7 +407,6 @@ class CfgMusic
             "dark",
             "calm"
         };
-        sound[] = { "\A3\music_f_epb\Music\AmbientTrack01_F_EPB.ogg", db + 0, 1.0 };
         //Stage B: Ambient Track 01 (Signal Lost)
     };
     class BackgroundTrack01_F_EPB
@@ -450,7 +417,6 @@ class CfgMusic
         {
             "dark"
         };
-        sound[] = { "\A3\music_f_epb\Music\BackgroundTrack01_F_EPB.ogg", db + 0, 1.0 };
         //Stage B: Background Track 01 (The Hunt)
     };
     class LeadTrack01_F_EPC
@@ -461,7 +427,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\A3\music_f_EPC\Music\LeadTrack01_F_EPC.ogg", db + 0, 1.0 };
         //Stage C: Lead Track 01 (Back on Stratis)
 
     };
@@ -473,7 +438,6 @@ class CfgMusic
         {
             "intense"
         };
-        sound[] = { "\A3\music_f_EPC\Music\LeadTrack02_F_EPC.ogg", db + 0, 1.0 };
         //Stage C: Lead Track 02 (LZ hot)
     };
 
@@ -485,7 +449,6 @@ class CfgMusic
         {
             "calm","dark"
         };
-        sound[] = { "\A3\music_f_EPC\Music\LeadTrack03_F_EPC.ogg", db + 0, 1.0 };
         //Stage C: Lead Track 03 (The Trap)
     };
 
@@ -497,7 +460,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\A3\music_f_EPC\Music\LeadTrack04_F_EPC.ogg", db + 0, 1.0 };
         //Stage C: Lead Track 04 (In the Open)
     };
 
@@ -509,7 +471,6 @@ class CfgMusic
         {
             "intense"
         };
-        sound[] = { "\A3\music_f_EPC\Music\LeadTrack05_F_EPC.ogg", db + 0, 1.0 };
         //Stage C: Lead Track 05 (Revenge)
     };
 
@@ -521,7 +482,6 @@ class CfgMusic
         {
             "intense"
         };
-        sound[] = { "\A3\music_f_EPC\Music\LeadTrack06_F_EPC.ogg", db + 0, 1.0 };
         //Stage C: Lead Track 06 (Win)
     };
 
@@ -533,7 +493,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\A3\music_f_EPC\Music\LeadTrack06b_F_EPC.ogg", db + 0, 1.0 };
         //Stage C: Lead Track 06 (Win - Alternative 1)
     };
 
@@ -545,7 +504,6 @@ class CfgMusic
         {
             "dark"
         };
-        sound[] = { "\A3\music_f_EPC\Music\EventTrack03_F_EPC.ogg", db + 0, 1.0 };
         //Stage C: Event Track 03 (Unforeseen Perdition)
     };
 
@@ -557,7 +515,6 @@ class CfgMusic
         {
             "intense"
         };
-        sound[] = { "\A3\music_f_EPC\Music\BackgroundTrack01_F_EPC.ogg", db + 0, 1.0 };
         //Stage C: Background Track 01 (Alone)
     };
 
@@ -569,7 +526,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\A3\music_f_EPC\Music\BackgroundTrack02_F_EPC.ogg", db + 0, 1.0 };
         //Stage C: Background Track 02 (Just Another Day)
     };
 
@@ -581,7 +537,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\A3\music_f_EPC\Music\BackgroundTrack03_F_EPC.ogg", db + 0, 1.0 };
         //Stage C: Background Track 03 (Altis Requiem)
     };
 
@@ -594,7 +549,6 @@ class CfgMusic
             "calm",
             "dark"
         };
-        sound[] = { "\A3\music_f_EPC\Music\BackgroundTrack04_F_EPC.ogg", db + 0, 1.0 };
         //Stage C: Background Track 04 (Assembly)
     };
 
@@ -607,7 +561,6 @@ class CfgMusic
             "calm",
             "dark"
         };
-        sound[] = { "A3\Missions_F_EPA\data\music\fallout.ogg", db + 0, 1.0 };
         //Fallout
     };
 
@@ -619,7 +572,6 @@ class CfgMusic
         {
             "dark"
         };
-        sound[] = { "A3\Missions_F_EPA\data\music\defcon.ogg", db + 0, 1.0 };
         //Defcon
     };
 
@@ -631,7 +583,6 @@ class CfgMusic
         {
             "dark"
         };
-        sound[] = { "A3\Missions_F_EPA\data\music\wasteland.ogg", db + 0, 1.0 };
         //Wasteland
     };
 
@@ -643,7 +594,6 @@ class CfgMusic
         {
             "dark","calm"
         };
-        sound[] = { "A3\Missions_F_EPA\data\music\skynet.ogg", db + 0, 1.0 };
         //SkyNet
     };
 
@@ -655,7 +605,6 @@ class CfgMusic
         {
             "dark","calm"
         };
-        sound[] = { "A3\Missions_F_EPA\data\music\mad.ogg", db + 0, 1.0 };
         //Wasteland
     };
 
@@ -667,7 +616,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\A3\Data_F_Curator\Music\LeadTrack01_F_Curator.ogg", db + 0, 1.0 };
         //Zeus Theme
     };
 
@@ -679,7 +627,6 @@ class CfgMusic
         {
             "intense"
         };
-        sound[] = { "\A3\music_f_Bootcamp\Music\LeadTrack01_F_Bootcamp.ogg", db + 0, 1.0 };
         //This is War (VR Remix)
     };
 
@@ -691,7 +638,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\A3\music_f_Bootcamp\Music\LeadTrack02_F_Bootcamp.ogg", db + 0, 1.0 };
         //Evolution
     };
 
@@ -703,7 +649,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\A3\music_f_Bootcamp\Music\LeadTrack03_F_Bootcamp.ogg", db + 0, 1.0 };
         //Epic Split
     };
 
@@ -715,7 +660,6 @@ class CfgMusic
         {
             "intense"
         };
-        sound[] = { "\A3\music_f_Heli\Music\LeadTrack01_F_Heli.ogg", db + 0, 1.0 };
         //This is War (Heli Remix)
     };
 
@@ -727,7 +671,6 @@ class CfgMusic
         {
             "intense"
         };
-        sound[] = { "\A3\Music_f_Mark\Music\LeadTrack01_F_Mark.ogg", db + 0, 1.0 };
         //This is War (Marksmen Remix)
     };
 
@@ -739,7 +682,6 @@ class CfgMusic
         {
             "intense"
         };
-        sound[] = { "\A3\Music_f_Mark\Music\LeadTrack02_F_Mark.ogg", db + 0, 1.0 };
         //Marksmen DLC: Lead Track 02 (Into the Sun)
     };
 
@@ -751,7 +693,6 @@ class CfgMusic
         {
             "calm","dark"
         };
-        sound[] = { "\A3\Music_f_Mark\Music\LeadTrack03_F_Mark.ogg", db + 0, 1.0 };
         //Marksmen DLC: Lead Track 03 (Marksmen)
     };
 
@@ -763,7 +704,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\A3\music_f_exp\Music\LeadTrack01_F_EXP.ogg", db + 0, 1.0 };
         //This Is War (Apex Remix)
     };
 
@@ -775,7 +715,6 @@ class CfgMusic
         {
             "intense"
         };
-        sound[] = { "\A3\music_f_exp\Music\LeadTrack02_F_EXP.ogg", db + 0, 1.0 };
         //An Unknown Enemy
     };
 
@@ -787,7 +726,6 @@ class CfgMusic
         {
             "intense"
         };
-        sound[] = { "\A3\music_f_exp\Music\LeadTrack03_F_EXP.ogg", db + 0, 1.0 };
         //No Time For Questions
     };
 
@@ -799,7 +737,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\A3\music_f_exp\Music\LeadTrack04_F_EXP.ogg", db + 0, 1.0 };
         //This Is War (Apex Remix - Alternative 1)
     };
 
@@ -811,7 +748,6 @@ class CfgMusic
         {
             "calm","dark"
         };
-        sound[] = { "\A3\music_f_exp\Music\AmbientTrack01_F_EXP.ogg", db + 0, 1.0 };
         //Through The Jungle
     };
 
@@ -823,7 +759,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\A3\music_f_exp\Music\AmbientTrack02_F_EXP.ogg", db + 0, 1.0 };
         //Welcome To Tanoa
     };
 
@@ -837,7 +772,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\A3\Music_F_Jets\Music\LeadTrack01_F_Jets.ogg", db + 0, 1.0 };
         //Fighter Jets
     };
 
@@ -849,7 +783,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\A3\Music_F_Jets\Music\LeadTrack02_F_Jets.ogg", db + 0, 1.0 };
         //Air Power
     };
 
@@ -861,7 +794,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\A3\Music_F_Argo\Music\LeadTrack01_F_Malden.ogg", db + 0, 1.0 };
         //Flashpoint
     };
 
@@ -873,7 +805,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\A3\Music_F_Argo\Music\LeadTrack02_F_Malden.ogg", db + 0, 1.0 };
         //Malden
     };
 
@@ -885,7 +816,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\A3\Music_F_Orange\Music\LeadTrack01_F_Orange.ogg", db + 0, 1.0 };
         //This Is War (Laws of War Remix)
     };
 
@@ -897,7 +827,6 @@ class CfgMusic
         {
             "dark"
         };
-        sound[] = { "\A3\Music_F_Orange\Music\AmbientTrack02_F_Orange.ogg", db + 0, 1.0 };
         //Laws of War DLC: Remnants of War
     };
 
@@ -909,7 +838,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\A3\Music_F_Orange\Music\AmbientTrack01_F_Orange.ogg", db + 0, 1.0 };
         //Laws of War DLC: Ambient
     };
 
@@ -922,7 +850,6 @@ class CfgMusic
         {
             "intense"
         };
-        sound[] = { "\A3\Music_F_Tacops\Music\LeadTrack01_F_Tacops.ogg", db + 0, 1.0 };
         //Tac-Ops DLC: Opening 1
     };
 
@@ -935,7 +862,6 @@ class CfgMusic
         {
             "intense"
         };
-        sound[] = { "\A3\Music_F_Tacops\Music\LeadTrack02_F_Tacops.ogg", db + 0, 1.0 };
         //Tac-Ops DLC: Opening 2
     };
 
@@ -948,7 +874,6 @@ class CfgMusic
         {
             "intense"
         };
-        sound[] = { "\A3\Music_F_Tacops\Music\LeadTrack03_F_Tacops.ogg", db + 0, 1.0 };
         //Tac-Ops DLC: Opening 3
     };
 
@@ -961,7 +886,6 @@ class CfgMusic
         {
             "dark"
         };
-        sound[] = { "\A3\Music_F_Tacops\Music\AmbientTrack01a_F_Tacops.ogg", db + 0, 1.0 };
         //Tac-Ops DLC: Ambient 1a
     };
 
@@ -974,7 +898,6 @@ class CfgMusic
         {
             "dark"
         };
-        sound[] = { "\A3\Music_F_Tacops\Music\AmbientTrack01b_F_Tacops.ogg", db + 0, 1.0 };
         //Tac-Ops DLC: Ambient 1b
     };
 
@@ -988,7 +911,6 @@ class CfgMusic
             "dark",
             "calm"
         };
-        sound[] = { "\A3\Music_F_Tacops\Music\AmbientTrack02a_F_Tacops.ogg", db + 0, 1.0 };
         //Tac-Ops DLC: Ambient 2a
     };
 
@@ -1000,7 +922,6 @@ class CfgMusic
         {
             "dark","calm"
         };
-        sound[] = { "\A3\Music_F_Tacops\Music\AmbientTrack02b_F_Tacops.ogg", db + 0, 1.0 };
         //Tac-Ops DLC: Ambient 2b
     };
 
@@ -1012,7 +933,6 @@ class CfgMusic
         {
             "dark"
         };
-        sound[] = { "\A3\Music_F_Tacops\Music\AmbientTrack03a_F_Tacops.ogg", db + 0, 1.0 };
         //Tac-Ops DLC: Ambient 3a
     };
 
@@ -1024,7 +944,6 @@ class CfgMusic
         {
             "dark"
         };
-        sound[] = { "\A3\Music_F_Tacops\Music\AmbientTrack03b_F_Tacops.ogg", db + 0, 1.0 };
         //Tac-Ops DLC: Ambient 3b
     };
 
@@ -1036,7 +955,6 @@ class CfgMusic
         {
             "dark"
         };
-        sound[] = { "\A3\Music_F_Tacops\Music\AmbientTrack04a_F_Tacops.ogg", db + 0, 1.0 };
         //Tac-Ops DLC: Ambient 4a
     };
 
@@ -1048,7 +966,6 @@ class CfgMusic
         {
             "dark"
         };
-        sound[] = { "\A3\Music_F_Tacops\Music\AmbientTrack04b_F_Tacops.ogg", db + 0, 1.0 };
         //Tac-Ops DLC: Ambient 4b
     };
 
@@ -1060,7 +977,6 @@ class CfgMusic
         {
             "intense"
         };
-        sound[] = { "\A3\Music_F_Tank\MainTheme_F_Tank.ogg", db + 0, 1.0 };
         //Tanks DLC: This is War (Tanks DLC version)
     };
 
@@ -1072,7 +988,6 @@ class CfgMusic
         {
             "intense"
         };
-        sound[] = { "\A3\Music_F_Tank\LeadTrack01_F_Tank.ogg", db + 0, 1.0 };
         //Tanks DLC: Fight for the City
     };
 
@@ -1084,7 +999,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\A3\Music_F_Tank\LeadTrack02_F_Tank.ogg", db + 0, 1.0 };
         //Tanks DLC: Last Stand
     };
 
@@ -1096,7 +1010,6 @@ class CfgMusic
         {
             "dark","calm"
         };
-        sound[] = { "\A3\Music_F_Tank\LeadTrack03_F_Tank.ogg", db + 0, 1.0 };
         //Tanks DLC: Way Back
     };
 
@@ -1108,7 +1021,6 @@ class CfgMusic
         {
             "intense"
         };
-        sound[] = { "\A3\Music_F_Tank\LeadTrack05_F_Tank.ogg", db + 0, 1.0 };
         //Tanks DLC: Wrath of the Giants
     };
 
@@ -1120,7 +1032,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\A3\Music_F_Tank\LeadTrack06_F_Tank.ogg", db + 0, 1.0 };
         //Tanks DLC: Iron Gods
     };
 
@@ -1133,7 +1044,6 @@ class CfgMusic
             "calm",
             "dark"
         };
-        sound[] = { "\A3\Music_F_Tank\AmbientTrack01_F_Tank.ogg", db + 0, 1.0 };
         //Tanks DLC: Hidden Enemy
     };
 
@@ -1148,7 +1058,6 @@ class CfgMusic
         {
             "dark"
         };
-        sound[] = { "\A3\Music_F_Enoch\Music\Transilience.ogg", db + 0, 1.0 };
         //Contact: Transilience (Main Theme)
     };
 
@@ -1160,7 +1069,6 @@ class CfgMusic
         {
             "dark"
         };
-        sound[] = { "\A3\Music_F_Enoch\Music\Music_Credits_Contact.ogg", db + 0, 1.0 };
         //Contact: Transilience (Credits)
     };
 
@@ -1172,7 +1080,6 @@ class CfgMusic
         {
             "dark"
         };
-        sound[] = { "\A3\Music_F_Enoch\Music\Wavering_Base.ogg", db + 0, 1.0 };
         //Contact: Wavering Base
     };
 
@@ -1184,7 +1091,6 @@ class CfgMusic
         {
             "dark"
         };
-        sound[] = { "\A3\Music_F_Enoch\Music\Night_Eyes_Zero_One.ogg", db + 0, 1.0 };
         //Contact: Night Eyes Zero-One
     };
 
@@ -1196,7 +1102,6 @@ class CfgMusic
         {
             "dark"
         };
-        sound[] = { "\A3\Music_F_Enoch\Music\Night_Eyes_Zero_Two.ogg", db + 0, 1.0 };
         //Contact: Night Eyes Zero-Two
     };
 
@@ -1208,7 +1113,6 @@ class CfgMusic
         {
             "dark"
         };
-        sound[] = { "\A3\Music_F_Enoch\Music\Sunrise_Zero_One.ogg", db + 0, 1.0 };
         //Contact: Sunrise Zero-One
     };
 
@@ -1220,7 +1124,6 @@ class CfgMusic
         {
             "dark"
         };
-        sound[] = { "\A3\Music_F_Enoch\Music\Sunrise_Zero_Two.ogg", db + 0, 1.0 };
         //Contact: Sunrise Zero-Two
     };
 
@@ -1232,7 +1135,6 @@ class CfgMusic
         {
             "dark"
         };
-        sound[] = { "\A3\Music_F_Enoch\Music\Music_Hostile_Drone_Close_01.ogg", db + 0, 1.0 };
         //Contact: Hostile
     };
 
@@ -1244,7 +1146,6 @@ class CfgMusic
         {
             "intense"
         };
-        sound[] = { "\A3\Music_F_Enoch\Music\Contact.ogg", db + 0, 1.0 };
         //Contact: Contact
     };
 
@@ -1256,7 +1157,6 @@ class CfgMusic
         {
             "intense"
         };
-        sound[] = { "\A3\Music_F_Enoch\Music\Infighting.ogg", db + 0, 1.0 };
         //Contact: Infighting
     };
 
@@ -1268,7 +1168,6 @@ class CfgMusic
         {
             "intense"
         };
-        sound[] = { "\A3\Music_F_Enoch\Music\Sharper_Claws.ogg", db + 0, 1.0 };
         //Contact: Sharper Claws
     };
 
@@ -1280,7 +1179,6 @@ class CfgMusic
         {
             "dark"
         };
-        sound[] = { "\A3\Music_F_Enoch\Music\Music_Suspended_Loop_01.ogg", db + 0, 1.0 };
         //Contact: Suspense
     };
 
@@ -1292,7 +1190,6 @@ class CfgMusic
         {
             "dark"
         };
-        sound[] = { "\A3\Music_F_Enoch\Music\Music_Tension_Loop_01.ogg", db + 0, 1.0 };
         //Contact: Tension
     };
 
@@ -1306,7 +1203,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\chillout\Track_C_01.ogg", db + 0, 1.0 };
         //Old Man: Chillout 01
     };
 
@@ -1318,7 +1214,6 @@ class CfgMusic
         {
             "dark","calm"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\chillout\Track_C_02.ogg", db + 0, 1.0 };
         //Old Man: Chillout 02
     };
 
@@ -1330,7 +1225,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\chillout\Track_C_03.ogg", db + 0, 1.0 };
         //Old Man: Chillout 03
     };
 
@@ -1342,7 +1236,6 @@ class CfgMusic
         {
             "dark"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\chillout\Track_C_04.ogg", db + 0, 1.0 };
         //Old Man: Chillout 04
     };
 
@@ -1354,7 +1247,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\chillout\Track_C_05.ogg", db + 0, 1.0 };
         //Old Man: Chillout 05
     };
 
@@ -1366,7 +1258,6 @@ class CfgMusic
         {
             "dark"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\chillout\Track_C_06.ogg", db + 0, 1.0 };
         //Old Man: Chillout 06
     };
 
@@ -1378,7 +1269,6 @@ class CfgMusic
         {
             "intense"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\chillout\Track_C_07.ogg", db + 0, 1.0 };
         //Old Man: Chillout 07
     };
 
@@ -1390,7 +1280,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\chillout\Track_C_08.ogg", db + 0, 1.0 };
         //Old Man: Chillout 08
     };
 
@@ -1402,7 +1291,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\chillout\Track_C_09.ogg", db + 0, 1.0 };
         //Old Man: Chillout 09
     };
 
@@ -1414,7 +1302,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\chillout\Track_C_10.ogg", db + 0, 1.0 };
         //Old Man: Chillout 10
     };
 
@@ -1426,7 +1313,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\chillout\Track_C_11.ogg", db + 0, 1.0 };
         //Old Man: Chillout 11
     };
 
@@ -1438,7 +1324,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\chillout\Track_C_12.ogg", db + 0, 1.0 };
         //Old Man: Chillout 12
     };
 
@@ -1450,7 +1335,6 @@ class CfgMusic
         {
             "dark"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\chillout\Track_C_13.ogg", db + 0, 1.0 };
         //Old Man: Chillout 13
     };
 
@@ -1462,7 +1346,6 @@ class CfgMusic
         {
             "dark"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\chillout\Track_C_14.ogg", db + 0, 1.0 };
         //Old Man: Chillout 14
     };
 
@@ -1474,7 +1357,6 @@ class CfgMusic
         {
             "dark"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\chillout\Track_C_15.ogg", db + 0, 1.0 };
         //Old Man: Chillout 15
     };
 
@@ -1486,7 +1368,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\chillout\Track_C_16.ogg", db + 0, 1.0 };
         //Old Man: Chillout 16
     };
 
@@ -1498,7 +1379,6 @@ class CfgMusic
         {
             "dark"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\chillout\Track_C_17.ogg", db + 0, 1.0 };
         //Old Man: Chillout 17
     };
 
@@ -1510,7 +1390,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\chillout\Track_C_18.ogg", db + 0, 1.0 };
         //Old Man: Chillout 18
     };
 
@@ -1522,7 +1401,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\chillout\Track_C_19.ogg", db + 0, 1.0 };
         //Old Man: Chillout 19
     };
 
@@ -1534,7 +1412,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\chillout\Track_C_20.ogg", db + 0, 1.0 };
         //Old Man: Chillout 20
     };
 
@@ -1546,7 +1423,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\dance\Track_D_01.ogg", db + 0, 1.0 };
         //Old Man: Dance 01
     };
 
@@ -1558,7 +1434,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\dance\Track_D_02.ogg", db + 0, 1.0 };
         //Old Man : Dance 02
     };
 
@@ -1570,7 +1445,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\dance\Track_D_03.ogg", db + 0, 1.0 };
         //Old Man : Dance 03
     };
 
@@ -1582,7 +1456,6 @@ class CfgMusic
         {
             "intense"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\metal\Track_M_01.ogg", db + 0, 1.0 };
         //Old Man : Metal 01
     };
 
@@ -1595,7 +1468,6 @@ class CfgMusic
             "calm",
             "intense"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\metal\Track_M_02.ogg", db + 0, 1.0 };
         //Old Man : Metal 02
     };
 
@@ -1607,7 +1479,6 @@ class CfgMusic
         {
             "intense"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\metal\Track_M_03.ogg", db + 0, 1.0 };
         //Old Man : Metal 03
     };
 
@@ -1619,7 +1490,6 @@ class CfgMusic
         {
             "intense"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\ost\Track_O_01.ogg", db + 0, 1.0 };
         //Old Man OST 01
     };
 
@@ -1631,7 +1501,6 @@ class CfgMusic
         {
             "intense"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\ost\Track_O_02.ogg", db + 0, 1.0 };
         //Old Man OST 02
     };
 
@@ -1643,7 +1512,6 @@ class CfgMusic
         {
             "intense"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\ost\Track_O_03.ogg", db + 0, 1.0 };
         //Old Man OST 03
     };
 
@@ -1655,7 +1523,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\ost\Track_O_04.ogg", db + 0, 1.0 };
         //Old Man OST 04
     };
 
@@ -1667,7 +1534,6 @@ class CfgMusic
         {
             "dark","calm"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\ost\Track_O_05.ogg", db + 0, 1.0 };
         //Old Man OST 05
     };
 
@@ -1679,7 +1545,6 @@ class CfgMusic
         {
             "intense"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\ost\Track_O_06.ogg", db + 0, 1.0 };
         //Old Man OST 06
     };
 
@@ -1691,7 +1556,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\ost\Track_O_07.ogg", db + 0, 1.0 };
         //Old Man OST 07
     };
 
@@ -1703,7 +1567,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\ost\Track_O_08.ogg", db + 0, 1.0 };
         //Old Man OST 08
     };
 
@@ -1715,7 +1578,6 @@ class CfgMusic
         {
             "intense"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\ost\Track_O_09.ogg", db + 0, 1.0 };
         //Old Man OST 09
     };
 
@@ -1727,7 +1589,6 @@ class CfgMusic
         {
             "intense"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\ost\Track_O_10.ogg", db + 0, 1.0 };
         //Old Man OST 10
     };
 
@@ -1739,7 +1600,6 @@ class CfgMusic
         {
             "intense"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\ost\Track_O_12.ogg", db + 0, 1.0 };
         //Old Man OST 12
     };
 
@@ -1751,7 +1611,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\ost\Track_O_14.ogg", db + 0, 1.0 };
         //Old Man OST 14
     };
 
@@ -1763,7 +1622,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\ost\Track_O_15.ogg", db + 0, 1.0 };
         //Old Man OST 15
     };
 
@@ -1775,7 +1633,6 @@ class CfgMusic
         {
             "intense"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\ost\Track_O_16.ogg", db + 0, 1.0 };
         //Old Man OST 16
     };
 
@@ -1787,7 +1644,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\pop\Track_P_05.ogg", db + 0, 1.0 };
         //Old Man Pop 05
     };
 
@@ -1799,7 +1655,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\pop\Track_P_11.ogg", db + 0, 1.0 };
         //Old Man Pop 11
     };
 
@@ -1811,7 +1666,6 @@ class CfgMusic
         {
             "dark","intense"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\pop\Track_P_12.ogg", db + 0, 1.0 };
         //Old Man: Pop 12
     };
 
@@ -1823,7 +1677,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\pop\Track_P_13.ogg", db + 0, 1.0 };
         //Old Man: Pop 13
     };
 
@@ -1835,7 +1688,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\pop\Track_P_14.ogg", db + 0, 1.0 };
         //Old Man: Pop 14
     };
 
@@ -1847,7 +1699,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\pop\Track_P_15.ogg", db + 0, 1.0 };
         //Old Man: Pop 15
     };
 
@@ -1859,7 +1710,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\pop\Track_P_16.ogg", db + 0, 1.0 };
         //Old Man: Pop 16
     };
 
@@ -1871,7 +1721,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\pop\Track_P_17.ogg", db + 0, 1.0 };
         //Old Man: Pop 17
     };
 
@@ -1883,7 +1732,6 @@ class CfgMusic
         {
             "intense"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\rock\Track_R_01.ogg", db + 0, 1.0 };
         //Old Man: Rock 01
     };
 
@@ -1895,7 +1743,6 @@ class CfgMusic
         {
             "dark","intense"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\rock\Track_R_02.ogg", db + 0, 1.0 };
         //Old Man: Rock 02
     };
 
@@ -1907,7 +1754,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\rock\Track_R_03.ogg", db + 0, 1.0 };
         //Old Man: Rock 03
     };
 
@@ -1919,7 +1765,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\rock\Track_R_04.ogg", db + 0, 1.0 };
         //Old Man: Rock 04
     };
 
@@ -1931,7 +1776,6 @@ class CfgMusic
         {
             "intense"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\rock\Track_R_05.ogg", db + 0, 1.0 };
         //Old Man: Rock 05
     };
 
@@ -1943,7 +1787,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\rock\Track_R_06.ogg", db + 0, 1.0 };
         //Old Man: Rock 06
     };
 
@@ -1955,7 +1798,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\rock\Track_R_07.ogg", db + 0, 1.0 };
         //Old Man: Rock 07
     };
 
@@ -1967,7 +1809,6 @@ class CfgMusic
         {
             "intense"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\rock\Track_R_08.ogg", db + 0, 1.0 };
         //Old Man: Rock 08
     };
 
@@ -1979,7 +1820,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\rock\Track_R_09.ogg", db + 0, 1.0 };
         //Old Man: Rock 09
     };
 
@@ -1991,7 +1831,6 @@ class CfgMusic
         {
             "intense"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\rock\Track_R_10.ogg", db + 0, 1.0 };
         //Old Man: Rock 10
     };
 
@@ -2003,7 +1842,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\rock\Track_R_11.ogg", db + 0, 1.0 };
         //Old Man: Rock 11
     };
 
@@ -2015,7 +1853,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\rock\Track_R_13.ogg", db + 0, 1.0 };
         //Old Man: Rock 13
     };
 
@@ -2027,7 +1864,6 @@ class CfgMusic
         {
             "intense"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\rock\Track_R_14.ogg", db + 0, 1.0 };
         //Old Man: Rock 14
     };
 
@@ -2039,7 +1875,6 @@ class CfgMusic
         {
             "intense"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\rock\Track_R_15.ogg", db + 0, 1.0 };
         //Old Man: Rock 15
     };
 
@@ -2051,7 +1886,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\rock\Track_R_16.ogg", db + 0, 1.0 };
         //Old Man: Rock 16
     };
 
@@ -2063,7 +1897,6 @@ class CfgMusic
         {
             "intense"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\rock\Track_R_17.ogg", db + 0, 1.0 };
         //Old Man: Rock 17
     };
 
@@ -2075,7 +1908,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\rock\Track_R_18.ogg", db + 0, 1.0 };
         //Old Man: Rock 18
     };
 
@@ -2087,7 +1919,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\rock\Track_R_19.ogg", db + 0, 1.0 };
         //Old Man: Rock 19
     };
 
@@ -2099,7 +1930,6 @@ class CfgMusic
         {
             "intense"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\rock\Track_R_20.ogg", db + 0, 1.0 };
         //Old Man: Rock 20
     };
 
@@ -2111,7 +1941,6 @@ class CfgMusic
         {
             "intense"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\rock\Track_R_21.ogg", db + 0, 1.0 };
         //Old Man: Rock 21
     };
 
@@ -2123,7 +1952,6 @@ class CfgMusic
         {
             "intense"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\rock\Track_R_22.ogg", db + 0, 1.0 };
         //Old Man: Rock 22
     };
 
@@ -2135,7 +1963,6 @@ class CfgMusic
         {
             "intense"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\rock\Track_R_23.ogg", db + 0, 1.0 };
         //Old Man: Rock 23
     };
 
@@ -2147,7 +1974,6 @@ class CfgMusic
         {
             "calm"
         };
-        sound[] = { "\a3\Music_F_Oldman\music\radio\rock\Track_R_24.ogg", db + 0, 1.0 };
         //Old Man: Rock 24
     };
 
@@ -2159,7 +1985,6 @@ class CfgMusic
         {
             "dark"
         };
-        sound[] = { "\A3\Missions_F_Oldman\Music\ProbeDiscovered01.ogg", db + 0, 1.0 };
         //Old Man: Ambient Music 01
     };
 
@@ -2171,7 +1996,6 @@ class CfgMusic
         {
             "dark"
         };
-        sound[] = { "\A3\Missions_F_Oldman\Music\ProbeDiscovered02.ogg", db + 0, 1.0 };
         //Old Man: Ambient Music 02
     };
 
