@@ -8,8 +8,8 @@ class CfgPatches
 
         requiredAddons[] = 
         {  
-            "ace_common"
             "cba_settings"
+            "ace_common"
         };
 
         units[] = {};
