@@ -69,7 +69,7 @@ if (isMultiplayer) then // if client is in multiplayer
             "SLIDER", // interactive slider setting type
             ["Minimum music delay", "Set the minimum possible delay for the next track to play."], // name and tooltip for the setting
             ["XIM - X's Immersive Music", "Music delay"], // category the setting is in
-            [1, 600, 10, 0], // minimum of 1, maximum of 600, default of 10, no decimals
+            [10, 600, 10, 0], // minimum of 10, maximum of 600, default of 10, no decimals
             nil, // disables synchronising the variable across clients, as it is not needed
             {} // executes nothing when the setting is changed, as it is not necessary
         ] call cba_settings_fnc_init;
@@ -79,7 +79,7 @@ if (isMultiplayer) then // if client is in multiplayer
             "SLIDER", // interactive slider setting type
             ["Maximum music delay", "Set the maximum possible delay for the next track to play."], // name and tooltip for the setting
             ["XIM - X's Immersive Music", "Music delay"], // category the setting is in
-            [1, 600, 30, 0], // minimum of 1, maximum of 600, default of 30, no decimals
+            [XIM_iMinMusicDelay, 600, 30, 0], // minimum of the minimum music delay, maximum of 600, default of 30, no decimals
             nil, // disables synchronising the variable across clients, as it is not needed
             {} // executes nothing when the setting is changed, as it is not necessary
         ] call cba_settings_fnc_init;
