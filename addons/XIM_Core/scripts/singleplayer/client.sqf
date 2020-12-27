@@ -8,7 +8,7 @@ aCalmMusicClassnames = "'calm' in getArray (_x >> 'moods') " configClasses (conf
 
 [{missionNameSpace setVariable ["ace_common_allowFadeMusic",false];}, [], 5] call CBA_fnc_waitAndExecute;
 
-// ======================================== FUNCTIONS ========================================
+// ======================================== LOGIC FUNCTIONS ========================================
 
 XIM_fncMain = 
 {
@@ -56,6 +56,18 @@ XIM_fncPlayNext = // submits the provided unit's group to the server plus the un
 {
 	params["_oPlayer"]; // defines the parameter _aPlayerMachineIDs in position zero
 	[group _oPlayer,_oPlayer getVariable ["XIM_bCombat", false],"next"] call fncXIM_MusicRemote;
+};
+
+XIM_fncStopMusic =  // stops music playing on all clients in the group
+{
+	[""] remoteExecCall ["playMusic", group player, false]; // stops music playing on all clients in the group
+	group player setVariable ["XIM_bMusicStopped", true]; // set the XIM_bMusicStopped variable to true in the group's namespace
+};
+
+XIM_fncStartMusic = // starts playing music for all clients in the group
+{
+	group player setVariable ["XIM_bMusicStopped", false]; // set the XIM_bMusicStopped variable to true in the group's namespace
+	[player] call XIM_fncPlayNext;
 };
 
 XIM_fncIteratePlayerCombat = // defines the XIM_fncIteratePlayers function, which iterates through each player and determines if they are in combat
