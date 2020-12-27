@@ -5,7 +5,7 @@ aCombatMusicClassnames = "'intense' in getArray (_x >> 'moods') " configClasses 
 aDarkMusicClassnames = "'dark' in getArray (_x >> 'moods') " configClasses (configFile >> "CfgMusic") apply {configName _x} call BIS_fnc_arrayShuffle;
 aCalmMusicClassnames = "'calm' in getArray (_x >> 'moods') " configClasses (configFile >> "CfgMusic") apply {configName _x} call BIS_fnc_arrayShuffle;
 
-[{missionNameSpace setVariable ["ace_common_allowFadeMusic",false,true];}, [], 5] call CBA_fnc_waitAndExecute;
+[{missionNameSpace setVariable ["ace_common_allowFadeMusic",false];}, [], 5] call CBA_fnc_waitAndExecute;
 
 // ======================================== FUNCTIONS ========================================
 
