@@ -97,12 +97,11 @@ XIM_fncIteratePlayerCombat = // defines the XIM_fncIteratePlayers function, whic
 
 fncXIM_MusicHandler = { // defines the fncXIM_MusicHandler function, which plays a certain type of music based on the parameter
 	params ["_groupOwnerIDs","_musictype"];
-	XIM_groupOwnerIDs = _groupOwnerIDs; // global for use in CBA function
-	XIM_trackname = [_musictype] call fncXIM_TrackSelect; // select a random track from the given music type
+	_trackname = [_musictype] call fncXIM_TrackSelect; // select a random track from the given music type
 
 	
-	[10,0] remoteExecCall ["fadeMusic",XIM_groupOwnerIDs,false]; //Fades currently playing music
-	[{[XIM_trackname] remoteExecCall ["playMusic", XIM_groupOwnerIDs, false];[10,1] remoteExecCall ["fadeMusic",XIM_groupOwnerIDs,false];},[], 10] call CBA_fnc_waitAndExecute; //After fade-out, fade-in next track
+	[10,0] remoteExecCall ["fadeMusic",_groupOwnerIDs,false]; //Fades currently playing music
+	[{params["_trackname", "_groupOwnerIDs"]; [_trackname] remoteExecCall ["playMusic", _groupOwnerIDs, false];[10,1] remoteExecCall ["fadeMusic",_groupOwnerIDs,false];},[_trackname, _groupOwnerIDs], 10] call CBA_fnc_waitAndExecute; //After fade-out, fade-in next track
 };
 
 fncXIM_TrackSelect = {
@@ -121,7 +120,6 @@ fncXIM_TrackSelect = {
 
 fncXIM_Shuffler = {
 	params ["_groupOwnerIDs","_musictype","_bXIMCombatState","_gXIMGroup"];
-	XIM_groupOwnerIDs = _groupOwnerIDs; // global variable for cba usage
 	_trackname = [_musictype] call fncXIM_TrackSelect; // select a random track from the given music type
 	[0,0] remoteExecCall ["fadeMusic",XIM_groupOwnerIDs,false]; // set music volume to zero for fading back in later
 
@@ -137,8 +135,8 @@ fncXIM_Shuffler = {
 	}
 	else // if the music delay is disabled
 	{
-		[_trackname] remoteExecCall ["playMusic", XIM_groupOwnerIDs, false]; // plays the selected song on all clients in the group
-		[10,1] remoteExecCall ["fadeMusic",XIM_groupOwnerIDs,false]; // fade in next track
+		[_trackname] remoteExecCall ["playMusic", _groupOwnerIDs, false]; // plays the selected song on all clients in the group
+		[10,1] remoteExecCall ["fadeMusic",_groupOwnerIDs,false]; // fade in next track
 	};
 };
 
