@@ -156,6 +156,7 @@ fncXIM_MusicRemote = {
 
 player setVariable ["XIM_bCombat", false]; // set the XIM_bCombat variable on the client, with the default value of false
 player setVariable ["XIM_bCombatMaster", false]; // set the XIM_bCombatMaster variable on the client, with the default value of false
+player setVariable ["XIM_bMusicStopped", false]; // set the XIM_bMusicStopped variable on the client, with the default value of false
 [player] call XIM_fncSendGroup; // calls the XIM_fncSendGroup function with the argument player
 [player] call XIM_fncCombatTimeout; // calls the XIM_fncCombatTimeout function with the argument player
 
