@@ -6,7 +6,8 @@ XIM_aCombatMusicClassnames = "'intense' in getArray (_x >> 'moods') " configClas
 XIM_aDarkMusicClassnames = "'dark' in getArray (_x >> 'moods') " configClasses (configFile >> "CfgMusic") apply {configName _x} call BIS_fnc_arrayShuffle;
 XIM_aCalmMusicClassnames = "'calm' in getArray (_x >> 'moods') " configClasses (configFile >> "CfgMusic") apply {configName _x} call BIS_fnc_arrayShuffle;
 
-[{missionNameSpace setVariable ["ace_common_allowFadeMusic",false,true];}, [], 5] call CBA_fnc_waitAndExecute;
+[{missionNameSpace setVariable ["ace_common_allowFadeMusic",false,true];}, [], 5] call CBA_fnc_waitAndExecute; // disabled allowFadeMusic in ace options, fixes lots
+																											   // of problems with fadeMusic and ACE
 
 // ======================================== LOGIC FUNCTIONS ========================================
 
@@ -207,15 +208,15 @@ addMissionEventHandler ["PlayerConnected", // when a player connects
 				};
 			} forEach (allPlayers - entities "HeadlessClient_F"); // for every player, except headless clients
 
-			if (!isNull _oPlayer) then
+			if (!isNull _oPlayer) then // if the _oPlayer object is not set to null
 			{
 				_oPlayer setVariable ["XIM_bCombat", false]; // set the XIM_bCombat variable on the client, with the default value of false
 				_oPlayer setVariable ["XIM_bCombatMaster", false]; // set the XIM_bCombatMaster variable on the client, with the default value of false
 				[_oPlayer] call XIM_fncSendGroup; // calls the XIM_fncSendGroup function with the argument player
 				[_oPlayer] call XIM_fncCombatTimeout; // calls the XIM_fncCombatTimeout function with the argument player
 			};
-			if (!isNull _oPlayer) exitWith {true};
-			false;
+			if (!isNull _oPlayer) exitWith {true}; // if the _oPlayer object is not set to null, exit and return true
+			false; // else exit and return false
 		};	
 	};
 }];
