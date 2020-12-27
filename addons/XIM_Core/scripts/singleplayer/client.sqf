@@ -1,4 +1,5 @@
 // This executes on the client when they are playing singleplayer
+// A lot of this code is simply copied and pasted from multiplayer, performance is pretty much the same so there's no reason to rewrite it
 
 // Below is the creation of arrays, that contain classnames of music tracks defined in config.cpp, randomized to make it fresh each time;
 aCombatMusicClassnames = "'intense' in getArray (_x >> 'moods') " configClasses (configFile >> "CfgMusic") apply {configName _x} call BIS_fnc_arrayShuffle;
