@@ -127,7 +127,7 @@ fncXIM_Shuffler = {
 	if (XIM_bMusicDelayEnabled) then // if the music delay is enabled
 	{
 		_iRandomDelay = random 1 * (XIM_iMaxMusicDelay - XIM_iMinMusicDelay) + XIM_iMinMusicDelay; // calculates a random delay value using the specified min and max values
-																						// specified by the server from the CBA settings and the calculated mean
+																								   /*  */// specified by the server from the CBA settings and the calculated mean
 		_oGroupLeader = leader _gXIMGroup; // finds the leader of the _gXIMGroup group
 
 		diag_log "XIM: Reached waitAndExecute";
