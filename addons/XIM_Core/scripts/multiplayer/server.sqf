@@ -96,13 +96,12 @@ XIM_fncIteratePlayerCombat = // defines the XIM_fncIteratePlayers function, whic
 
 fncXIM_MusicHandler = { // defines the fncXIM_MusicHandler function, which plays a certain type of music based on the parameter
 	params ["_groupOwnerIDs","_musictype"];
-	XIM_groupOwnerIDs = _groupOwnerIDs; //Global for use in CBA function
+	XIM_groupOwnerIDs = _groupOwnerIDs; // global for use in CBA function
 	XIM_trackname = [_musictype] call fncXIM_TrackSelect; // select a random track from the given music type
 
 	
 	[10,0] remoteExecCall ["fadeMusic",XIM_groupOwnerIDs,false]; //Fades currently playing music
 	[{[XIM_trackname] remoteExecCall ["playMusic", XIM_groupOwnerIDs, false];[10,1] remoteExecCall ["fadeMusic",XIM_groupOwnerIDs,false];},[], 10] call CBA_fnc_waitAndExecute; //After fade-out, fade-in next track
-
 };
 
 fncXIM_TrackSelect = {
@@ -111,7 +110,7 @@ fncXIM_TrackSelect = {
 
 	switch (_musictype) do { 
 		case "combat" : { _trackclassname = selectRandom XIM_aCombatMusicClassnames; }; // select a random track from the XIM_aCombatMusicClassnames array
-		case "dark" : { _trackclassname = selectRandom XIM_aDarkMusicClassnames;}; // select a random track from the XIM_aDarkMusicClassnames array
+		case "dark" : { _trackclassname = selectRandom XIM_aDarkMusicClassnames; }; // select a random track from the XIM_aDarkMusicClassnames array
 		case "calm" : { _trackclassname = selectRandom XIM_aCalmMusicClassnames; };  // select a random track from the XIM_aCalmMusicClassnames array
 	};
 	
@@ -120,14 +119,26 @@ fncXIM_TrackSelect = {
 };
 
 fncXIM_Shuffler = {
-	params ["_groupOwnerIDs","_musictype"];
-	XIM_groupOwnerIDs = _groupOwnerIDs;
+	params ["_groupOwnerIDs","_musictype","_bXIMCombatState","_gXIMGroup"];
+	XIM_groupOwnerIDs = _groupOwnerIDs; // global variable for cba usage
 	_trackname = [_musictype] call fncXIM_TrackSelect; // select a random track from the given music type
 	[0,0] remoteExecCall ["fadeMusic",XIM_groupOwnerIDs,false];
-	[_trackname] remoteExecCall ["playMusic", XIM_groupOwnerIDs, false]; // plays the selected song on all clients in the group
-	[10,1] remoteExecCall ["fadeMusic",XIM_groupOwnerIDs,false];
-};
 
+	if (XIM_bMusicDelayEnabled) then // if the music delay is enabled
+	{
+		_iRandomDelay = random 1 * (XIM_iMaxMusicDelay - XIM_iMinMusicDelay) + XIM_iMinMusicDelay; // calculates a random delay value using the specified min and max values
+																						// specified by the server from the CBA settings and the calculated mean
+		_oGroupLeader = leader _gXIMGroup; // finds the leader of the _gXIMGroup group
+
+		[{params["_trackname"]; if (_bXIMCombatState == _oGroupLeader getVariable ["XIM_bCombat", false]) then {[_trackname] remoteExecCall ["playMusic", XIM_groupOwnerIDs, false]; [10,1] remoteExecCall ["fadeMusic",XIM_groupOwnerIDs,false];};},[_trackname, _oGroupLeader], _iRandomDelay] call CBA_fnc_waitAndExecute;
+	};
+	else // if the music delay is disabled
+	{
+		[_trackname] remoteExecCall ["playMusic", XIM_groupOwnerIDs, false]; // plays the selected song on all clients in the group
+		[10,1] remoteExecCall ["fadeMusic",XIM_groupOwnerIDs,false];
+	};
+};
+dfscd
 
 fncXIM_MusicRemote = {
 	params ["_gXIMGroup", "_bXIMCombatState","_XIMMusicRemoteFunction"]; //Defining params
@@ -169,7 +180,7 @@ fncXIM_MusicRemote = {
 		if (!(_sXIM_MusicType == "")) then // if _sXIM_MusicType is not an empty string
 		{
 			switch (_XIMMusicRemoteFunction) do { 
-				case "next" : {  [_groupOwnerIDs,_sXIM_MusicType] call fncXIM_Shuffler; }; 
+				case "next" : {  [_groupOwnerIDs,_sXIM_MusicType,_bXIMCombatState,_gXIMGroup] call fncXIM_Shuffler; }; 
 				case "statechange" : { [_groupOwnerIDs,_sXIM_MusicType] call fncXIM_MusicHandler; }; 
 			};
 		};
