@@ -107,7 +107,7 @@ fncXIM_MusicHandler = { // defines the fncXIM_MusicHandler function, which plays
 
 fncXIM_TrackSelect = {
 	params ["_musictype"];
-	private _trackclassname = "";
+	private _trackclassname = ""; // declare the empty string _trackclassname
 
 	switch (_musictype) do { 
 		case "combat" : { _trackclassname = selectRandom XIM_aCombatMusicClassnames; }; // select a random track from the XIM_aCombatMusicClassnames array
@@ -123,7 +123,7 @@ fncXIM_Shuffler = {
 	params ["_groupOwnerIDs","_musictype","_bXIMCombatState","_gXIMGroup"];
 	XIM_groupOwnerIDs = _groupOwnerIDs; // global variable for cba usage
 	_trackname = [_musictype] call fncXIM_TrackSelect; // select a random track from the given music type
-	[0,0] remoteExecCall ["fadeMusic",XIM_groupOwnerIDs,false];
+	[0,0] remoteExecCall ["fadeMusic",XIM_groupOwnerIDs,false]; // set music volume to zero for fading back in later
 
 	if (XIM_bMusicDelayEnabled) then // if the music delay is enabled
 	{
@@ -131,26 +131,25 @@ fncXIM_Shuffler = {
 																								   // specified by the server from the CBA settings and the calculated mean
 		_oGroupLeader = leader _gXIMGroup; // finds the leader of the _gXIMGroup group
 
-		diag_log "XIM: Reached waitAndExecute";
-
-		[{params["_trackname","_oGroupLeader", "_bXIMCombatState"]; if (_bXIMCombatState == _oGroupLeader getVariable ["XIM_bCombat", false]) then {[_trackname] remoteExecCall ["playMusic", XIM_groupOwnerIDs, false]; [10,1] remoteExecCall ["fadeMusic",XIM_groupOwnerIDs,false]; diag_log "XIM: waitAndExecute has run";};},[_trackname, _oGroupLeader, _bXIMCombatState], _iRandomDelay] call CBA_fnc_waitAndExecute;
-		diag_log "XIM: Passed waitAndExecute";
+		[{params["_trackname","_oGroupLeader", "_bXIMCombatState"]; if (_bXIMCombatState == _oGroupLeader getVariable ["XIM_bCombat", false]) then {[_trackname] remoteExecCall ["playMusic", XIM_groupOwnerIDs, false]; [10,1] remoteExecCall ["fadeMusic",XIM_groupOwnerIDs,false];};},[_trackname, _oGroupLeader, _bXIMCombatState], _iRandomDelay] call CBA_fnc_waitAndExecute;
+		// if the combat state after the random delay is still the same, then play the next song. this is to prevent an edge case where a group leader requests a
+		// new song and then goes into combat soon after, effectively being in combat with a calm category song.
 	}
 	else // if the music delay is disabled
 	{
 		[_trackname] remoteExecCall ["playMusic", XIM_groupOwnerIDs, false]; // plays the selected song on all clients in the group
-		[10,1] remoteExecCall ["fadeMusic",XIM_groupOwnerIDs,false];
+		[10,1] remoteExecCall ["fadeMusic",XIM_groupOwnerIDs,false]; // fade in next track
 	};
 };
 
 fncXIM_MusicRemote = {
 	params ["_gXIMGroup", "_bXIMCombatState","_XIMMusicRemoteFunction"]; //Defining params
-	private _groupOwnerIDs = [];
+	private _groupOwnerIDs = []; // declare the empty array _groupOwnerIDs
 
 	if (!(_gXIMGroup getVariable ["XIM_bMusicStopped", false])) then // if XIM_bMusicStopped is false
 	{
 		(units _gXIMGroup) apply {_groupOwnerIDs pushBackUnique (owner _x)}; //Retrieving ID's for players in group
-		private _sXIM_MusicType = "";
+		private _sXIM_MusicType = ""; // declare the empty string _sXIM_MusicType
 
 		if (_bXIMCombatState) then { // if _bXIMCombatState is true
 
@@ -183,8 +182,10 @@ fncXIM_MusicRemote = {
 		if (!(_sXIM_MusicType == "")) then // if _sXIM_MusicType is not an empty string
 		{
 			switch (_XIMMusicRemoteFunction) do { 
-				case "next" : {  [_groupOwnerIDs,_sXIM_MusicType,_bXIMCombatState,_gXIMGroup] call fncXIM_Shuffler; }; 
-				case "statechange" : { [_groupOwnerIDs,_sXIM_MusicType] call fncXIM_MusicHandler; }; 
+				case "next" : {  [_groupOwnerIDs,_sXIM_MusicType,_bXIMCombatState,_gXIMGroup] call fncXIM_Shuffler; }; // if the function was called with next, then
+																													   // execute fncXIM_Shuffler
+				case "statechange" : { [_groupOwnerIDs,_sXIM_MusicType] call fncXIM_MusicHandler; }; // if the function was called with statechange, then execute
+																									 // fncXIM_MusicHandler
 			};
 		};
 	};
@@ -200,7 +201,7 @@ addMissionEventHandler ["PlayerConnected", // when a player connects
 		private _oPlayer = objNull; // declares _oPlayer, which is objNull by default
 		waitUntil
 		{
-			sleep 1;
+			sleep 1; // sleep for one second
 			{
 				if ((owner _x) == _owner) then // if the currently iterated player's owner has the same machine id as the player who just connected
 				{
@@ -234,10 +235,10 @@ addMissionEventHandler ["PlayerConnected", // when a player connects
 };
 
 "XIM_aPlayNext" addPublicVariableEventHandler { // detects broadcast from group leader that tells server to play next track for his group
-	private _aXIMPlayNext = _this select 1; //Retrieve array
-	private _gXIMGroup = _aXIMPlayNext select 0; //Retrieve group
-	private _oXIMGroupLeader = _aXIMPlayNext select 1; //Retrieve leader
-	private _bXIMCombatState = _oXIMGroupLeader getVariable ["XIM_bCombat", false];
+	private _aXIMPlayNext = _this select 1; // retrieve array
+	private _gXIMGroup = _aXIMPlayNext select 0; // retrieve group
+	private _oXIMGroupLeader = _aXIMPlayNext select 1; // retrieve leader
+	private _bXIMCombatState = _oXIMGroupLeader getVariable ["XIM_bCombat", false]; // retrieve XIM_bCombat variable from _oXIMGroupLeader
 	
-	[_gXIMGroup,_bXIMCombatState,"next"] call fncXIM_MusicRemote;
+	[_gXIMGroup,_bXIMCombatState,"next"] call fncXIM_MusicRemote; // call fncXIM_MusicRemote with _gXIMGroup, _bXIMCombatState and "next" as arguments
 };
