@@ -138,7 +138,6 @@ fncXIM_Shuffler = {
 		[10,1] remoteExecCall ["fadeMusic",XIM_groupOwnerIDs,false];
 	};
 };
-dfscd
 
 fncXIM_MusicRemote = {
 	params ["_gXIMGroup", "_bXIMCombatState","_XIMMusicRemoteFunction"]; //Defining params
