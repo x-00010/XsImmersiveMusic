@@ -130,7 +130,10 @@ fncXIM_Shuffler = {
 																						// specified by the server from the CBA settings and the calculated mean
 		_oGroupLeader = leader _gXIMGroup; // finds the leader of the _gXIMGroup group
 
-		[{params["_trackname","_oGroupLeader", "_bXIMCombatState"]; if (_bXIMCombatState == _oGroupLeader getVariable ["XIM_bCombat", false]) then {[_trackname] remoteExecCall ["playMusic", XIM_groupOwnerIDs, false]; [10,1] remoteExecCall ["fadeMusic",XIM_groupOwnerIDs,false];};},[_trackname, _oGroupLeader, _bXIMCombatState], _iRandomDelay] call CBA_fnc_waitAndExecute;
+		diag_log "XIM: Reached waitAndExecute";
+
+		[{params["_trackname","_oGroupLeader", "_bXIMCombatState"]; if (_bXIMCombatState == _oGroupLeader getVariable ["XIM_bCombat", false]) then {[_trackname] remoteExecCall ["playMusic", XIM_groupOwnerIDs, false]; [10,1] remoteExecCall ["fadeMusic",XIM_groupOwnerIDs,false]; diag_log "XIM: waitAndExecute has run";};},[_trackname, _oGroupLeader, _bXIMCombatState], _iRandomDelay] call CBA_fnc_waitAndExecute;
+		diag_log "XIM: Passed waitAndExecute";
 	}
 	else // if the music delay is disabled
 	{
