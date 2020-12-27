@@ -5,6 +5,8 @@ aCombatMusicClassnames = "'intense' in getArray (_x >> 'moods') " configClasses 
 aDarkMusicClassnames = "'dark' in getArray (_x >> 'moods') " configClasses (configFile >> "CfgMusic") apply {configName _x} call BIS_fnc_arrayShuffle;
 aCalmMusicClassnames = "'calm' in getArray (_x >> 'moods') " configClasses (configFile >> "CfgMusic") apply {configName _x} call BIS_fnc_arrayShuffle;
 
+[{missionNameSpace setVariable ["ace_common_allowFadeMusic",false,true];}, [], 5] call CBA_fnc_waitAndExecute;
+
 // ======================================== FUNCTIONS ========================================
 
 XIM_fncMain = 
@@ -111,12 +113,10 @@ fncXIM_TrackSelect = {
 fncXIM_Shuffler = {
 	params ["_groupOwnerIDs","_musictype"];
 	XIM_groupOwnerIDs = _groupOwnerIDs;
-	missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",true,XIM_groupOwnerIDs]; //Disable ACE interference
 	_trackname = [_musictype] call fncXIM_TrackSelect; // select a random track from the given music type
 	[0,0] remoteExecCall ["fadeMusic",XIM_groupOwnerIDs,false];
 	[_trackname] remoteExecCall ["playMusic", XIM_groupOwnerIDs, false]; // plays the selected song on all clients in the group
 	[10,1] remoteExecCall ["fadeMusic",XIM_groupOwnerIDs,false];
-	[{missionNameSpace setVariable ["ace_hearing_disableVolumeUpdate",false,XIM_groupOwnerIDs];},[], 15] call CBA_fnc_waitAndExecute; //Wait 15 seconds, then enable ACE Volume Update again (earplugs, deafened,...)
 };
 
 
