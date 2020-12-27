@@ -121,7 +121,7 @@ fncXIM_TrackSelect = {
 fncXIM_Shuffler = {
 	params ["_groupOwnerIDs","_musictype","_bXIMCombatState","_gXIMGroup"];
 	_trackname = [_musictype] call fncXIM_TrackSelect; // select a random track from the given music type
-	[0,0] remoteExecCall ["fadeMusic",XIM_groupOwnerIDs,false]; // set music volume to zero for fading back in later
+	[0,0] remoteExecCall ["fadeMusic",_groupOwnerIDs,false]; // set music volume to zero for fading back in later
 
 	if (XIM_bMusicDelayEnabled) then // if the music delay is enabled
 	{
@@ -129,7 +129,7 @@ fncXIM_Shuffler = {
 																								   // specified by the server from the CBA settings and the calculated mean
 		_oGroupLeader = leader _gXIMGroup; // finds the leader of the _gXIMGroup group
 
-		[{params["_trackname","_oGroupLeader", "_bXIMCombatState"]; if (_bXIMCombatState == _oGroupLeader getVariable ["XIM_bCombat", false]) then {[_trackname] remoteExecCall ["playMusic", XIM_groupOwnerIDs, false]; [10,1] remoteExecCall ["fadeMusic",XIM_groupOwnerIDs,false];};},[_trackname, _oGroupLeader, _bXIMCombatState], _iRandomDelay] call CBA_fnc_waitAndExecute;
+		[{params["_trackname","_oGroupLeader", "_bXIMCombatState", "_groupOwnerIDs"]; if (_bXIMCombatState == _oGroupLeader getVariable ["XIM_bCombat", false]) then {[_trackname] remoteExecCall ["playMusic", _groupOwnerIDs, false]; [10,1] remoteExecCall ["fadeMusic",_groupOwnerIDs,false];};},[_trackname, _oGroupLeader, _bXIMCombatState, _groupOwnerIDs], _iRandomDelay] call CBA_fnc_waitAndExecute;
 		// if the combat state after the random delay is still the same, then play the next song. this is to prevent an edge case where a group leader requests a
 		// new song and then goes into combat soon after, effectively being in combat with a calm category song.
 	}
