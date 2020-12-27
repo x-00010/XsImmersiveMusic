@@ -10,3 +10,5 @@ tooltipOwned = "";
 overview = "A mod which aims to add dynamic music to Arma 3!";
 author = "x00010";
 overviewPicture = "\XIM_Core\XIMCore.paa";
+
+t
