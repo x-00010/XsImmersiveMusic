@@ -163,5 +163,35 @@ else // if client is in singleplayer
         {} // executes nothing when the setting is changed, as it is not necessary
     ] call cba_settings_fnc_init;
 
+    [
+        "XIM_bMusicDelayEnabled", // the name of the variable which the output from the slider is assigned to
+        "CHECKBOX", // interactive checkbox setting type
+        ["Enable music delay", "Enable or disable music delay."], // name and tooltip for the setting
+        ["XIM - X's Immersive Music", "Music delay"], // category the setting is in
+        [false], // default value of true
+        nil, // disables synchronising the variable across clients, as it is not needed
+        {} // executes nothing when the setting is changed, as it is not necessary
+    ] call cba_settings_fnc_init;
+
+    [
+        "XIM_iMinMusicDelay", // the name of the variable which the output from the slider is assigned to
+        "SLIDER", // interactive slider setting type
+        ["Minimum music delay", "Set the minimum possible delay for the next track to play."], // name and tooltip for the setting
+        ["XIM - X's Immersive Music", "Music delay"], // category the setting is in
+        [10, 600, 10, 0], // minimum of 10, maximum of 600, default of 10, no decimals
+        nil, // disables synchronising the variable across clients, as it is not needed
+        {} // executes nothing when the setting is changed, as it is not necessary
+    ] call cba_settings_fnc_init;
+
+    [
+        "XIM_iMaxMusicDelay", // the name of the variable which the output from the slider is assigned to
+        "SLIDER", // interactive slider setting type
+        ["Maximum music delay", "Set the maximum possible delay for the next track to play."], // name and tooltip for the setting
+        ["XIM - X's Immersive Music", "Music delay"], // category the setting is in
+        [XIM_iMinMusicDelay, 600, 30, 0], // minimum of the minimum music delay, maximum of 600, default of 30, no decimals
+        nil, // disables synchronising the variable across clients, as it is not needed
+        {} // executes nothing when the setting is changed, as it is not necessary
+    ] call cba_settings_fnc_init;
+
 	execVM "\XIM_Core\scripts\singleplayer\client.sqf"; // executes client.sqf
 };
