@@ -120,12 +120,26 @@ fncXIM_TrackSelect = {
 };
 
 fncXIM_Shuffler = {
-	params ["_groupOwnerIDs","_musictype"];
-	_groupOwnerIDs = _groupOwnerIDs;
+	params ["_groupOwnerIDs","_musictype", "_bXIMCombatState", "_gXIMGroup"];
 	_trackname = [_musictype] call fncXIM_TrackSelect; // select a random track from the given music type
 	[0,0] remoteExecCall ["fadeMusic",_groupOwnerIDs,false]; // set music volume to zero for fade in later
-	[_trackname] remoteExecCall ["playMusic", _groupOwnerIDs, false]; // plays the selected song on all clients in the group
-	[10,1] remoteExecCall ["fadeMusic",_groupOwnerIDs,false]; // fade in music
+
+	if (XIM_bMusicDelayEnabled) then // if the music delay is enabled
+	{
+		_iRandomDelay = random 1 * (XIM_iMaxMusicDelay - XIM_iMinMusicDelay) + XIM_iMinMusicDelay; // calculates a random delay value using the specified min and max values
+																								   // specified by the server from the CBA settings and the calculated mean
+		_oGroupLeader = leader _gXIMGroup; // finds the leader of the _gXIMGroup group
+
+		[{params["_trackname","_oGroupLeader", "_bXIMCombatState", "_groupOwnerIDs"]; if (_bXIMCombatState == _oGroupLeader getVariable ["XIM_bCombat", false]) then {[_trackname] remoteExecCall ["playMusic", _groupOwnerIDs, false]; [10,1] remoteExecCall ["fadeMusic",_groupOwnerIDs,false];};},[_trackname, _oGroupLeader, _bXIMCombatState, _groupOwnerIDs], _iRandomDelay] call CBA_fnc_waitAndExecute;
+		// if the combat state after the random delay is still the same, then play the next song. this is to prevent an edge case where a group leader requests a
+		// new song and then goes into combat soon after, effectively being in combat with a calm category song.
+	}
+	else // if the music delay is disabled
+	{
+		[_trackname] remoteExecCall ["playMusic", _groupOwnerIDs, false]; // plays the selected song on all clients in the group
+		[10,1] remoteExecCall ["fadeMusic",_groupOwnerIDs,false]; // fade in next track
+	};
+
 };
 
 
@@ -155,7 +169,7 @@ fncXIM_MusicRemote = {
 	};	
 
 	switch (_XIMMusicRemoteFunction) do { 
-		case "next" : {  [_groupOwnerIDs,_sXIM_MusicType] call fncXIM_Shuffler; }; 
+		case "next" : {  [_groupOwnerIDs,_sXIM_MusicType, _bXIMCombatState, _gXIMGroup] call fncXIM_Shuffler; }; 
 		case "statechange" : { [_groupOwnerIDs,_sXIM_MusicType] call fncXIM_MusicHandler; }; 
 	};
 
