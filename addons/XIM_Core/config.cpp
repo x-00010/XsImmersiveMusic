@@ -8,6 +8,7 @@ class CfgPatches
 
         requiredAddons[] = 
         {  
+            "ace_common"
             "cba_settings"
         };
 
