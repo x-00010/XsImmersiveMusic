@@ -211,7 +211,6 @@ addMissionEventHandler ["PlayerConnected", // when a player connects
 			{
 				_oPlayer setVariable ["XIM_bCombat", false]; // set the XIM_bCombat variable on the client, with the default value of false
 				_oPlayer setVariable ["XIM_bCombatMaster", false]; // set the XIM_bCombatMaster variable on the client, with the default value of false
-				[{missionNameSpace setVariable ["ace_common_allowFadeMusic",false,true];}, [], 5] remoteExec ["CBA_fnc_waitAndExecute"];
 				[_oPlayer] call XIM_fncSendGroup; // calls the XIM_fncSendGroup function with the argument player
 				[_oPlayer] call XIM_fncCombatTimeout; // calls the XIM_fncCombatTimeout function with the argument player
 			};
