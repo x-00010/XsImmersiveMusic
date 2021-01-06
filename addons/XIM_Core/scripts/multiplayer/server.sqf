@@ -1,10 +1,20 @@
 // This script is executed on either the player host (non-dedicated) or a dedicated server
 
-
+#define XIM_const_CALM "calm"
+#define XIM_const_COMBAT "combat"
+#define XIM_const_DARK "dark"
 // Below is the creation of arrays, that contain classnames of music tracks defined in config.cpp, randomized to make it fresh each time;
 XIM_aCombatMusicClassnames = "'intense' in getArray (_x >> 'moods') " configClasses (configFile >> "CfgMusic") apply {configName _x} call BIS_fnc_arrayShuffle;
 XIM_aDarkMusicClassnames = "'dark' in getArray (_x >> 'moods') " configClasses (configFile >> "CfgMusic") apply {configName _x} call BIS_fnc_arrayShuffle;
 XIM_aCalmMusicClassnames = "'calm' in getArray (_x >> 'moods') " configClasses (configFile >> "CfgMusic") apply {configName _x} call BIS_fnc_arrayShuffle;
+
+XIM_aMusicClassnames = [XIM_aCombatMusicClassnames,XIM_aDarkMusicClassnames,XIM_aCalmMusicClassnames];
+
+XIM_aCombatMusicClassnames = nil;
+XIM_aDarkMusicClassnames = nil;
+XIM_aCalmMusicClassnames = nil;
+
+
 
 [{missionNameSpace setVariable ["ace_common_allowFadeMusic",false,true];}, [], 5] call CBA_fnc_waitAndExecute; // disabled allowFadeMusic in ace options, fixes lots
 																											   // of problems with fadeMusic and ACE
@@ -108,10 +118,12 @@ fncXIM_TrackSelect = {
 	params ["_musictype"];
 	private _trackclassname = ""; // declare the empty string _trackclassname
 
+
+
 	switch (_musictype) do { 
-		case "combat" : { _trackclassname = selectRandom XIM_aCombatMusicClassnames; }; // select a random track from the XIM_aCombatMusicClassnames array
-		case "dark" : { _trackclassname = selectRandom XIM_aDarkMusicClassnames; }; // select a random track from the XIM_aDarkMusicClassnames array
-		case "calm" : { _trackclassname = selectRandom XIM_aCalmMusicClassnames; };  // select a random track from the XIM_aCalmMusicClassnames array
+		case XIM_const_COMBAT : { _trackclassname = selectRandom XIM_aMusicClassnames[0]; }; // select a random track from the XIM_aCombatMusicClassnames array
+		case XIM_const_DARK : { _trackclassname = selectRandom XIM_aMusicClassnames[1]; }; // select a random track from the XIM_aDarkMusicClassnames array
+		case XIM_const_CALM : { _trackclassname = selectRandom XIM_aMusicClassnames[2]; };  // select a random track from the XIM_aCalmMusicClassnames array
 	};
 	
 	_trackclassname; //Return classname
@@ -153,7 +165,7 @@ fncXIM_MusicRemote = {
 
 			if (XIM_bCombatMusicEnabled) then // if combat music is enabled in the cba settings
 			{
-				_sXIM_MusicType = "combat"; // then set the music type to combat
+				_sXIM_MusicType = COMBAT; // then set the music type to combat
 			};
 					
 		} else {
@@ -165,13 +177,13 @@ fncXIM_MusicRemote = {
 
 				if (XIM_bStealthMusicEnabled) then // if stealth music is enabled in the cba settings
 				{
-					_sXIM_MusicType = "dark"; // set the music to dark
+					_sXIM_MusicType = DARK; // set the music to dark
 				};
 			} else {
 
 				if (XIM_bCalmMusicEnabled) then // if calm music is enabled in the cba settings
 				{
-					_sXIM_MusicType = "calm"; // otherwise set it to calm
+					_sXIM_MusicType = CALM; // otherwise set it to calm
 				};
 			};
 
