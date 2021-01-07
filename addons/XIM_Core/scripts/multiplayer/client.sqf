@@ -3,10 +3,11 @@
 
 XIM_fncPlayNext = // submits the provided unit's group to the server plus the unit's combat state, which triggers the publicVariable event handler
 {
-	params["_oPlayer"]; // defines the parameter _aPlayerMachineIDs in position zero
+	params["_oPlayer",["_bXIMUseTimeOut",true]]; // defines the parameter _aPlayerMachineIDs in position zero
 	XIM_aPlayNext = []; // defines XIM_aStateChange, which is an empty array
 	XIM_aPlayNext pushBack group _oPlayer; // adds the player's group to XIM_aStateChange at position zero
 	XIM_aPlayNext pushBack _oPlayer;
+	XIM_aPlayNext pushBack _bXIMUseTimeOut; // Don't use timeout when user skips, instead it will call statechange on server for nice fadeout/in
 	publicVariableServer "XIM_aPlayNext"; // sends the XIM_aStateChange variable to the server via its namespace
 };
 

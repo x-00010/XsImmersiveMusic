@@ -55,8 +55,15 @@ XIM_fncSendGroup = // submits the provided unit's group to the server plus the u
 
 XIM_fncPlayNext = // submits the provided unit's group to the server plus the unit's combat state, which triggers the publicVariable event handler
 {
-	params["_oPlayer"]; // defines the parameter _aPlayerMachineIDs in position zero
-	[group _oPlayer,_oPlayer getVariable ["XIM_bCombat", false],"next"] call fncXIM_MusicRemote;
+	params["_oPlayer",["_bXIMuseTimeout",true]]; // defines the parameter _aPlayerMachineIDs in position zero
+	if (_bXIMuseTimeout) then {
+		[group _oPlayer,_oPlayer getVariable ["XIM_bCombat", false],"next"] call fncXIM_MusicRemote;
+	} else {
+
+		[group _oPlayer,_oPlayer getVariable ["XIM_bCombat", false],"statechange"] call fncXIM_MusicRemote;
+	};
+
+	
 };
 
 XIM_fncStopMusic =  // stops music playing on all clients in the group

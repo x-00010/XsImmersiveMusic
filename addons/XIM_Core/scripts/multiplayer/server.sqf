@@ -237,6 +237,16 @@ addMissionEventHandler ["PlayerConnected", // when a player connects
 	private _gXIMGroup = _aXIMPlayNext select 0; // retrieve group
 	private _oXIMGroupLeader = _aXIMPlayNext select 1; // retrieve leader
 	private _bXIMCombatState = _oXIMGroupLeader getVariable ["XIM_bCombat", false]; // retrieve XIM_bCombat variable from _oXIMGroupLeader
+	private _bXIMuseTimeout = _aXIMPlayNext select 2;
+
+	if (_bXIMuseTimeout) then {
+
+	  	[_gXIMGroup,_bXIMCombatState,"next"] call fncXIM_MusicRemote;
 	
-	[_gXIMGroup,_bXIMCombatState,"next"] call fncXIM_MusicRemote; // call fncXIM_MusicRemote with _gXIMGroup, _bXIMCombatState and "next" as arguments
+	} else {
+		
+		[_gXIMGroup,_bXIMCombatState,"statechange"] call fncXIM_MusicRemote;
+	};
+	
+	 // call fncXIM_MusicRemote with _gXIMGroup, _bXIMCombatState and "next" as arguments
 };

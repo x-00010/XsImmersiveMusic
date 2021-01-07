@@ -29,7 +29,7 @@ class CfgVehicles
                 displayName = "Skip song";
                 condition = "((leader (group _player) == _player) or !isMultiplayer) and (!(group _player getVariable ['XIM_bMusicStopped', false]))";
                 exceptions[] = {};
-                statement = "[_player] call XIM_fncPlayNext";
+                statement = "[_player,false] call XIM_fncPlayNext"; //DON'T USE TIMEOUT
             };
             class stopMusic
             {
